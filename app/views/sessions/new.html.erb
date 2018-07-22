@@ -1,0 +1,15 @@
+<div class="container">
+  <%= form_for :session, url: session_path do |form| %>
+    <div>
+      <%= form.text_field :email, class: "form-control mt-4" %>
+      <%= form.label :email %>
+    </div>
+    <div>
+      <%= form.password_field :password, class: "form-control mt-2" %>
+      <%= form.label :password %>
+    </div>
+      <div>
+          <%= form.submit "Sign In", class: "btn btn-outline-dark mt-3" %>
+      </div>
+  <% end %>
+</div>
