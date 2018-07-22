@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = "Thank you #{@user.first_name} for signing up with Awesomo. Your account has been created."
       redirect_to home_path
     else 
