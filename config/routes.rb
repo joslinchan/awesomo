@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   get('/', {to: 'welcome#index', as: 'home'})
 
-  
+  resources :users, only: [:new, :create]
+
 end
