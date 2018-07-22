@@ -10,6 +10,40 @@
   </head>
 
   <body>
-    <%= yield %>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <%= link_to 'Awesomo',
+      home_path,
+      class: 'navbar-brand text-white' %>
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#my-nav-menu"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div
+        id="my-nav-menu"
+        class="collapse navbar-collapse justify-content-end">
+      <div class="navbar-nav">
+        <%= link_to "Home",
+          home_path,
+          class:'nav-item nav-link text-white' %>
+      </div>
+      </div>
+    </nav>
+    <% flash.each do |type, message| %>
+        <div class="container-fluid">
+            <div class="alert alert-<%= type %>">
+                <%= message %>
+            </div>
+        </div>
+    <% end %>
+    <div>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
