@@ -1,8 +1,12 @@
-<div class="container">
 <%= form_for @user do |form| %>
   <% if @user.errors.any? %>
-    <p><%= @user.errors.full_messages.to_sentence %></p>
+      <p>
+        <strong>
+          <%= @user.errors.full_messages.to_sentence %>
+        </strong>
+      </p>
   <% end %>
+  <section class="container">
   <div>
     <%= form.text_field :first_name, class: "form-control mt-4" %>
     <%= form.label :first_name %>
@@ -24,5 +28,6 @@
     <%= form.label :password_confirmation %>
   </div>
   <%= form.submit "Sign Up", class: "btn btn-outline-dark mt-3" %>
+  </section>
 <% end %>
-</div>
+

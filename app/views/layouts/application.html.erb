@@ -46,15 +46,13 @@
       </div>
     </nav>
     <% flash.each do |type, message| %>
-        <div class="container-fluid">
             <div class="alert alert-<%= type %>">
                 <%= message %>
             </div>
-        </div>
     <% end %>
-    <div>
+    <main>
 
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>
