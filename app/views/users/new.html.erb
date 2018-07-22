@@ -1,7 +1,7 @@
 <div class="container">
 <%= form_for @user do |form| %>
   <% if @user.errors.any? %>
-    <p><%= @users.errors.full_messages.to_sentence %></p>
+    <p><%= @user.errors.full_messages.to_sentence %></p>
   <% end %>
   <div>
     <%= form.text_field :first_name, class: "form-control mt-4" %>
