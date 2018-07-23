@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :find_user, only: [:edit, :update, :edit_password, :update_password]
+
   def new
     @user = User.new
   end
@@ -16,17 +19,36 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:id]
   end
 
   def update
-    @user = User.find params[:id]
     if @user.update(user_params)
       flash[:success] = "Thanks, #{@user.first_name}. Your profile has been updated"
       render :edit
     else 
       flash[:danger] = "Your profile was not updated. Please try again."
       render :edit
+    end
+  end
+
+  def edit_password
+  end
+
+  def update_password
+    if @user&.authenticate(params[:user][:current_password])
+      if params[:user][:new_password] == params[:user][:new_password_confirmation] && params[:user][:current_password] != params[:user][:new_password]
+        @user.password = params[:user][:new_password]
+        if @user.update(password_params)
+          flash[:success] = "Thanks, #{@user.first_name}. Your password has been updated"
+          redirect_to edit_password_path(@user)
+        end
+      else
+        flash[:danger] = "Your passwords are invalid. No changes made. Please try again."
+        redirect_to edit_password_path(@user)
+      end
+    else
+      flash[:danger] = "Your password does not match. No changes made."
+      render :edit   
     end
   end
 
@@ -39,6 +61,18 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation
+    )
+  end
+
+  def find_user
+    @user = User.find params[:id]
+  end
+
+  def password_params
+    params.require(:user).permit(
+      :current_password,
+      :new_password,
+      :new_password_confirmation
     )
   end
 

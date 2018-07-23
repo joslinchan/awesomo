@@ -1,10 +1,12 @@
 <%= form_for @user do |form| %>
   <% if @user.errors.any? %>
+    <div class="container">
       <p>
         <strong>
           <%= @user.errors.full_messages.to_sentence %>
         </strong>
       </p>
+    </div>
   <% end %>
   <section class="container">
   <div>
@@ -22,7 +24,7 @@
 
     <% if current_user.present? %>
     <div class = "text-center">
-    <%= link_to "Edit Password", edit_password_path(@user.id), class: "text-dark" %>
+    <%= link_to "Edit Password", edit_password_path(@user.id), class: "text-primary" %>
     </div>
   <% else %>
 
@@ -35,7 +37,7 @@
       <%= form.label :password_confirmation %>
     </div>
   <% end %>
-  <%= form.submit nil, class: "btn btn-outline-dark mt-3" %>
+  <%= form.submit nil, class: "btn btn-outline-primary mt-3" %>
   </section>
 <% end %>
 
