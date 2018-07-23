@@ -29,6 +29,9 @@
         class="collapse navbar-collapse justify-content-end">
       <div class="navbar-nav">
         <% if current_user.present? %>
+          <%= link_to "Edit Profile", 
+            edit_user_path(current_user.id), 
+            class: "nav-item nav-link text-white" %>
           <span class="nav-item navbar-text text-white mr-2">Hi <%= current_user.first_name %></span>
           <%= link_to "Sign Out", 
             session_path, 

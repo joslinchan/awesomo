@@ -1,0 +1,41 @@
+<%= form_for @user do |form| %>
+  <% if @user.errors.any? %>
+      <p>
+        <strong>
+          <%= @user.errors.full_messages.to_sentence %>
+        </strong>
+      </p>
+  <% end %>
+  <section class="container">
+  <div>
+    <%= form.text_field :first_name, class: "form-control mt-4" %>
+    <%= form.label :first_name %>
+  </div>
+  <div>
+    <%= form.text_field :last_name, class: "form-control mt-2" %>
+    <%= form.label :last_name %>
+  </div>
+  <div>
+    <%= form.text_field :email, class: "form-control mt-2" %>
+    <%= form.label :email %>
+  </div>
+
+    <% if current_user.present? %>
+    <div class = "text-center">
+    <%= link_to "Edit Password", edit_password_path(@user.id), class: "text-dark" %>
+    </div>
+  <% else %>
+
+    <div>
+      <%= form.text_field :password, class: "form-control" %>
+      <%= form.label :password %>
+    </div>
+    <div>
+      <%= form.text_field :password_confirmation, class: "form-control" %>
+      <%= form.label :password_confirmation %>
+    </div>
+  <% end %>
+  <%= form.submit nil, class: "btn btn-outline-dark mt-3" %>
+  </section>
+<% end %>
+
