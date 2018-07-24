@@ -38,7 +38,8 @@ class UsersController < ApplicationController
     if @user&.authenticate(params[:user][:current_password])
       if params[:user][:new_password] == params[:user][:new_password_confirmation] && params[:user][:current_password] != params[:user][:new_password]
         @user.password = params[:user][:new_password]
-        if @user.update(password_params)
+        @user.password_confirmation = params[:user][:new_password_confirmation]
+        if @user.save
           flash[:success] = "Thanks, #{@user.first_name}. Your password has been updated"
           redirect_to edit_password_path(@user)
         end

@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates( 
     :password, 
     :password_confirmation, 
-      presence: true
+    presence: true,
   )
 
   validates :first_name, :last_name, presence: true
