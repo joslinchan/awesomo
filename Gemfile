@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'httparty'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
