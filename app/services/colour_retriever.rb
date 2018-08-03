@@ -10,5 +10,12 @@ class ColourRetriever
     get_palettes.parsed_response
   end
 
+  def get_colours
+    self.class.get("/colors/?keywords=fish")
+  end
+
+  def parse_colours
+    get_colours.parsed_response
+  end
 
 end
