@@ -1,7 +1,7 @@
 <ul>
   <% @paletteCollection.each do |key, value| %>
   <li>
-    <%= image_tag(key["badgeUrl"]) %>
+    <%= link_to(image_tag(key["imageUrl"]), key["url"]) %>
   </li>
   <% end %>
 </ul>
