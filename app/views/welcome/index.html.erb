@@ -1,7 +1,12 @@
 <ul>
   <% @paletteCollection.each do |key, value| %>
   <li>
-    <%= link_to(image_tag(key["imageUrl"]), key["url"]) %>
+    <%= key["title"] %><br />
+    <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
+    <% colours = key["colors"]["hex"] %>
+    <% colours.each do |hex| %>
+      <%= hex %>
+    <% end %>
   </li>
   <% end %>
 </ul>
