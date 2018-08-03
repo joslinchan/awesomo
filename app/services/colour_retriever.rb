@@ -10,4 +10,5 @@ class ColourRetriever
     get_palettes.parsed_response
   end
 
+
 end

@@ -2,7 +2,8 @@ class WelcomeController < ApplicationController
 
   def index
     @palettes = ColourRetriever.new.parse_palettes
-    render json: @palettes
+    @paletteCollection= @palettes["palettes"]["palette"]
+    #render json: @paletteCollection
     
   end
   
