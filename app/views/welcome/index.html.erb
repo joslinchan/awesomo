@@ -3,8 +3,8 @@
     <li>
       <%= key["title"] %><br />
       <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-      <% colours = key["colors"]["hex"] %>
-      <% colours.each do |hex| %>
+      <% hexArray = key["colors"]["hex"] %>
+      <% hexArray.each do |hex| %>
         #<%= hex %>
       <% end %>
     </li>
@@ -17,6 +17,19 @@
       <%= key["title"] %><br />
       <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
       #<%= key["hex"] %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @patternCollection.each do |key, value| %>
+    <li>
+      <%= key["title"] %><br />
+      <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
+      <% hexArray = key["colors"]["hex"] %>
+      <% hexArray.each do |hex| %>
+        #<%= hex %>
+      <% end %>
     </li>
   <% end %>
 </ul>

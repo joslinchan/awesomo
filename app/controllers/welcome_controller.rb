@@ -8,6 +8,10 @@ class WelcomeController < ApplicationController
     @colours = ColourRetriever.new.parse_colours
     @colourCollection = @colours["colors"]["color"]
     #render json: @colourCollection
+
+    @patterns = ColourRetriever.new.parse_patterns
+    @patternCollection = @patterns["patterns"]["pattern"]
+    #render json: @patternCollection
   end
   
 end

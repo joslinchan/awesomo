@@ -18,4 +18,12 @@ class ColourRetriever
     get_colours.parsed_response
   end
 
+  def get_patterns
+    self.class.get("/patterns/?keywords=fish")
+  end
+
+  def parse_patterns
+    get_patterns.parsed_response
+  end
+
 end
