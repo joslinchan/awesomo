@@ -2,9 +2,9 @@ class ColourRetriever
   include HTTParty
   base_uri "colourlovers.com/api"
 
-  def get_palettes
-    self.class.get("/palettes/?keywords=fish")
-  end
+  def get_palettes(searchTerm)
+    self.class.get("/palettes/?keywords=#{searchTerm}")
+  end 
 
   def parse_palettes
     get_palettes.parsed_response
@@ -27,3 +27,9 @@ class ColourRetriever
   end
 
 end
+
+=begin   
+  def self.get_palettes
+    self.get("/palettes/?keywords=fish")
+  end 
+=end
