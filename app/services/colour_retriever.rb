@@ -2,29 +2,16 @@ class ColourRetriever
   include HTTParty
   base_uri "colourlovers.com/api"
 
-  def get_palettes(searchTerm)
-    self.class.get("/palettes/?keywords=#{searchTerm}")
+  def get_palettes(search_term)
+    self.class.get("/palettes/?keywords=#{search_term}")
   end 
 
-  def parse_palettes
-    get_palettes.parsed_response
-  end 
-
-
-  def get_colours
-    self.class.get("/colors/?keywords=fish")
+  def get_colours(search_term)
+    self.class.get("/colors/?keywords=#{search_term}")
   end
 
-  def parse_colours
-    get_colours.parsed_response
-  end
-
-  def get_patterns
-    self.class.get("/patterns/?keywords=fish")
-  end
-
-  def parse_patterns
-    get_patterns.parsed_response
+  def get_patterns(search_term)
+    self.class.get("/patterns/?keywords=#{search_term}")
   end
 
 end

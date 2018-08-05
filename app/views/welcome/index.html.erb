@@ -1,11 +1,34 @@
 <%= form_tag(home_path, :method => "get") do %>
   <%= label_tag(:query, "Search for:") %>
   <%= text_field_tag(:query, params[:query]) %>
-  <%= submit_tag("Search", :name => nil) %>
+  <%= submit_tag("Search", name: nil) %>
 <% end %>
 
 <ul>
   <% @paletteCollection.each do |key, value| %>
+    <li>
+      <%= key["title"] %><br />
+      <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
+      <% hexArray = key["colors"]["hex"] %>
+      <% hexArray.each do |hex| %>
+        #<%= hex %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @colourCollection.each do |key, value| %>
+    <li>
+      <%= key["title"] %><br />
+      <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
+      #<%= key["hex"] %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @patternCollection.each do |key, value| %>
     <li>
       <%= key["title"] %><br />
       <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
