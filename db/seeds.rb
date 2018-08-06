@@ -1,13 +1,14 @@
+require 'csv'
+
 PASSWORD = "supersecret"
 
-Comment.delete_all
-Post.delete_all
+SearchTerm.delete_all
 User.delete_all
 
 super_user = User.create(
-  first_name: 'Jon',
-  last_name: 'Snow',
-  email: 'js@winterfell.gov',
+  first_name: 'Rick',
+  last_name: 'Sanchez',
+  email: 'rick@earthc137.dim',
   password: PASSWORD,
     admin: true
 )
@@ -24,5 +25,16 @@ super_user = User.create(
   )
 end
 
-users = User.all
-puts "👩👨 Created #{users.count} users"
+puts "👩👨 Created #{User.count} users"
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'search_term_tags.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+
+csv.each do |row|
+  search = SearchTerm.new
+  search.term = row['term']
+  search.save
+end
+
+puts "Uploaded #{SearchTerm.count} search terms" 
+puts "Login with #{super_user.email} and password of #{PASSWORD}"
