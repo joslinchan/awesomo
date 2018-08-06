@@ -1,5 +1,5 @@
 class SearchTerm < ApplicationRecord
-  #validates :term, presence: true, uniqueness: true
+  validates :term, presence: true, uniqueness: true
   #before_validation :downcase_term
 
   has_many :searchings, dependent: :destroy
