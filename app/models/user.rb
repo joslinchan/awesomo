@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :colour_palettes, dependent: :nullify
+
+  has_many :colour_palettes, dependent: :destroy
+  has_many :palette_likes, dependent: :destroy
   has_many :searchings, dependent: :destroy
   has_many :search_terms, through: :searchings, source: :search_term
 
@@ -15,5 +17,5 @@ class User < ApplicationRecord
     uniqueness: true, 
     format: VALID_EMAIL_REGEX
   )
-  
+
 end
