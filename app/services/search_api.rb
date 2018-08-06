@@ -5,6 +5,11 @@ class SearchApi
     @paletteCollection = @palettes["palettes"]["palette"]
   end
 
+  def search_single_palette(id)
+    palette = ColourRetriever.new.get_palette(id)
+    parsedPalette = palette["palettes"]["palette"]
+  end
+
   def search_colours(search_params)
     @colours = ColourRetriever.new.get_colours(search_params)
     @colourCollection = @colours["colors"]["color"]

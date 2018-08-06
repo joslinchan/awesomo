@@ -6,6 +6,9 @@ class WelcomeController < ApplicationController
     @colourCollection = SearchApi.new.search_colours params[:query]
     @patternCollection = SearchApi.new.search_patterns params[:query]
     
+    saveTerm = SearchTerm.create(
+      term: params[:query]
+      ) 
   end
   
 end

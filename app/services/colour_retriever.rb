@@ -6,6 +6,10 @@ class ColourRetriever
     self.class.get("/palettes/?keywords=#{search_term}")
   end 
 
+  def get_palette(id)
+    self.class.get("/palette/#{id}")
+  end 
+
   def get_colours(search_term)
     self.class.get("/colors/?keywords=#{search_term}")
   end

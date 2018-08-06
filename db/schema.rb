@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_06_193431) do
+ActiveRecord::Schema.define(version: 2018_08_06_215518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,9 @@ ActiveRecord::Schema.define(version: 2018_08_06_193431) do
     t.string "title"
     t.string "image_url"
     t.string "url"
-    t.bigint "search_term_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["search_term_id"], name: "index_colour_palettes_on_search_term_id"
     t.index ["user_id"], name: "index_colour_palettes_on_user_id"
   end
 
@@ -44,11 +42,11 @@ ActiveRecord::Schema.define(version: 2018_08_06_193431) do
 
   create_table "searchings", force: :cascade do |t|
     t.bigint "search_term_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "colour_palette_id"
+    t.index ["colour_palette_id"], name: "index_searchings_on_colour_palette_id"
     t.index ["search_term_id"], name: "index_searchings_on_search_term_id"
-    t.index ["user_id"], name: "index_searchings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,10 +60,9 @@ ActiveRecord::Schema.define(version: 2018_08_06_193431) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "colour_palettes", "search_terms"
   add_foreign_key "colour_palettes", "users"
   add_foreign_key "palette_likes", "colour_palettes"
   add_foreign_key "palette_likes", "users"
+  add_foreign_key "searchings", "colour_palettes"
   add_foreign_key "searchings", "search_terms"
-  add_foreign_key "searchings", "users"
 end
