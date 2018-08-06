@@ -1,4 +1,8 @@
 class ColourPalette < ApplicationRecord
-  belongs_to :search_term
-  validates :image_url, :url, presence: true, uniqueness: true
+  belongs_to :user
+
+  has_many :searchings, dependent: :destroy
+  has_many :search_terms, through: :searchings
+
+  validates :title, :image_url, :url, presence: true
 end
