@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :searchings, dependent: :destroy
+  has_many :search_terms, through: :searchings, source: :search_term
 
   attr_accessor :current_password, :new_password, :new_password_confirmation
 
