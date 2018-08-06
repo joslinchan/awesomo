@@ -9,12 +9,14 @@
     <% @paletteCollection.each do |key, value| %>
       <li>
         <%= key["title"] %><br />
+        id: <%= key["id"] %><br />
         <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
         <% hexArray = key["colors"]["hex"] %>
         <% hexArray.each do |hex| %>
           #<%= hex %>
         <% end %>
         <br />
+        <%= link_to "Save", user_colour_palettes_path(current_user, id: key["id"]), method: :post %>
       </li>
     <% end %>
   </ul>
