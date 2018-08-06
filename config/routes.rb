@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update] do
     resources :colour_palettes, only: [:create]
   end
+  
+  resources :colour_palettes, only: [:create] do
+    resources :palette_likes, only: [:create]
+  end
 
   get('/users/:id/edit_password', {to: 'users#edit_password', as: :edit_password})
   patch('/users/:id/update_password', {to: 'users#update_password', as: :update_password})
