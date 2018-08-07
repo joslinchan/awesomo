@@ -7,5 +7,5 @@ class ColourPalette < ApplicationRecord
   has_many :searchings, dependent: :destroy
   has_many :search_terms, through: :searchings
 
-  validates :title, :image_url, :url, presence: true
+  validates :title, :image_url, :url, presence: true, uniqueness: { case_sensitive: false }
 end
