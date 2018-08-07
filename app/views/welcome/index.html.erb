@@ -42,6 +42,8 @@
         <% hexArray.each do |hex| %>
           #<%= hex %>
         <% end %>
+        <br />
+        <%= link_to "Save", user_patterns_path(current_user, id: key["id"]), method: :post %>
       </li>
     <% end %>
   </ul>

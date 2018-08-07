@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update] do
     resources :colour_palettes, shallow: true, only: [:create, :index]
     resources :colours, shallow: true, only: [:create, :index]
+    resources :patterns, shallow: true, only: [:create, :index]
   end
   
   resources :colour_palettes, only: [:create] do

@@ -22,6 +22,10 @@ class ColourRetriever
     self.class.get("/patterns/?keywords=#{search_term}")
   end
 
+  def get_pattern(id)
+    self.class.get("/pattern/#{id}")
+  end
+
 end
 
 =begin   

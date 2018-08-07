@@ -1,0 +1,15 @@
+<h1>Pattern Collection</h1>
+<ul>
+  <% @patternCollection.each do |pattern| %>
+    <li>
+      <%= link_to(
+        pattern.title,
+        pattern.url
+       ) %><br />
+       <%= link_to(
+         image_tag(pattern.image_url),
+         pattern.url
+       ) %> 
+    </li>
+  <% end %>
+</ul>

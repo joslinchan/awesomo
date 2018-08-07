@@ -25,6 +25,9 @@ class SearchApi
     patternCollection = patterns["patterns"]["pattern"]
   end 
 
-
+  def search_single_pattern(id)
+    pattern = ColourRetriever.new.get_pattern(id)
+    parsedPattern = pattern["patterns"]["pattern"]
+  end 
 
 end
