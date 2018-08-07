@@ -19,6 +19,12 @@ class ColoursController < ApplicationController
 
   end
 
+  def destroy
+    colour = Colour.find params[:id]
+    colour.destroy
+    redirect_to user_colours_path(current_user)
+  end
+
   def index
     @colourCollection = current_user.colours
   end

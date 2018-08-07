@@ -20,8 +20,8 @@ class ColourPalettesController < ApplicationController
   end
 
   def destroy
-    @palette = ColourPalette.find params[:id]
-    @palette.destroy
+    palette = ColourPalette.find params[:id]
+    palette.destroy
     redirect_to user_colour_palettes_path(current_user)
   end
 

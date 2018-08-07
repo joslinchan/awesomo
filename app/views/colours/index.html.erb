@@ -10,6 +10,15 @@
          image_tag(colour.image_url),
          colour.url
        ) %> 
+       <br />
+       <%= link_to(
+         "Delete",
+         colour_path(colour.id),
+         method: :delete,
+         data: {
+           confirm:"Are you sure?"
+         }
+        ) %>
     </li>
   <% end %>
 </ul>
