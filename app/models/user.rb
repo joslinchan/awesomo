@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :colour_palettes, dependent: :destroy
   has_many :colours, dependent: :destroy
+  has_many :patterns, dependent: :destroy
 
   has_many :searchings, dependent: :destroy
   has_many :search_terms, through: :searchings, source: :search_term
