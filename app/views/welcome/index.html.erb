@@ -8,7 +8,7 @@
   <ul>
     <% @paletteCollection.each do |key, value| %>
       <li>
-        <%= key["title"] %><br />
+        <%= link_to(key["title"], key["url"]) %><br />
         id: <%= key["id"] %><br />
         <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
         <% hexArray = key["colors"]["hex"] %>
@@ -16,7 +16,7 @@
           #<%= hex %>
         <% end %>
         <br />
-        <%= link_to "Save", user_colour_palettes_path(current_user, id: key["id"], type: key), method: :post %>
+        <%= link_to "Save", user_colour_palettes_path(current_user, id: key["id"]), method: :post %>
       </li>
     <% end %>
   </ul>
@@ -24,9 +24,11 @@
   <ul>
     <% @colourCollection.each do |key, value| %>
       <li>
-        <%= key["title"] %><br />
+        <%= link_to(key["title"], key["url"]) %><br />
+        id: <%= key["id"] %><br />
         <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-        #<%= key["hex"] %>
+        #<%= key["hex"] %><br />
+        <%= link_to "Save", user_colours_path(current_user, id: key["hex"]), method: :post %>
       </li>
     <% end %>
   </ul>
