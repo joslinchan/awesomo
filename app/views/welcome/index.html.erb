@@ -6,6 +6,11 @@
 
 <% if user_signed_in? %>
   <ul>
+    <li>
+    </li>
+  </ul>
+
+  <ul>
     <% @paletteCollection.each do |key, value| %>
       <li>
         <%= link_to(key["title"], key["url"]) %><br />
