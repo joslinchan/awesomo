@@ -1,4 +1,4 @@
-<%= form_tag(home_path, :method => "get") do %>
+<%= form_tag(search_terms_path) do %>
   <%= label_tag(:query, "Search for:") %>
   <%= text_field_tag(:query, params[:query]) %>
   <%= submit_tag("Search", name: nil) %>
@@ -6,50 +6,12 @@
 
 <% if user_signed_in? %>
   <ul>
-    <li>
-    </li>
-  </ul>
-
-  <ul>
-    <% @paletteCollection.each do |key, value| %>
-      <li>
-        <%= link_to(key["title"], key["url"]) %><br />
-        id: <%= key["id"] %><br />
-        <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-        <% hexArray = key["colors"]["hex"] %>
-        <% hexArray.each do |hex| %>
-          #<%= hex %>
-        <% end %>
-        <br />
-        <%= link_to "Save", user_colour_palettes_path(current_user, id: key["id"]), method: :post %>
+    <% @photos.each do |hash, key| %>
+      <li>  
+        <%= hash["color"] %><br />
+        <%= link_to(image_tag(hash["urls"]["thumb"]), hash["links"]["html"]) %><br />
+        <%= hash["links"]["html"] %>
       </li>
     <% end %>
   </ul>
-
-  <ul>
-    <% @colourCollection.each do |key, value| %>
-      <li>
-        <%= link_to(key["title"], key["url"]) %><br />
-        id: <%= key["id"] %><br />
-        <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-        #<%= key["hex"] %><br />
-        <%= link_to "Save", user_colours_path(current_user, id: key["hex"]), method: :post %>
-      </li>
-    <% end %>
-  </ul>
-
-  <ul>
-    <% @patternCollection.each do |key, value| %>
-      <li>
-        <%= key["title"] %><br />
-        <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-        <% hexArray = key["colors"]["hex"] %>
-        <% hexArray.each do |hex| %>
-          #<%= hex %>
-        <% end %>
-        <br />
-        <%= link_to "Save", user_patterns_path(current_user, id: key["id"]), method: :post %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<%end%>

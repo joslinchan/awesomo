@@ -8,4 +8,8 @@ class UnsplashRetriever
     end
   end
 
+  def get_photos
+    photoArray = Unsplash::Photo.search("cats")
+  end
+
 end
