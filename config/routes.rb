@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get('/', {to: 'welcome#index', as: 'home'})
 
   resources :users, only: [:new, :create, :edit, :update] do
-    resources :colour_palettes, shallow: true, only: [:create, :index]
+    resources :colour_palettes, shallow: true, only: [:create, :destroy, :index]
     resources :colours, shallow: true, only: [:create, :index]
     resources :patterns, shallow: true, only: [:create, :index]
   end

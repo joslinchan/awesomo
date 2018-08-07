@@ -19,6 +19,12 @@ class ColourPalettesController < ApplicationController
     end
   end
 
+  def destroy
+    @palette = ColourPalette.find params[:id]
+    @palette.destroy
+    redirect_to user_colour_palettes_path(current_user)
+  end
+
   def index
     @paletteCollection = current_user.colour_palettes
   end
