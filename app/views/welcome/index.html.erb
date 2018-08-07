@@ -16,7 +16,7 @@
           #<%= hex %>
         <% end %>
         <br />
-        <%= link_to "Save", user_colour_palettes_path(current_user, id: key["id"]), method: :post %>
+        <%= link_to "Save", user_colour_palettes_path(current_user, id: key["id"], type: key), method: :post %>
       </li>
     <% end %>
   </ul>

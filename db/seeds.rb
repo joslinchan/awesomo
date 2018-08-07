@@ -3,6 +3,7 @@ require 'csv'
 PASSWORD = "supersecret"
 
 SearchTerm.delete_all
+ColourPalette.delete_all
 User.delete_all
 
 super_user = User.create(

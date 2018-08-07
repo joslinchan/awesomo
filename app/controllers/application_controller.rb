@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  attr_accessor :saveTerm
+  #attr_accessor :saveTerm
 
   private
   def current_user

@@ -10,10 +10,11 @@ class ColourPalettesController < ApplicationController
       user: current_user
     )  
 
-    render json: save_palette
+    redirect_to user_colour_palettes_path(current_user)
   end
 
   def index
     @paletteCollection = current_user.colour_palettes
   end
+
 end

@@ -11,7 +11,11 @@ class WelcomeController < ApplicationController
       ) 
     if saveTerm.save
       flash[:success] = "Search Term saved"
-    end
+    else
+    end 
+
+
+    
   end
   
 end
