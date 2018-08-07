@@ -10,6 +10,15 @@
          image_tag(pattern.image_url),
          pattern.url
        ) %> 
+      <br />
+      <%= link_to(
+        "Delete",
+        pattern_path(pattern.id),
+        method: :delete,
+        data: {
+          confirm:"Are you sure?"
+        }
+      ) %>
     </li>
   <% end %>
 </ul>

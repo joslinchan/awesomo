@@ -19,6 +19,12 @@ class PatternsController < ApplicationController
     end
   end
 
+  def destroy
+    pattern = Pattern.find params[:id]
+    pattern.destroy
+    redirect_to user_patterns_path(current_user)
+  end
+
   def index
     @patternCollection = current_user.patterns
   end
