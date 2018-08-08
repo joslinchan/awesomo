@@ -1,16 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :palette_likes, dependent: :destroy
-  has_many( :palette_liked_colour_palettes, 
-    through: :palette_likes, source: :colour_palettes)
-
-  has_many :colour_palettes, dependent: :destroy
-  has_many :colours, dependent: :destroy
-  has_many :patterns, dependent: :destroy
-
-  has_many :searchings, dependent: :destroy
-  has_many :search_terms, through: :searchings, source: :search_term
+  has_many :inspirations, dependent: :destroy
 
   attr_accessor :current_password, :new_password, :new_password_confirmation
 
