@@ -8,9 +8,13 @@
   <ul>
     <% @photos.each do |hash, key| %>
       <li>  
+        <% if hash["description"] != nil %>
+          <%= link_to(hash["description"], hash["links"]["html"]) %><br />
+        <% else %>
+          <%= link_to("Untitled", hash["links"]["html"])%><br />
+        <% end %>
         <%= hash["color"] %><br />
         <%= link_to(image_tag(hash["urls"]["thumb"]), hash["links"]["html"]) %><br />
-        <%= hash["links"]["html"] %>
       </li>
     <% end %>
   </ul>
