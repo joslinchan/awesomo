@@ -1,0 +1,3 @@
+class InspirationsController < ApplicationController
+  
+end

@@ -3,16 +3,8 @@ Rails.application.routes.draw do
 
   get('/', {to: 'welcome#index', as: 'home'})
 
-  resources :search_terms, only: [:create]
-
   resources :users, only: [:new, :create, :edit, :update] do
-    resources :colour_palettes, shallow: true, only: [:create, :destroy, :index]
-    resources :colours, shallow: true, only: [:create, :destroy, :index]
-    resources :patterns, shallow: true, only: [:create, :destroy, :index]
-  end
-  
-  resources :colour_palettes, only: [:create] do
-    resources :palette_likes, only: [:create]
+    resources :inspirations, shallow: true, only: [:create, :destroy, :index]
   end
 
   get('/users/:id/edit_password', {to: 'users#edit_password', as: :edit_password})
