@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_07_031246) do
+ActiveRecord::Schema.define(version: 2018_08_08_181337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,6 @@ ActiveRecord::Schema.define(version: 2018_08_07_031246) do
     t.index ["user_id"], name: "index_patterns_on_user_id"
   end
 
-  create_table "search_terms", force: :cascade do |t|
-    t.string "term"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "searchings", force: :cascade do |t|
     t.bigint "search_term_id"
     t.datetime "created_at", null: false
@@ -86,5 +80,4 @@ ActiveRecord::Schema.define(version: 2018_08_07_031246) do
   add_foreign_key "palette_likes", "users"
   add_foreign_key "patterns", "users"
   add_foreign_key "searchings", "colour_palettes"
-  add_foreign_key "searchings", "search_terms"
 end
