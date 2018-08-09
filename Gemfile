@@ -30,6 +30,7 @@ gem 'jquery-rails'
 gem 'httparty'
 gem 'unsplash'
 gem 'webpacker'
+gem 'active_model_serializers'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
