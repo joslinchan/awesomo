@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get('/', {to: 'welcome#index', as: 'home'})
-
-  resources :inspirations, only: [] do
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :inspirations
+    end
   end
+
+  get('/', {to: 'welcome#index', as: 'home'})
 
   resources :users, only: [:new, :create, :edit, :update] do
     resources :inspirations, shallow: true, only: [:create, :destroy, :index]
