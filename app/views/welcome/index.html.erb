@@ -4,61 +4,31 @@
   <%= submit_tag("Search", name: nil) %>
 <% end %>
 
-<% if user_signed_in? %>
-  <ul>
-    <% @paletteCollection.each do |key, value| %>
+<ul>
+  <% if user_signed_in? %>
+    <% @mixed= @everything.shuffle %>
+    <% @mixed.each do |key, value| %>
       <li>
-        <%= link_to(key["title"], key["url"]) %><br />
-        <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-        <% hexArray = key["colors"]["hex"] %>
-        <% hexArray.each do |hex| %>
-          #<%= hex %>
-        <% end %>
-        <br />
-        <%= link_to "Save", user_inspirations_path(current_user, title: key["title"], image_url: URI.encode(key["imageUrl"]), url: URI.encode(key["url"]), hex: key["colors"]["hex"]), method: :post %>
-      </li>
-    <% end %>
-  </ul>
-
-  <ul>
-    <% @colourCollection.each do |key, value| %>
-      <li>
-        <%= link_to(key["title"], key["url"]) %><br />
-        id: <%= key["id"] %><br />
-        <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-        #<%= key["hex"] %><br />
-        <%= link_to "Save", user_inspirations_path(current_user, title: key["title"], image_url: URI.encode(key["imageUrl"]), url: URI.encode(key["url"]), hex: key["hex"]), method: :post %>
-      </li>
-    <% end %>
-  </ul>
-
-  <ul>
-    <% @patternCollection.each do |key, value| %>
-      <li>
-        <%= key["title"] %><br />
-        <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
-        <% hexArray = key["colors"]["hex"] %>
-        <% hexArray.each do |hex| %>
-          #<%= hex %>
-        <% end %>
-        <br />
-        <%= link_to "Save", user_inspirations_path(current_user, title: key["title"], image_url: URI.encode(key["imageUrl"]), url: URI.encode(key["url"]), hex: key["colors"]["hex"]), method: :post %>
-      </li>
-    <% end %>
-  </ul>
-
-    <ul>
-    <% @photos.each do |hash, key| %>
-      <li>  
-        <% if hash["description"] != nil %>
-          <%= link_to(hash["description"], hash["links"]["html"]) %><br />
+        <% if key["title"] %>
+          <%= key["title"] %><br />
+          <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
+          <% hexArray = key["colors"] && key["colors"]["hex"] %>
+          <% hexArray&.each do |hex| %>
+            #<%= hex %>
+          <% end %>
+          <br />
+          <%= link_to "Save", user_inspirations_path(current_user, title: key["title"], image_url: URI.encode(key["imageUrl"]), url: URI.encode(key["url"]), hex: hexArray), method: :post %>
         <% else %>
-          <%= link_to("Untitled", hash["links"]["html"])%><br />
+          <% if key["description"] %>
+            <%= link_to(key["description"], key["links"]["html"]) %><br />
+          <% else %>
+            <%= link_to("Untitled", key["links"]["html"])%><br />
+          <% end %>
+          <%= key["color"] %><br />
+          <%= link_to(image_tag(key["urls"]["thumb"]), key["links"]["html"]) %><br />
+          <%= link_to "Save", user_inspirations_path(current_user, title: key["description"], image_url: URI.encode(key["urls"]["thumb"]), url: URI.encode(key["links"]["html"]), hex: key["color"]), method: :post %>
         <% end %>
-        <%= hash["color"] %><br />
-        <%= link_to(image_tag(hash["urls"]["thumb"]), hash["links"]["html"]) %><br />
-        <%= link_to "Save", user_inspirations_path(current_user, title: hash["description"], image_url: URI.encode(hash["urls"]["thumb"]), url: URI.encode(hash["links"]["html"]), hex: hash["color"]), method: :post %>
       </li>
     <% end %>
-  </ul>
-<%end%>
+  <% end %>
+</ul>
