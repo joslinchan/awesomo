@@ -11,6 +11,16 @@
          inspire.url
        ) %>
       <br />
+
+        <% inspire.hexes.each do |hex| %>
+          <% if hex.code.include?("#") %>
+            <%= hex.code %>
+          <% else %>
+            #<%= hex.code %>
+          <% end %>
+        <% end %>
+     
+      <br />
       <%= link_to(
         "Delete",
         inspiration_path(inspire.id),
