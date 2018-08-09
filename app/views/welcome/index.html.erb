@@ -10,7 +10,7 @@
     <% @mixed.each do |key, value| %>
       <li>
         <% if key["title"] %>
-          <%= key["title"] %><br />
+          <%=link_to(key["title"], key["url"]) %><br />
           <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
           <% hexArray = key["colors"] && key["colors"]["hex"] %>
           <% hexArray&.each do |hex| %>
@@ -26,7 +26,11 @@
           <% end %>
           <%= key["color"] %><br />
           <%= link_to(image_tag(key["urls"]["thumb"]), key["links"]["html"]) %><br />
-          <%= link_to "Save", user_inspirations_path(current_user, title: key["description"], image_url: URI.encode(key["urls"]["thumb"]), url: URI.encode(key["links"]["html"]), hex: key["color"]), method: :post %>
+          <% if key["description"] %>
+            <%= link_to "Save", user_inspirations_path(current_user, title: key["description"], image_url: URI.encode(key["urls"]["thumb"]), url: URI.encode(key["links"]["html"]), hex: key["color"]), method: :post %>
+          <% else %>
+            <%= link_to "Save", user_inspirations_path(current_user, title: "Untitled", image_url: URI.encode(key["urls"]["thumb"]), url: URI.encode(key["links"]["html"]), hex: key["color"]), method: :post %>
+          <% end %>
         <% end %>
       </li>
     <% end %>

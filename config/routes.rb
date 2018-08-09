@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   get('/', {to: 'welcome#index', as: 'home'})
 
+  resources :inspirations, only: [] do
+    resources :hexes, shallow: true, only: [:create], param: :inspiration
+  end
+
   resources :users, only: [:new, :create, :edit, :update] do
     resources :inspirations, shallow: true, only: [:create, :destroy, :index]
   end
