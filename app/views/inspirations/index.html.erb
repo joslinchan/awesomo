@@ -1,0 +1,24 @@
+<h1>Inspiration Collection</h1>
+<ul>
+  <% @inspireCollection.each do |inspire| %>
+    <li>
+      <%= link_to(
+        inspire.title,
+        inspire.url
+       ) %><br />
+       <%= link_to(
+         image_tag(inspire.image_url),
+         inspire.url
+       ) %>
+      <br />
+      <%= link_to(
+        "Delete",
+        inspiration_path(inspire.id),
+        method: :delete,
+        data: {
+          confirm:"Are you sure?"
+        }
+      ) %>
+    </li>
+  <% end %>
+</ul>

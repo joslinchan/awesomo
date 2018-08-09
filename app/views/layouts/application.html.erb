@@ -29,14 +29,8 @@
         class="collapse navbar-collapse justify-content-end">
       <div class="navbar-nav">
         <% if current_user.present? %>
-          <%= link_to "MyColours", 
-            user_colours_path(current_user.id), 
-            class: "nav-item nav-link text-white" %>
-          <%= link_to "MyPalettes", 
-            user_colour_palettes_path(current_user.id), 
-            class: "nav-item nav-link text-white" %>
-          <%= link_to "MyPatterns", 
-            user_patterns_path(current_user.id), 
+          <%= link_to "Collection", 
+            user_inspirations_path(current_user.id), 
             class: "nav-item nav-link text-white" %>
           <%= link_to "Edit Profile", 
             edit_user_path(current_user.id), 

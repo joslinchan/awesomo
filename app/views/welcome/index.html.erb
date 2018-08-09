@@ -9,14 +9,13 @@
     <% @paletteCollection.each do |key, value| %>
       <li>
         <%= link_to(key["title"], key["url"]) %><br />
-        id: <%= key["id"] %><br />
         <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
         <% hexArray = key["colors"]["hex"] %>
         <% hexArray.each do |hex| %>
           #<%= hex %>
         <% end %>
         <br />
-        <%= link_to "Save", user_colour_palettes_path(current_user, id: key["id"]), method: :post %>
+        <%= link_to "Save", user_inspirations_path(current_user, title: key["title"], image_url: URI.encode(key["imageUrl"]), url: URI.encode(key["url"]), hex: key["colors"]["hex"]), method: :post %>
       </li>
     <% end %>
   </ul>
@@ -28,7 +27,7 @@
         id: <%= key["id"] %><br />
         <%= link_to(image_tag(key["imageUrl"]), key["url"]) %><br />
         #<%= key["hex"] %><br />
-        <%= link_to "Save", user_colours_path(current_user, id: key["hex"]), method: :post %>
+        <%= link_to "Save", user_inspirations_path(current_user, title: key["title"], image_url: URI.encode(key["imageUrl"]), url: URI.encode(key["url"]), hex: key["hex"]), method: :post %>
       </li>
     <% end %>
   </ul>
@@ -43,7 +42,7 @@
           #<%= hex %>
         <% end %>
         <br />
-        <%= link_to "Save", user_patterns_path(current_user, id: key["id"]), method: :post %>
+        <%= link_to "Save", user_inspirations_path(current_user, title: key["title"], image_url: URI.encode(key["imageUrl"]), url: URI.encode(key["url"]), hex: key["colors"]["hex"]), method: :post %>
       </li>
     <% end %>
   </ul>
@@ -58,6 +57,7 @@
         <% end %>
         <%= hash["color"] %><br />
         <%= link_to(image_tag(hash["urls"]["thumb"]), hash["links"]["html"]) %><br />
+        <%= link_to "Save", user_inspirations_path(current_user, title: hash["description"], image_url: URI.encode(hash["urls"]["thumb"]), url: URI.encode(hash["links"]["html"]), hex: hash["color"]), method: :post %>
       </li>
     <% end %>
   </ul>
