@@ -8,8 +8,11 @@ class UnsplashRetriever
     end
   end
 
-  def get_photos
-    photoArray = Unsplash::Photo.search("cats")
+  def get_photos(search_term)
+    Unsplash::Photo.search(search_term)
   end
-
+    
+  def get_random
+    Unsplash::Photo.curated
+  end
 end
