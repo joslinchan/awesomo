@@ -38,6 +38,6 @@ class Api::V1::InspirationsController < Api::ApplicationController
 
   def inspiration_params
     params.require(:inspiration).permit(:title, :image_url, :url, :hex)
-  end
+  end 
 
 end
