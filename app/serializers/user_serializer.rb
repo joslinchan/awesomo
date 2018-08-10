@@ -3,10 +3,11 @@ class UserSerializer < ActiveModel::Serializer
     :id,
     :first_name,
     :last_name,
-    :full_name
+    :full_name,
+    :inspiration_count
   )
 
   def inspiration_count
-    object.inspiration.count
+    object.inspirations.count
   end
 end

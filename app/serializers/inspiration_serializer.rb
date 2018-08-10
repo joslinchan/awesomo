@@ -8,10 +8,11 @@ class InspirationSerializer < ActiveModel::Serializer
     :updated_at
   )
 
-  belongs_to(:user, key: :collector)
+  has_many :hexes
+  belongs_to :user, key: :collector
 
   class HexSerializer < ActiveModel::Serializer
-    attributes(:code)
+    attributes :code
   end
 
 end
