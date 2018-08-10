@@ -10,8 +10,19 @@ class Api::V1::InspirationsController < Api::ApplicationController
   def create
     inspiration = Inspiration.new inspiration_params
     inspiration.user = current_user
-
+    
     if inspiration.save
+      if params[:hex].is_a?(Array)
+        params[:hex].each do |hex|
+          new_hex = Hex.new(code: hex)
+          new_hex.inspiration = inspiration
+          new_hex.save
+        end
+      else
+       new_hex = Hex.new(code: params[:hex])
+        new_hex.inspiration = inspiration
+          new_hex.save
+      end
       render(
         json: {id: inspiration.id}
       )

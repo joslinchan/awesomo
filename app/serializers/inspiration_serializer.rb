@@ -5,7 +5,8 @@ class InspirationSerializer < ActiveModel::Serializer
     :image_url,
     :url,
     :created_at,
-    :updated_at
+    :updated_at,
+    :hexes
   )
 
   has_many :hexes

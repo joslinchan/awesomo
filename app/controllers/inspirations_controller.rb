@@ -9,7 +9,6 @@ class InspirationsController < ApplicationController
 
     if @inspiration.save
       flash[:success] = "Inspiration has been saved"
-
       if params[:hex].is_a?(Array)
         params[:hex].each do |hex|
           new_hex = Hex.new(code: hex)
@@ -20,7 +19,7 @@ class InspirationsController < ApplicationController
        new_hex = Hex.new(code: params[:hex])
         new_hex.inspiration = @inspiration
           new_hex.save
-    end
+      end
 
       redirect_to home_path
     else
