@@ -1,11 +1,10 @@
 class Api::V1::InspirationsController < Api::ApplicationController
-  def index
-    inspirations = Inspiration.order(created_at: :DESC)
-    render json: inspirations
-  end
+  before_action :authenticate_user!
 
-  def show
-    render json: inspiration
+  def index
+    user = current_user
+    inspirations = user.inspirations.order(created_at: :desc)
+    render( json: inspirations, each_serializer: InspirationSerializer)
   end
 
   def create
@@ -40,4 +39,5 @@ class Api::V1::InspirationsController < Api::ApplicationController
   def inspiration_params
     params.require(:inspiration).permit(:title, :image_url, :url, :hex)
   end
+
 end
