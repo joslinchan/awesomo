@@ -1,3 +1,9 @@
+<%= react_component(
+  'InspirationList',
+  inspirations: @inspireCollection.map{|inspire| InspirationSerializer.new(inspire).as_json}
+) %>
+
+<!--
 <h1>Inspiration Collection</h1>
 <ul>
   <% @inspireCollection.each do |inspire| %>
@@ -32,3 +38,4 @@
     </li>
   <% end %>
 </ul>
+-->
