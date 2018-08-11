@@ -8,11 +8,19 @@ class InspirationList extends Component {
       inspirations: [...props.inspirations]
     };
 
-    console.log(this.state);
+    console.log(this.state)
   }
   
   render() {
-    const {inspirations} = this.state;
+    const {loading, inspirations} = this.state;
+
+    if (loading) {
+      return(
+        <main>
+          <h2>Loading Inspirations...</h2>
+        </main>
+      );
+    }
 
     return(
       <div className="InspirationList">
@@ -22,11 +30,11 @@ class InspirationList extends Component {
             <li key = {inspire.id}>
               <a href={inspire.url}><p>{inspire.title}</p></a>
               <a href={inspire.url}><img src={inspire.image_url} /></a>
-              {inspire.hexes.map(hex => (
-                <ul>
-                  <li>{hex.code}</li>
-                </ul>
+              <ul>
+              {inspire.hexes.map((hex, i) => (
+                  <li key= {index+i}>{hex.code}</li>
               ))}
+              </ul>
             </li>
           ))}
         </ul>
