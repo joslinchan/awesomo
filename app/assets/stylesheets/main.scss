@@ -3,6 +3,7 @@ body, html {
   margin: 0;
 }
 
+
 .header {
   background-image: url("jake-weirick-581398-unsplash");
   background-size: cover;
@@ -11,3 +12,8 @@ body, html {
   opacity: 0.85;
   height: 50%;
 }
+
+.NavBar a, span {
+  padding: 1rem;
+}
+

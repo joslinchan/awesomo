@@ -23,7 +23,7 @@ class InspirationIndexPage extends Component {
     }
 
     return(
-      <div className="InspirationList">
+      <div className="InspirationIndexPage">
         <h1>Inspirations</h1>
         <ul>
           {inspirations.map((inspire, index) => (

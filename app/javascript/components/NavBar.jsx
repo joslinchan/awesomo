@@ -17,6 +17,9 @@ const NavBar = props => {
 
       {currentUser ? (
         <React.Fragment>
+          <NavLink exact to="/inspirations">
+            Collection
+          </NavLink>
           <span>{currentUser.full_name}</span>
           <a onClick={handleClick} href="#">
             Sign Out
