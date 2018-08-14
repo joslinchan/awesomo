@@ -5,7 +5,6 @@
 <% end %>
 
 <ul>
-  <% if user_signed_in? %>
     <% @mixed= @everything.shuffle %>
     <% @mixed.each do |key, value| %>
       <li>
@@ -40,5 +39,4 @@
         <% end %>
       </li>
     <% end %>
-  <% end %>
 </ul>

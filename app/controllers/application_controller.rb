@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
 
-  #attr_accessor :saveTerm
-
   private
   def current_user
     if session[:user_id].present?

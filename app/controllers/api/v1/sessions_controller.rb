@@ -4,11 +4,14 @@ class Api::V1::SessionsController < Api::ApplicationController
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: {id: user.id}
+      render json: {
+        id: user.id,
+        message: "Session created"
+      }
     else
       render(
-        json: {status: 404},
-        status: 404
+        status: 404,
+        json: {status: 404}
       )
     end
   end
@@ -16,8 +19,11 @@ class Api::V1::SessionsController < Api::ApplicationController
   def destroy
     session[:user_id] = nil
     render(
-      json: {status: 200},
-      status: 200
+      status: 200,
+      json: {
+        status: 200,
+        message: "Session destroyed"
+      }
     )
   end
 end

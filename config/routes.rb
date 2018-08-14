@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get('/', {to: 'welcome#index', as: 'home'})
 
   resources :users, only: [:new, :create, :edit, :update] do
     resources :inspirations, shallow: true, only: [:create, :destroy, :index]
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
+  get('/', {to: 'welcome#index', as: 'home'})
   
 
 end

@@ -4,7 +4,10 @@ class Api::V1::InspirationsController < Api::ApplicationController
   def index
     user = current_user
     inspirations = user.inspirations.order(created_at: :desc)
-    render( json: inspirations, each_serializer: InspirationSerializer)
+    render( 
+      json: inspirations, 
+      each_serializer: InspirationSerializer
+      )
   end
 
   def create
@@ -21,10 +24,13 @@ class Api::V1::InspirationsController < Api::ApplicationController
       else
        new_hex = Hex.new(code: params[:hex])
         new_hex.inspiration = inspiration
-          new_hex.save
+        new_hex.save
       end
       render(
-        json: {id: inspiration.id}
+        json: {
+          id: inspiration.id,
+          message: "Inspiration created"
+        }
       )
     else
       render(
@@ -37,14 +43,16 @@ class Api::V1::InspirationsController < Api::ApplicationController
   def destroy
     inspiration.destroy
     render(
-      json: {status: 200},
-      status: 200
+      status: 200,
+      json: {
+        status: 200,
+        message: "Inspiration destroyed"}
     )
   end
 
   private
   def inspiration
-    @inspiration ||= Inspiration.find params[:id]
+    inspiration ||= Inspiration.find params[:id]
   end
 
   def inspiration_params
