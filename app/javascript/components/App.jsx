@@ -7,6 +7,8 @@ import Session from "../requests/session";
 import SignInPage from "./SignInPage";
 import User from "../requests/user";
 import WelcomePage from "./WelcomePage";
+import InspirationIndexPage from "./InspirationIndexPage";
+import SearchPage from "./SearchPage";
 
 class App extends Component {
   constructor(props) {
@@ -66,6 +68,14 @@ class App extends Component {
               path="/" 
               exact 
               component={WelcomePage} 
+            />
+            <AuthRoute
+              isAuth={currentUser}
+              path="/searches"
+              exact
+              render={
+                props => <SearchPage {...props} />
+              }
             />
             <AuthRoute
               isAuth={currentUser}

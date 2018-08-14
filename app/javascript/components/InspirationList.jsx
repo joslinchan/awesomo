@@ -1,24 +1,14 @@
 import React, {Component} from "react";
-import Inspiration from "../requests/inspiration";
 
-class InspirationIndexPage extends Component {
+class InspirationList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: true,
-      inspirations: []
+      inspirations: [...props.inspirations]
     };
-  }
 
-  componentDidMount() {
-    Inspiration.all()
-    .then(inspirations => {
-      this.setState({loading: false, inspirations: inspirations})
-    })
-    .catch(() => {
-      this.setState({loading: false});
-    });
+    console.log(this.state)
   }
   
   render() {
@@ -33,8 +23,8 @@ class InspirationIndexPage extends Component {
     }
 
     return(
-      <div className="InspirationIndexPage">
-        <h1>Collection</h1>
+      <div className="InspirationList">
+        <h1>Inspirations</h1>
         <ul>
           {inspirations.map((inspire, index) => (
             <li key = {inspire.id}>
@@ -53,4 +43,4 @@ class InspirationIndexPage extends Component {
   }
 }
 
-export default InspirationIndexPage;
+export default InspirationList;

@@ -1,5 +1,5 @@
 <%= react_component(
-  'InspirationIndexPage',
+  'InspirationList',
   inspirations: @inspireCollection.map{|inspire| InspirationSerializer.new(inspire).as_json}
 ) %>
 

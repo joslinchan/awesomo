@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :inspirations, only: [:index, :create, :destroy]
+      resources :searches, only: [:index]
       resources :users, only: [] do
         get :current, on: :collection
       end
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   get('/', {to: 'home#index', as: 'home'}) 
+  match "*unmatched_route", via: :all, to: "home#index"
 
   
 

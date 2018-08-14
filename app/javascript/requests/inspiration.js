@@ -2,7 +2,7 @@ import {BASE_URL} from "./config";
 
 const Inspiration = {
   all() {
-   return fetch(`${BASE_URL}`, {
+   return fetch(`${BASE_URL}/inspirations`, {
      credentials: "include"
    })
    .then(
