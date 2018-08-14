@@ -1,11 +1,10 @@
 class Api::ApplicationController < ApplicationController
-  skip_before_action :verify_authenticity_token
 
   rescue_from StandardError, with: :standard_error
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
-  skip_before_action( :verify_authenticity_token)
+  skip_before_action :verify_authenticity_token
   
   def not_found
     render(

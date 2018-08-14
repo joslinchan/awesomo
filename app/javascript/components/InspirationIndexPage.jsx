@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class InspirationList extends Component {
+class InspirationIndexPage extends Component {
   constructor(props) {
     super(props);
 
@@ -43,4 +43,4 @@ class InspirationList extends Component {
   }
 }
 
-export default InspirationList;
+export default InspirationIndexPage;

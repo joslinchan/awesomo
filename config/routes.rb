@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :inspirations, only: [:index, :create, :destroy]
+      resources :users, only: [] do
+        get :current, on: :collection
+      end
       resource :session, only: [:create, :destroy]
     end
   end
@@ -18,7 +21,8 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-  get('/', {to: 'welcome#index', as: 'home'})
+  get('/', {to: 'home#index', as: 'home'}) 
+
   
 
 end
