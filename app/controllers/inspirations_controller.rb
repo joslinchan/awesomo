@@ -1,4 +1,9 @@
 class InspirationsController < ApplicationController
+
+  def index
+    @inspireCollection = current_user.inspirations
+  end
+  
   def create
     @inspiration = Inspiration.new(
       title: params[:title],
@@ -32,10 +37,6 @@ class InspirationsController < ApplicationController
     inspiration = Inspiration.find params[:id]
     inspiration.destroy
     redirect_to user_inspirations_path(current_user)
-  end
-
-  def index
-    @inspireCollection = current_user.inspirations
   end
 
 end

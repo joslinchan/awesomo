@@ -15,8 +15,17 @@ const NavBar = props => {
         Awesomo
       </NavLink>
 
-      {currentUser && (
-        <NavLink exact to="/inpsirations/new" />
+      {currentUser ? (
+        <React.Fragment>
+          <span>{currentUser.full_name}</span>
+          <a onClick={handleClick} href="#">
+            Sign Out
+          </a>
+        </React.Fragment>
+      ) : (
+        <NavLink exact to="/sign_in">
+          Sign In
+        </NavLink>
       )}
     </nav>
   )
