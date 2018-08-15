@@ -13,7 +13,7 @@ const Inspiration = {
     return fetch(`${BASE_URL}/inspirations/${id}`, {
       credentials: "include"
     })
-    .then (
+    .then(
       res => res.json()
     );
   },
@@ -26,8 +26,25 @@ const Inspiration = {
       },
       body: JSON.stringify(params)
     })
-    .then (
-      res => re.json()
+    .then(
+      res => res.json()
+    );
+  },
+  destroy(id) {
+    return fetch(`${BASE_URL}/inspirations/${id}`, {
+      method: "DELETE",
+      credentials: "include"
+    })
+    .then(
+      res => res.json()
+    );
+  },
+  search(term) {
+    return fetch(`${BASE_URL}/inspirations/search?query=${term}`, {
+      credentials: "include"
+    })
+    .then(
+      res => res.json()
     );
   }
 };

@@ -6,9 +6,9 @@ Rails.application.routes.draw do
       resources :inspirations, only: [:index, :create, :destroy] do
         get :search, on: :collection
       end
-      #resources :searches, only: [:index]
       resources :users, only: [] do
         get :current, on: :collection
+        #resources :inspirations, shallow: true, only: [:index, :create, :destroy]
       end
       resource :session, only: [:create, :destroy]
     end

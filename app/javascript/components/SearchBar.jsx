@@ -1,13 +1,16 @@
 import React, {Component}  from "react";
-
+import InspirationApi from "../requests/inspiration";
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state ={
+    this.state = {
       term: undefined
     }
+
+    this.onInputChange = this.onInputChange.bind(this);
+    this.enterSubmit = this.enterSubmit.bind(this);
   }
 
   onInputChange(term) {
@@ -19,12 +22,24 @@ class SearchBar extends Component {
     this.setState({term});
     this.props.onTermChange(term);
   }
-  
+
+  enterSubmit(event) {
+    event.preventDefault();
+    const {currentTarget} = event; //const currentTarget = event.currentTarget
+    //console.log(currentTarget);
+    const { term } = this.state;   // const term = this.state.term;
+
+    InspirationApi.search(term)
+    .then(searches => {
+      this.setState({searches: searches});
+    })
+  }
+
   render() {
 
     return(
       <main>
-        <form onSubmit={this.createSearch}>
+        <form onSubmit={this.enterSubmit}>
           <div>
             <input 
               placeholder="Search for..." 

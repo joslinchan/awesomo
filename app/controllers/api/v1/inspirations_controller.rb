@@ -61,7 +61,11 @@ class Api::V1::InspirationsController < Api::ApplicationController
       photos = UnsplashRetriever.new.get_random
     end
     
-    @everything = paletteCollection + colourCollection + patternCollection + photos
+    everything = paletteCollection + colourCollection + patternCollection + photos
+
+    respond_to do |format|
+      format.json { render json: everything }
+    end
   end
 
   private
