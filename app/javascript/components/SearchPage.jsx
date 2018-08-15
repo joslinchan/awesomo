@@ -17,6 +17,8 @@ class SearchPage extends Component {
 
   handleTermChange(term) {
     console.log(term);
+
+    // console.table(searches);
   }
 
 /*   Inspiration.search(term)

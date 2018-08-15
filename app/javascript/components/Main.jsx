@@ -7,7 +7,7 @@ import InspirationIndexPage from "./InspirationIndexPage";
 import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import Session from "../requests/session";
-import SearchPage from "./SearchPage";
+import InspirationSearchPage from "./InspirationSearchPage";
 
 class Main extends Component {
   constructor(props) {
@@ -69,7 +69,7 @@ class Main extends Component {
               path="/inspiration/search"
               exact
               render={
-                props => <SearchPage {...props} />
+                props => <InspirationSearchPage {...props} />
               }
             />
             <AuthRoute

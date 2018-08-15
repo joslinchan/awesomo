@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
 
-class SearchBar extends Component {
+class InspirationSearchPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      term: undefined
+      //loading: true,
+      searches: [],
+      term: ""
     }
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -33,9 +35,21 @@ class SearchBar extends Component {
     .then(searches => {
       this.setState({searches: searches});
     })
+/*     .catch(() => {
+      this.setState({loading: false});
+    }); */
   }
 
   render() {
+    const {searches} = this.state;
+
+/*     if (loading) {
+      return (
+        <main>
+          <h2>Loading searches...</h2>
+        </main>
+      );
+    } */
 
     return(
       <main>
@@ -55,9 +69,20 @@ class SearchBar extends Component {
           </div>
         </form>
 
+        <div>
+          <ul>
+              {searches.map((search, index) => (
+                <li key={search.id}>
+                  <p>
+                    {search.title}
+                  </p>
+                </li>
+              ))}
+            </ul> 
+        </div>
       </main>
     )
   }
-};
+}
 
-export default SearchBar;
+export default InspirationSearchPage;
