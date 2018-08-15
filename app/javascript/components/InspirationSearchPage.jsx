@@ -1,5 +1,7 @@
 import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
+import shuffle from "lodash/shuffle";
+
 
 class InspirationSearchPage extends Component {
   constructor(props) {
@@ -17,13 +19,9 @@ class InspirationSearchPage extends Component {
 
   onInputChange(term) {
     this.setState({term});
-    this.props.onTermChange(term);
+    console.log(term);
   }
 
-  handleInputChange(term) {
-    this.setState({term});
-    this.props.onTermChange(term);
-  }
 
   enterSubmit(event) {
     event.preventDefault();
@@ -33,8 +31,9 @@ class InspirationSearchPage extends Component {
 
     InspirationApi.search(term)
     .then(searches => {
-      
-      this.setState({ searches });
+      const collected = shuffle(Array.from(searches))
+      this.setState({ searches: collected });
+      console.log(searches);
     })
 /*     .catch(() => {
       this.setState({loading: false});
@@ -70,17 +69,45 @@ class InspirationSearchPage extends Component {
           </div>
         </form>
 
-        <div>
+        <section className= "bigList">
           <ul>
               {searches.map((search, index) => (
-                <li key={search.id}>
-                  <p>
-                    {search.title}
-                  </p>
+                <li key={index}>
+                  <div className="insideList"> 
+                    {search.title ? (
+                      <a href= {search.url}>
+                        {search.title}
+                      </a>
+                    ) : (
+                      <a href= {search.attributes.table.links.html}>
+                        Untitled
+                      </a>
+                    )}
+                    <br />
+                    {search.imageUrl ? (
+                      <a href= {search.url}>
+                        <img src={search.imageUrl} />
+                      </a> 
+                    ) : ( 
+                      <a href= {search.attributes.table.links.html}>
+                        <img src={search.attributes.table.urls.thumb} />
+                      </a>
+                    )}
+                    <br />
+                    <ul>
+                      {search.colors && search.colors.hex.map((hex, i) => (
+                        <li key={hex+i}>
+                          #{hex}
+                        </li>
+                      ))}
+                      {search.hex && <li>#{search.hex}</li>}
+                      {search.attributes && <li>{search.attributes.table.color}</li>}
+                    </ul>
+                  </div>
                 </li>
               ))}
             </ul> 
-        </div>
+        </section>
       </main>
     )
   }
