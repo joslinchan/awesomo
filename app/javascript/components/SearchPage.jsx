@@ -1,12 +1,22 @@
-import React from "react";
+import React, {Component} from "react";
 import SearchBar from "./SearchBar";
-import Search from "../requests/search";
+
 
 class SearchPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleTermChange = this.handleTermChange.bind(this);
+  }
+
+  handleTermChange(term) {
+    console.log(term);
+  }
+
   render() {
-    renturn(
+    return(
       <div>
-        <SearchBar />
+        <SearchBar onTermChange={this.handleTermChange} {...this.props}/>
       </div>
     )
   }

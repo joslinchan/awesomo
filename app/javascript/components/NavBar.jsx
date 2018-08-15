@@ -17,7 +17,7 @@ const NavBar = props => {
 
       {currentUser ? (
         <React.Fragment>
-          <NavLink exact to="/searches">
+          <NavLink exact to="/inspiration/search">
             Search
           </NavLink>
           <NavLink exact to="/inspirations">

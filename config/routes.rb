@@ -3,15 +3,16 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :inspirations, only: [:index, :create, :destroy]
-      resources :searches, only: [:index]
+      resources :inspirations, only: [:index, :create, :destroy] do
+        get :search, on: :collection
+      end
+      #resources :searches, only: [:index]
       resources :users, only: [] do
         get :current, on: :collection
       end
       resource :session, only: [:create, :destroy]
     end
   end
-
 
   resources :users, only: [:new, :create, :edit, :update] do
     resources :inspirations, shallow: true, only: [:create, :destroy, :index]
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
   patch('/users/:id/update_password', {to: 'users#update_password', as: :update_password})
 
   resource :session, only: [:new, :create, :destroy]
+
+  #get('/', {to: 'welcome#index', as: 'home'}) 
 
   get('/', {to: 'home#index', as: 'home'}) 
   match "*unmatched_route", via: :all, to: "home#index"

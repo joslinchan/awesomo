@@ -71,7 +71,7 @@ class App extends Component {
             />
             <AuthRoute
               isAuth={currentUser}
-              path="/searches"
+              path="/inspiration/search"
               exact
               render={
                 props => <SearchPage {...props} />

@@ -7,7 +7,7 @@ import InspirationIndexPage from "./InspirationIndexPage";
 import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import Session from "../requests/session";
-import SearchBar from "./SearchBar";
+import SearchPage from "./SearchPage";
 
 class Main extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Main extends Component {
 
     this.getUser = this.getUser.bind(this);
     this.destroySession = this.destroySession.bind(this);
-    this.handleTermChange = this.handleTermChange.bind(this);
+
   }
 
   destroySession() {
@@ -36,10 +36,6 @@ class Main extends Component {
         this.setState({currentUser: data})
       }
     });
-  }
-
-  handleTermChange(term) {
-    console.log(term);
   }
 
   componentDidMount() {
@@ -70,10 +66,10 @@ class Main extends Component {
           <Switch>
             <AuthRoute
               isAuth={currentUser}
-              path="/searches"
+              path="/inspiration/search"
               exact
               render={
-                props => <SearchBar onTermChange={this.handleTermChange} {...props} />
+                props => <SearchPage {...props} />
               }
             />
             <AuthRoute
