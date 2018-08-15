@@ -33,7 +33,8 @@ class InspirationSearchPage extends Component {
 
     InspirationApi.search(term)
     .then(searches => {
-      this.setState({searches: searches});
+      
+      this.setState({ searches });
     })
 /*     .catch(() => {
       this.setState({loading: false});
