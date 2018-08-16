@@ -17,19 +17,6 @@ const Inspiration = {
       res => res.json()
     );
   },
-  create(params) {
-    return fetch(`${BASE_URL}/inspirations`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(params)
-    })
-    .then(
-      res => res.json()
-    );
-  },
   destroy(id) {
     return fetch(`${BASE_URL}/inspirations/${id}`, {
       method: "DELETE",

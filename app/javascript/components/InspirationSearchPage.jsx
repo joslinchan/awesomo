@@ -15,6 +15,7 @@ class InspirationSearchPage extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.enterSubmit = this.enterSubmit.bind(this);
+    this.save = this.save.bind(this);
   }
 
   onInputChange(term) {
@@ -38,6 +39,19 @@ class InspirationSearchPage extends Component {
 /*     .catch(() => {
       this.setState({loading: false});
     }); */
+  }
+
+  save(url, id) {
+    return fetch(url, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(
+      res => res.json()
+    );
   }
 
   render() {
@@ -103,6 +117,8 @@ class InspirationSearchPage extends Component {
                       {search.hex && <li>#{search.hex}</li>}
                       {search.attributes && <li>{search.attributes.table.color}</li>}
                     </ul>
+                      <button onClick={() => this.save(search.attributes ? search.attributes.table.save_link : search.save_link)}>Save</button>
+                    
                   </div>
                 </li>
               ))}

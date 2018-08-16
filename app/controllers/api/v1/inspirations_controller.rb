@@ -11,7 +11,11 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
   def create
-    inspiration = Inspiration.new inspiration_params
+    inspiration = Inspiration.new(
+      title: params[:title],
+      image_url: params[:image_url],
+      url: params[:url]
+    )
     inspiration.user = current_user
     
     if inspiration.save
@@ -27,10 +31,7 @@ class Api::V1::InspirationsController < Api::ApplicationController
         new_hex.save
       end
       render(
-        json: {
-          id: inspiration.id,
-          message: "Inspiration created"
-        }
+        json: inspiration 
       )
     else
       render(
@@ -63,6 +64,16 @@ class Api::V1::InspirationsController < Api::ApplicationController
     
     everything = paletteCollection + colourCollection + patternCollection + photos
 
+    everything.each do |thing|
+      if (thing["hex"])
+        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"])
+      elsif (thing["colors"])
+        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"])
+      else
+        thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"])
+      end
+    end
+
     respond_to do |format|
       format.json { render json: everything }
     end
@@ -74,7 +85,7 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
   def inspiration_params
-    params.require(:inspiration).permit(:title, :image_url, :url, :hex)
+    params.permit(:title, :image_url, :url, :hex)
   end 
 
 end
