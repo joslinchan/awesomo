@@ -9,7 +9,7 @@ class InspirationSearchPage extends Component {
 
     this.state = {
       //loading: true,
-      searches: [],
+      everything: [],
       term: ""
     }
 
@@ -31,10 +31,10 @@ class InspirationSearchPage extends Component {
     const { term } = this.state;   // const term = this.state.term;
 
     InspirationApi.search(term)
-    .then(searches => {
-      const collected = shuffle(Array.from(searches))
-      this.setState({ searches: collected });
-      console.log(searches);
+    .then(everything => {
+      const collected = shuffle(Array.from(everything))
+      this.setState({ everything: collected });
+      console.log(everything);
     })
 /*     .catch(() => {
       this.setState({loading: false});
@@ -55,7 +55,7 @@ class InspirationSearchPage extends Component {
   }
 
   render() {
-    const {searches} = this.state;
+    const {everything} = this.state;
 
 /*     if (loading) {
       return (
@@ -85,39 +85,43 @@ class InspirationSearchPage extends Component {
 
         <section className= "bigList">
           <ul>
-              {searches.map((search, index) => (
+              {everything.map((thing, index) => (
                 <li key={index}>
                   <div className="insideList"> 
-                    {search.title ? (
-                      <a href= {search.url}>
-                        {search.title}
+                    {thing.title ? (
+                      <a href= {thing.url}>
+                        {thing.title}
                       </a>
                     ) : (
-                      <a href= {search.attributes.table.links.html}>
+                      <a href= {thing.attributes.table.links.html}>
                         Untitled
                       </a>
                     )}
                     <br />
-                    {search.imageUrl ? (
-                      <a href= {search.url}>
-                        <img src={search.imageUrl} />
+                    {thing.imageUrl ? (
+                      <a href= {thing.url}>
+                        <img src={thing.imageUrl} />
                       </a> 
                     ) : ( 
-                      <a href= {search.attributes.table.links.html}>
-                        <img src={search.attributes.table.urls.thumb} />
+                      <a href= {thing.attributes.table.links.html}>
+                        <img src={thing.attributes.table.urls.thumb} />
                       </a>
                     )}
                     <br />
                     <ul>
-                      {search.colors && search.colors.hex.map((hex, i) => (
+                      {thing.colors && thing.colors.hex.map((hex, i) => (
                         <li key={hex+i}>
                           #{hex}
                         </li>
                       ))}
-                      {search.hex && <li>#{search.hex}</li>}
-                      {search.attributes && <li>{search.attributes.table.color}</li>}
+                      {thing.hex && <li>#{thing.hex}</li>}
+                      {thing.attributes && <li>{thing.attributes.table.color}</li>}
                     </ul>
-                      <button onClick={() => this.save(search.attributes ? search.attributes.table.save_link : search.save_link)}>Save</button>
+                      <button onClick={() => this.save(thing.attributes ? (
+                        thing.attributes.table.save_link
+                      ) : (
+                        thing.save_link
+                      ))}>Save</button>
                     
                   </div>
                 </li>
