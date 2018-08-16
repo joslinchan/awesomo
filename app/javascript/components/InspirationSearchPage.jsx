@@ -10,19 +10,20 @@ class InspirationSearchPage extends Component {
     this.state = {
       //loading: true,
       everything: [],
-      term: ""
+      term: "",
+      highlighted: false
     }
 
     this.onInputChange = this.onInputChange.bind(this);
     this.enterSubmit = this.enterSubmit.bind(this);
     this.save = this.save.bind(this);
+    this.toggleHighlighted = this.toggleHighlighted.bind(this);
   }
 
   onInputChange(term) {
     this.setState({term});
     console.log(term);
   }
-
 
   enterSubmit(event) {
     event.preventDefault();
@@ -41,6 +42,10 @@ class InspirationSearchPage extends Component {
     }); */
   }
 
+  toggleHighlighted() {
+    this.setState( {highlighted: !this.state.highlighted});
+  }
+
   save(url, id) {
     return fetch(url, {
       method: "POST",
@@ -49,9 +54,14 @@ class InspirationSearchPage extends Component {
         "Content-Type": "application/json"
       }
     })
-    .then(
+    .then(data => {
+      if (data.status === 200) {
+        this.toggleHighlighted();
+      }
+    })
+/*     .then(
       res => res.json()
-    );
+    ); */
   }
 
   render() {
@@ -83,10 +93,10 @@ class InspirationSearchPage extends Component {
           </div>
         </form>
 
-        <section className= "bigList">
+        <section className="bigList">
           <ul>
               {everything.map((thing, index) => (
-                <li key={index}>
+                <li key={index} className={this.state.highlighted ? "highlight card" : "card"}>
                   <div className="insideList"> 
                     {thing.title ? (
                       <a href= {thing.url}>

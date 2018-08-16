@@ -31,12 +31,13 @@ class Api::V1::InspirationsController < Api::ApplicationController
         new_hex.save
       end
       render(
+        status: 200,
         json: inspiration 
       )
     else
       render(
-        json: {errors: inspiration.errors},
-        status: 422
+        status: 422,
+        json: {errors: inspiration.errors}
       )
     end
   end
@@ -66,11 +67,11 @@ class Api::V1::InspirationsController < Api::ApplicationController
 
     everything.each do |thing|
       if (thing["hex"])
-        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"], id: thing["id"])
+        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"])
       elsif (thing["colors"])
-        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"], id: thing["id"])
+        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"])
       else
-        thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"], id: thing["id"])
+        thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"])
       end
     end
 
