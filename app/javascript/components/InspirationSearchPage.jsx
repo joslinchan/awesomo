@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
 import shuffle from "lodash/shuffle";
+import InspirationDetails from "./InspirationDetails";
 
 
 class InspirationSearchPage extends Component {
@@ -10,14 +11,11 @@ class InspirationSearchPage extends Component {
     this.state = {
       //loading: true,
       everything: [],
-      term: "",
-      highlighted: false
+      term: ""
     }
 
     this.onInputChange = this.onInputChange.bind(this);
     this.enterSubmit = this.enterSubmit.bind(this);
-    this.save = this.save.bind(this);
-    this.toggleHighlighted = this.toggleHighlighted.bind(this);
   }
 
   onInputChange(term) {
@@ -35,34 +33,13 @@ class InspirationSearchPage extends Component {
     .then(everything => {
       const collected = shuffle(Array.from(everything))
       this.setState({ everything: collected });
-      console.log(everything);
+      // console.log(collected);
     })
 /*     .catch(() => {
       this.setState({loading: false});
     }); */
   }
 
-  toggleHighlighted() {
-    this.setState( {highlighted: !this.state.highlighted});
-  }
-
-  save(url, id) {
-    return fetch(url, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(data => {
-      if (data.status === 200) {
-        this.toggleHighlighted();
-      }
-    })
-/*     .then(
-      res => res.json()
-    ); */
-  }
 
   render() {
     const {everything} = this.state;
@@ -95,48 +72,12 @@ class InspirationSearchPage extends Component {
 
         <section className="bigList">
           <ul>
-              {everything.map((thing, index) => (
-                <li key={index} className={this.state.highlighted ? "highlight card" : "card"}>
-                  <div className="insideList"> 
-                    {thing.title ? (
-                      <a href= {thing.url}>
-                        {thing.title}
-                      </a>
-                    ) : (
-                      <a href= {thing.attributes.table.links.html}>
-                        Untitled
-                      </a>
-                    )}
-                    <br />
-                    {thing.imageUrl ? (
-                      <a href= {thing.url}>
-                        <img src={thing.imageUrl} />
-                      </a> 
-                    ) : ( 
-                      <a href= {thing.attributes.table.links.html}>
-                        <img src={thing.attributes.table.urls.thumb} />
-                      </a>
-                    )}
-                    <br />
-                    <ul>
-                      {thing.colors && thing.colors.hex.map((hex, i) => (
-                        <li key={hex+i}>
-                          #{hex}
-                        </li>
-                      ))}
-                      {thing.hex && <li>#{thing.hex}</li>}
-                      {thing.attributes && <li>{thing.attributes.table.color}</li>}
-                    </ul>
-                      <button onClick={() => this.save(thing.attributes ? (
-                        thing.attributes.table.save_link
-                      ) : (
-                        thing.save_link
-                      ))}>Save</button>
-                    
-                  </div>
-                </li>
-              ))}
-            </ul> 
+          {everything.map(thing => (
+            <li key={thing.id}>
+            <InspirationDetails {...thing} />
+            </li>
+          ))}
+          </ul> 
         </section>
       </main>
     )

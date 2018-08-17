@@ -8,6 +8,7 @@ import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import Session from "../requests/session";
 import InspirationSearchPage from "./InspirationSearchPage";
+
 import "../index.css";
 
 class Main extends Component {
