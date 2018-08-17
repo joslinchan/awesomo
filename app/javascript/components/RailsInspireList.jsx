@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class InspirationList extends Component {
+class RailsInspireList extends Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +23,7 @@ class InspirationList extends Component {
     }
 
     return(
-      <div className="InspirationList">
+      <div className="RailsInspireList">
         <h1>Inspirations</h1>
         <ul>
           {inspirations.map((inspire, index) => (
@@ -43,4 +43,4 @@ class InspirationList extends Component {
   }
 }
 
-export default InspirationList;
+export default RailsInspireList;

@@ -9,6 +9,8 @@ class InspirationIndexPage extends Component {
       loading: true,
       inspirations: []
     };
+
+    this.deleteInspiration = this.deleteInspiration.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +21,18 @@ class InspirationIndexPage extends Component {
     .catch(() => {
       this.setState({loading: false});
     });
+  }
+
+  deleteInspiration(event) {
+    const {currentTarget} = event;
+    const inspirationId = parseInt(currentTarget.dataset.id, 10);
+    const {inspirations} = this.state;
+
+    this.setState({
+      inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId)
+    })
+
+    Inspiration.destroy(inspirationId);
   }
   
   render() {
@@ -45,6 +59,7 @@ class InspirationIndexPage extends Component {
                   <li key= {index+i}>{hex.code}</li>
               ))}
               </ul>
+              <button data-id={inspire.id} onClick={this.deleteInspiration}>Delete</button>
             </li>
           ))}
         </ul>
