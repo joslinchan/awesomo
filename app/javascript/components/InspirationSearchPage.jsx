@@ -72,8 +72,8 @@ class InspirationSearchPage extends Component {
 
         <section className="bigList">
           <ul>
-          {everything.map(thing => (
-            <li key={thing.id}>
+          {everything.map((thing, index) => (
+            <li key={index}>
             <InspirationDetails {...thing} />
             </li>
           ))}
