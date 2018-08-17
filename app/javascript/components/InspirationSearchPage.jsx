@@ -9,13 +9,17 @@ class InspirationSearchPage extends Component {
     super(props);
 
     this.state = {
-      //loading: true,
+      loading: true,
       everything: [],
       term: ""
     }
 
     this.onInputChange = this.onInputChange.bind(this);
     this.enterSubmit = this.enterSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({ loading: false, everything: [] });
   }
 
   onInputChange(term) {
@@ -42,15 +46,15 @@ class InspirationSearchPage extends Component {
 
 
   render() {
-    const {everything} = this.state;
+    const {loading, everything} = this.state;
 
-/*     if (loading) {
+    if (loading) {
       return (
         <main>
           <h2>Loading searches...</h2>
         </main>
       );
-    } */
+    }
 
     return(
       <main>

@@ -15,14 +15,17 @@ class InspirationDetails extends Component {
     //this.toggleHighlighted = this.toggleHighlighted.bind(this);
   }
 
+/*   componentDidMount() {
+    this.setState({ loading: false, thing: props });
+  } */
+
 /*   toggleHighlighted() {
     this.setState({
       highlighted: !this.state.highlighted
     });
   } */
 
-  save(url, id) {
-    const {thing} = this.state;
+  save(url) {
     return fetch(url, {
       method: "POST",
       credentials: "include",
@@ -38,10 +41,10 @@ class InspirationDetails extends Component {
         })
       }
     })
-    .then(()=> {
+/*     .then(()=> {
       this.toggleHighlighted();
       console.log(everything);
-    })
+    }) */
 /*     .then(
       res => res.json()
     ); */
@@ -50,13 +53,13 @@ class InspirationDetails extends Component {
   render() {
     const {thing} = this.state;
 
-/*     if (loading) {
+/*      if (loading) {
       return (
         <main>
           <h2>Loading searches...</h2>
         </main>
       );
-    } */
+    }  */
 
 
     return(
@@ -90,10 +93,10 @@ class InspirationDetails extends Component {
                 {thing.hex && <li>#{thing.hex}</li>}
                 {thing.attributes && <li>{thing.attributes.table.color}</li>}
               </ul>
-                <button onClick={() => thing.save(thing.attributes ? (
-                  thing.attributes.table.save_link, thing.attributes.table.id
+                <button onClick={() => this.save(thing.attributes ? (
+                  thing.attributes.table.save_link
                 ) : (
-                  thing.save_link, thing.id
+                  thing.save_link
                 ))}>Save</button>
               
             </div>
