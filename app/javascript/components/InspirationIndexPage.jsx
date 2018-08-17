@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Inspiration from "../requests/inspiration";
+import InspirationApi from "../requests/inspiration";
 
 class InspirationIndexPage extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class InspirationIndexPage extends Component {
       inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId)
     })
 
-    Inspiration.destroy(inspirationId);
+    InspirationApi.destroy(inspirationId);
   }
   
   render() {
