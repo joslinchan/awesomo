@@ -11,18 +11,11 @@ class InspirationDetails extends Component {
     }
     console.log(this.state);
 
-    //this.save = this.save.bind(this);
-    //this.toggleHighlighted = this.toggleHighlighted.bind(this);
+    this.save = this.save.bind(this);
   }
 
 /*   componentDidMount() {
     this.setState({ loading: false, thing: props });
-  } */
-
-/*   toggleHighlighted() {
-    this.setState({
-      highlighted: !this.state.highlighted
-    });
   } */
 
   save(url) {
@@ -35,19 +28,11 @@ class InspirationDetails extends Component {
     })
     .then(data => {
       if (data.status === 200) {
-        // console.log(everything);
         this.setState({
          highlighted: true
         })
       }
     })
-/*     .then(()=> {
-      this.toggleHighlighted();
-      console.log(everything);
-    }) */
-/*     .then(
-      res => res.json()
-    ); */
   }
 
   render() {
