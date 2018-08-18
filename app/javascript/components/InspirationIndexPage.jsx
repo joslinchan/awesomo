@@ -51,13 +51,13 @@ class InspirationIndexPage extends Component {
         <h1>Collection</h1>
         <ul>
           {inspirations.map((inspire, index) => (
-            <div className="card">
-              <li key = {inspire.id}>
+            <div key={index} className="card">
+              <li key={inspire.id}>
                 <a href={inspire.url}><p>{inspire.title}</p></a>
                 <a href={inspire.url}><img src={inspire.image_url} /></a>
                 <ul>
                 {inspire.hexes.map((hex, i) => (
-                    <li key= {index+i}>{hex.code}</li>
+                    <li key={index+i}>{hex.code}</li>
                 ))}
                 </ul>
                 <button data-id={inspire.id} onClick={this.deleteInspiration}>Delete</button>
