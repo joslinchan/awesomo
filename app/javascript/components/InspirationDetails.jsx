@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {BASE_URL} from "../requests/config";
 import InspirationApi from "../requests/inspiration";
 
 class InspirationDetails extends Component {
@@ -40,22 +39,12 @@ class InspirationDetails extends Component {
 
   delete(event) {
     const {currentTarget} = event;
-    
-    
-    
-/*     return fetch(`${BASE_URL}/inspirations`, {
-      credentials: "include"
-    })
-    .then(inspirations => console.log(inspirations)) */
-
-    //const inspirationId = 
-    console.log(this.state.id_for_deletion)
+    //console.log(this.state.id_for_deletion)
     InspirationApi.destroy(this.state.id_for_deletion)
     .then(data => {
       if (data.status === 200) {
         this.setState({
          highlighted: false
-
         })
       }
     })
