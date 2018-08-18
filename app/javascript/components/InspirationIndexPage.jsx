@@ -14,7 +14,7 @@ class InspirationIndexPage extends Component {
   }
 
   componentDidMount() {
-    Inspiration.all()
+    InspirationApi.all()
     .then(inspirations => {
       this.setState({loading: false, inspirations: inspirations})
     })

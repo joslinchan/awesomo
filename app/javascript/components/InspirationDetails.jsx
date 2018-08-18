@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import {BASE_URL} from "../requests/config";
+import InspirationApi from "../requests/inspiration";
 
 class InspirationDetails extends Component {
   constructor(props) {
@@ -7,16 +9,13 @@ class InspirationDetails extends Component {
      this.state = {
       //loading: true,
       thing: props,
-      highlighted: false
-    }
-    console.log(this.state);
+      highlighted: false,
+    };
+    //console.log(this.state);
 
     this.save = this.save.bind(this);
+    this.delete = this.delete.bind(this);
   }
-
-/*   componentDidMount() {
-    this.setState({ loading: false, thing: props });
-  } */
 
   save(url) {
     return fetch(url, {
@@ -26,17 +25,44 @@ class InspirationDetails extends Component {
         "Content-Type": "application/json"
       }
     })
+    .then(response => {
+      if (response.status === 200) {
+        return response.json()
+      }
+    })
+    .then(data => {
+      this.setState({
+        id_for_deletion: data.id,
+        highlighted: true
+       })
+    })
+  }
+
+  delete(event) {
+    const {currentTarget} = event;
+    
+    
+    
+/*     return fetch(`${BASE_URL}/inspirations`, {
+      credentials: "include"
+    })
+    .then(inspirations => console.log(inspirations)) */
+
+    //const inspirationId = 
+    console.log(this.state.id_for_deletion)
+    InspirationApi.destroy(this.state.id_for_deletion)
     .then(data => {
       if (data.status === 200) {
         this.setState({
-         highlighted: true
+         highlighted: false
+
         })
       }
     })
   }
 
   render() {
-    const {thing} = this.state;
+    const {loading, thing} = this.state;
 
 /*      if (loading) {
       return (
@@ -78,12 +104,23 @@ class InspirationDetails extends Component {
                 {thing.hex && <li>#{thing.hex}</li>}
                 {thing.attributes && <li>{thing.attributes.table.color}</li>}
               </ul>
+              
+              {this.state.highlighted ? (
+                (thing.imageUrl ? (
+                  <button data-id={thing.imageUrl} onClick={this.delete}>Unsave ColourLover</button>
+                ) : (
+                  <button data-id={thing.attributes.table.urls.thumb} onClick={() => this.delete}>Unsave Unsplash</button>
+                ))             
+              ) : (
                 <button onClick={() => this.save(thing.attributes ? (
                   thing.attributes.table.save_link
-                ) : (
-                  thing.save_link
-                ))}>Save</button>
-              
+                  ) : (
+                    thing.save_link
+                ))}>
+                  Save
+                </button>
+              )}
+            
             </div>
 
     )
