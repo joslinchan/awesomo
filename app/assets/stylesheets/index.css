@@ -1,3 +1,8 @@
-div .highlight {
-  border: 1px solid palevioletred;
+.card {
+  transition: all 2s ease-out;
+  background-color: white;
+}
+
+.card:hover {
+  background-color:  palegreen;
 }
