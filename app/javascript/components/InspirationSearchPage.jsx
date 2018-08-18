@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
 import shuffle from "lodash/shuffle";
-import InspirationDetails from "./InspirationDetails";
+import InspirationSearchDetails from "./InspirationSearchDetails";
 
 
 class InspirationSearchPage extends Component {
@@ -78,7 +78,7 @@ class InspirationSearchPage extends Component {
           <ul>
           {everything.map((thing, index) => (
             <li key={index}>
-            <InspirationDetails {...thing} />
+            <InspirationSearchDetails {...thing} />
             </li>
           ))}
           </ul> 
