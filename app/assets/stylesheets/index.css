@@ -7,6 +7,14 @@ span.sign {
   padding: 0px;
 }
 
+div.logo {
+  background-image: url("AwesomoLogoDarkGrey");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; 
+  height: 15em;
+}
+
 .card {
   transition: all 0.5s ease-out;
   background-color: white;
@@ -52,6 +60,10 @@ h5:hover {
 
 .hex:hover {
   color: #343a40;
+}
+
+.text-light {
+  color: #f4d522 !important;
 }
 
 .form-control.underline {

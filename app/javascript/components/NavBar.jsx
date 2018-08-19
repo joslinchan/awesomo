@@ -14,7 +14,7 @@ const NavBar = props => {
 
       {currentUser ? (
         <React.Fragment>
-          <span className="text-light">{currentUser.full_name}</span>
+          <span className="text-light">Hello {currentUser.first_name}!</span>
           <NavLink 
             className="btn btn-dark" 
             exact 

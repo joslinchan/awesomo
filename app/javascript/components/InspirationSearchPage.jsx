@@ -66,6 +66,8 @@ class InspirationSearchPage extends Component {
 
     return(
       <main className="container">
+        <div className="logo">
+        </div>
         <form onSubmit={this.enterSubmit}>
           <div>
             <input 
@@ -80,9 +82,15 @@ class InspirationSearchPage extends Component {
 
           <div className="d-flex justify-content-end">
             <input 
-              className="btn btn-outline-dark mt-1 mb-4 search"
+              className="btn btn-outline-dark mt-3 mb-4 search"
               type="submit" 
-              value="Search" />
+              value="Search" 
+            />
+            <input 
+              className="btn btn-outline-dark mt-3 mb-4 ml-2 search"
+              type="submit" 
+              value="I'm Feeling Lucky" 
+            />
           </div>
         </form>
 
