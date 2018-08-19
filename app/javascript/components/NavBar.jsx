@@ -10,16 +10,17 @@ const NavBar = props => {
   };
 
   return(
-    <nav className="NavBar nav justify-content-end bg-dark mb-2  shadow-sm">
-      <NavLink 
-        className="btn btn-dark" 
-        exact 
-        to="/">
-        Intro
-      </NavLink>
+    <nav className="NavBar nav justify-content-end bg-dark mb-2">
 
       {currentUser ? (
         <React.Fragment>
+          <span className="text-light">{currentUser.full_name}</span>
+          <NavLink 
+            className="btn btn-dark" 
+            exact 
+            to="/">
+            Intro
+          </NavLink>
           <NavLink 
             className="btn btn-dark"
             exact to="/inspiration/search"
@@ -33,7 +34,6 @@ const NavBar = props => {
           >
             Collection
           </NavLink>
-          <span>{currentUser.full_name}</span>
           <a 
             className="btn btn-dark"
             onClick={handleClick} href="#"
@@ -42,12 +42,20 @@ const NavBar = props => {
           </a>
         </React.Fragment>
       ) : (
+        <span className="sign">
+        <NavLink 
+          className="btn btn-dark" 
+          exact 
+          to="/">
+          Intro
+        </NavLink>
         <NavLink 
           className="btn btn-dark"
           exact 
           to="/sign_in">
           Sign In
         </NavLink>
+        </span>
       )}
     </nav>
   )

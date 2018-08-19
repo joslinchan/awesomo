@@ -69,7 +69,7 @@ class InspirationSearchPage extends Component {
         <form onSubmit={this.enterSubmit}>
           <div>
             <input 
-              className="form-control underline"
+              className="form-control underline mt-4 search"
               placeholder="Search for..." 
               name="query" 
               id="query" 
@@ -78,9 +78,9 @@ class InspirationSearchPage extends Component {
             />
           </div>
 
-          <div>
+          <div className="d-flex justify-content-end">
             <input 
-              className="btn btn-outline-dark mt-3 mb-4"
+              className="btn btn-outline-dark mt-1 mb-4 search"
               type="submit" 
               value="Search" />
           </div>

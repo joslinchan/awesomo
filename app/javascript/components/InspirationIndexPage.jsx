@@ -65,9 +65,9 @@ class InspirationIndexPage extends Component {
                     <li key={inspire.id}>
             
                       <a href={inspire.url}>
-                        <p className="text-center">
+                        <h5 className="text-center">
                           {inspire.title}
-                        </p>
+                        </h5>
                       </a>
                       <div className="d-flex justify-content-center">
                       <a href={inspire.url}>
@@ -75,7 +75,7 @@ class InspirationIndexPage extends Component {
                       </a>
                       </div>
 
-                      <div className="d-flex justify-content-center">
+                      <div className="d-flex justify-content-center hex">
                         <ul>
                         {inspire.hexes.map((hex, i) => (
                             <li key={index+i}>

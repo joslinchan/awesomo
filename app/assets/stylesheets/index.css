@@ -3,6 +3,10 @@ body {
   background-repeat: repeat;
 }
 
+span.sign {
+  padding: 0px;
+}
+
 .card {
   transition: all 0.5s ease-out;
   background-color: white;
@@ -27,8 +31,32 @@ p.noerror {
   visibility: hidden;
 }
 
+a {
+  text-decoration: none !important;
+}
+
+h5 {
+  /* color: #4a5663; */
+  color: #6c757d;
+  transition: all 0.75s ease-out;
+}
+
+h5:hover {
+  color: #343a40;
+}
+
+.hex {
+  color: #6c757d;
+  transition: all 0.75s ease-out;
+}
+
+.hex:hover {
+  color: #343a40;
+}
+
 .form-control.underline {
-  border-bottom-color: #ced4da;
+  /* border-bottom-color: #ced4da; */
+  border-bottom-color: white;
   border-top-color: white;
   border-left-color: white;
   border-right-color: white;
@@ -52,11 +80,32 @@ p.noerror {
 } */
 
 .btn.btn-block {
+/*   border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem; */
+  border-top-color: #ced4da;
+  border-bottom-color: white;
+  border-left-color: white;
+  border-right-color: white;
+}
+
+.btn.btn-outline-dark, .btn.btn-block, .btn.btn-dark {
   border-top-left-radius: 0rem;
   border-top-right-radius: 0rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  border-color: #ced4da;
+}
+
+.search, .signIn {
+  box-shadow: 0 1px 3px rgba(black, 0.2);
+}
+
+input#query.form-control.underline.mt-4.search {
+  height: 50px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-size: 1.5rem
 }
 
 ul {

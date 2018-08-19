@@ -38,7 +38,7 @@ class SignInPage extends Component {
   render() {
     const {errorMessage} = this.state;
     return(
-      <main>
+      <main className="container">
         <h2>Sign In</h2>
         <form onSubmit={this.createSession}>
           <div>
@@ -48,7 +48,7 @@ class SignInPage extends Component {
               name="email" 
               id="email" 
               placeholder= "Email" 
-              className="form-control underline"
+              className="form-control underline shadow-sm"
             />
             <small>
               {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
@@ -62,18 +62,20 @@ class SignInPage extends Component {
               name="password" 
               id="password" 
               placeholder="Password" 
-              className="form-control mt-3 underline"
+              className="form-control mt-3 underline shadow-sm"
             />
             <small>
               {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
             </small>
           </div>
 
-          <input 
-            type="submit" 
-            value="Sign In"
-            className="btn btn-outline-dark"
-          />
+          <div className="d-flex justify-content-end">
+            <input 
+              type="submit" 
+              value="Sign In"
+              className="btn btn-outline-dark signIn"
+            />
+          </div>
         </form>
       </main>
     );
