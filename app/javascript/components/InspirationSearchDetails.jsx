@@ -63,61 +63,71 @@ class InspirationDetails extends Component {
 
 
     return(
-            <div 
-              className={this.state.highlighted ? (
-                "highlight card mb-4"
+      <div 
+        className={this.state.highlighted ? (
+          "highlight card mb-4"
+        ) : (
+          "card mb-4"
+        )}
+      > 
+
+        <div className="d-flex justify-content-center">
+          {thing.title ? (
+            <a href= {thing.url}>
+              {thing.title}
+            </a>
+          ) : (
+            <a href= {thing.attributes.table.links.html}>
+              Untitled
+            </a>
+          )}
+        </div>
+        
+        <div className="d-flex justify-content-center">
+          {thing.imageUrl ? (
+            <a href= {thing.url}>
+              <img src={thing.imageUrl} />
+            </a> 
+          ) : ( 
+            <a href= {thing.attributes.table.links.html}>
+              <img src={thing.attributes.table.urls.thumb} />
+            </a>
+          )}
+        </div>
+
+        <div className="d-flex justify-content-center">
+          <ul>
+            {thing.colors && thing.colors.hex.map((hex, i) => (
+              <li key={hex+i}>
+                #{hex}
+              </li>
+            ))}
+            {thing.hex && <li>#{thing.hex}</li>}
+            {thing.attributes && <li>{thing.attributes.table.color}</li>}
+          </ul>
+        </div>
+        
+        <div className="d-flex justify-content-center">
+          {this.state.highlighted ? (
+            <button 
+              className="btn btn-outline-dark btn-block"
+              onClick={this.delete}>
+              Unsave
+            </button>           
+          ) : (
+            <button 
+              className="btn btn-outline-dark btn-block"
+              onClick={() => this.save(thing.attributes ? (
+              thing.attributes.table.save_link
               ) : (
-                "card mb-4"
-              )}> 
-              {thing.title ? (
-                <a href= {thing.url}>
-                  {thing.title}
-                </a>
-              ) : (
-                <a href= {thing.attributes.table.links.html}>
-                  Untitled
-                </a>
-              )}
-              <br />
-              {thing.imageUrl ? (
-                <a href= {thing.url}>
-                  <img src={thing.imageUrl} />
-                </a> 
-              ) : ( 
-                <a href= {thing.attributes.table.links.html}>
-                  <img src={thing.attributes.table.urls.thumb} />
-                </a>
-              )}
-              <br />
-              <ul>
-                {thing.colors && thing.colors.hex.map((hex, i) => (
-                  <li key={hex+i}>
-                    #{hex}
-                  </li>
-                ))}
-                {thing.hex && <li>#{thing.hex}</li>}
-                {thing.attributes && <li>{thing.attributes.table.color}</li>}
-              </ul>
-              
-              {this.state.highlighted ? (
-                <button 
-                  className="btn btn-outline-dark btn-block"
-                  onClick={this.delete}>
-                  Unsave
-                </button>           
-              ) : (
-                <button 
-                  className="btn btn-outline-dark btn-block"
-                  onClick={() => this.save(thing.attributes ? (
-                  thing.attributes.table.save_link
-                  ) : (
-                    thing.save_link
-                ))}>
-                  Save
-                </button>
-              )}
-            
-            </div>
+                thing.save_link
+            ))}>
+              Save
+            </button>
+          )}
+        </div>
+
+      </div>
 
     )
   }
