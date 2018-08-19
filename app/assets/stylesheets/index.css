@@ -2,6 +2,7 @@
   transition: all 0.5s ease-out;
   background-color: white;
   box-shadow: 0 1px 3px rgba(black, 0.2);
+  border-radius: 1rem;
 }
 
 .card:hover {
@@ -46,11 +47,18 @@ p.noerror {
   justify-content: flex-end;
 } */
 
-.btn-dark:not(:disabled):not(.disabled):active, .btn-dark:not(:disabled):not(.disabled).active, .show > .btn-dark.dropdown-toggle {
-  border-color: #1d2124;
+.btn.btn-block {
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-color: #ced4da;
+}
+
+ul {
+  padding: 0px;
 }
 
 li {
   list-style-type: none;
-  padding: 0px;
 }

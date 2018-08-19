@@ -100,9 +100,15 @@ class InspirationDetails extends Component {
               </ul>
               
               {this.state.highlighted ? (
-                <button onClick={this.delete}>Unsave</button>           
+                <button 
+                  className="btn btn-outline-dark btn-block"
+                  onClick={this.delete}>
+                  Unsave
+                </button>           
               ) : (
-                <button onClick={() => this.save(thing.attributes ? (
+                <button 
+                  className="btn btn-outline-dark btn-block"
+                  onClick={() => this.save(thing.attributes ? (
                   thing.attributes.table.save_link
                   ) : (
                     thing.save_link

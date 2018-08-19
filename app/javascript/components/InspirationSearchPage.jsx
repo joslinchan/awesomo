@@ -80,7 +80,7 @@ class InspirationSearchPage extends Component {
 
           <div>
             <input 
-              className="btn btn-outline-dark mt-3"
+              className="btn btn-outline-dark mt-3 mb-4"
               type="submit" 
               value="Search" />
           </div>
