@@ -54,46 +54,55 @@ class InspirationIndexPage extends Component {
 
     return(
       <div className="container">
+        <div className="BigList">
+        {/* <div className="d-flex flex-row flex-nowrap"> */}
+   
       
-        <ul>
-          {inspirations.map((inspire, index) => (
-            <div key={index} className="card mb-4">
-              <li key={inspire.id}>
-       
-                <a href={inspire.url}>
-                  <p className="text-center">
-                    {inspire.title}
-                  </p>
-                </a>
-                <div className="d-flex justify-content-center">
-                <a href={inspire.url}>
-                  <img src={inspire.image_url} />
-                </a>
-                </div>
+            <ul>
+              {inspirations.map((inspire, index) => (
 
-                <div className="d-flex justify-content-center">
-                  <ul>
-                  {inspire.hexes.map((hex, i) => (
-                      <li key={index+i}>
-                        {hex.code}
-                      </li>
-                  ))}
-                  </ul>
-                </div>
+                  <div key={index} className="card mt-4">
+                    <li key={inspire.id}>
+            
+                      <a href={inspire.url}>
+                        <p className="text-center">
+                          {inspire.title}
+                        </p>
+                      </a>
+                      <div className="d-flex justify-content-center">
+                      <a href={inspire.url}>
+                        <img src={inspire.image_url} />
+                      </a>
+                      </div>
 
-                <div className="d-flex justify-content-center">
-                  <button 
-                    className="btn btn-outline-dark btn-block"
-                    data-id={inspire.id} 
-                    onClick={this.deleteInspiration}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </li>
-            </div>
-          ))}
-        </ul>
+                      <div className="d-flex justify-content-center">
+                        <ul>
+                        {inspire.hexes.map((hex, i) => (
+                            <li key={index+i}>
+                              {hex.code}
+                            </li>
+                        ))}
+                        </ul>
+                      </div>
+
+                      <div className="d-flex justify-content-center">
+                        <button 
+                          className="btn btn-outline-dark btn-block"
+                          data-id={inspire.id} 
+                          onClick={this.deleteInspiration}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </li>
+
+                  </div>
+    
+              ))}
+            </ul>
+
+          
+        </div>
       </div>
     );
   }

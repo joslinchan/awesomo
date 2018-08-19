@@ -41,10 +41,9 @@ p.noerror {
   justify-content: flex-end; */
   padding-bottom: 0.16rem;
 }
-
-/* .NavOptions {
-  display: flex;
-  justify-content: flex-end;
+/* 
+.bg-dark {
+  background-color: #4a5663 !important;
 } */
 
 .btn.btn-block {
@@ -61,4 +60,10 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+.BigList {
+  display: flex;
+  flex-wrap: nowrap !important;
+  flex-direction: row;
 }
