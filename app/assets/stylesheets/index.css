@@ -1,8 +1,56 @@
 .card {
   transition: all 0.5s ease-out;
   background-color: white;
+  box-shadow: 0 1px 3px rgba(black, 0.2);
 }
 
 .card:hover {
-  background-color:  palegreen;
+  border-color: #6c757d;
+}
+
+.card.highlight {
+  border: 1px solid palevioletred;
+}
+
+p.error {
+  margin-bottom: 0px;
+}
+
+p.noerror {
+  margin-bottom: 0px;
+  visibility: hidden;
+}
+
+.form-control.underline {
+  border-bottom-color: #ced4da;
+  border-top-color: white;
+  border-left-color: white;
+  border-right-color: white;
+}
+
+/* .btn.btn-outline-dark.noborder {
+  border-bottom-color: white;
+  border-top-color: white;
+  border-left-color: white;
+  border-right-color: white;
+} */
+
+.NavBar {
+/*   display: flex;
+  justify-content: flex-end; */
+  padding-bottom: 0.16rem;
+}
+
+/* .NavOptions {
+  display: flex;
+  justify-content: flex-end;
+} */
+
+.btn-dark:not(:disabled):not(.disabled):active, .btn-dark:not(:disabled):not(.disabled).active, .show > .btn-dark.dropdown-toggle {
+  border-color: #1d2124;
+}
+
+li {
+  list-style-type: none;
+  padding: 0px;
 }

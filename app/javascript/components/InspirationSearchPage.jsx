@@ -11,7 +11,8 @@ class InspirationSearchPage extends Component {
     this.state = {
       loading: true,
       everything: [],
-      term: ""
+      term: "",
+      boxShowing: false,
     }
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -36,12 +37,19 @@ class InspirationSearchPage extends Component {
     InspirationApi.search(term)
     .then(everything => {
       const collected = shuffle(Array.from(everything))
-      this.setState({ everything: collected });
+      this.setState({ 
+        everything: collected,
+        ...this.state.boxShowing,
+       });
       // console.log(collected);
     })
 /*     .catch(() => {
       this.setState({loading: false});
     }); */
+  }
+
+  handleBox = (event) => {
+    this.setState({boxShowing: !this.state.boxShowing})
   }
 
 
@@ -57,10 +65,11 @@ class InspirationSearchPage extends Component {
     }
 
     return(
-      <main>
+      <main className="container">
         <form onSubmit={this.enterSubmit}>
           <div>
             <input 
+              className="form-control underline"
               placeholder="Search for..." 
               name="query" 
               id="query" 
@@ -70,7 +79,10 @@ class InspirationSearchPage extends Component {
           </div>
 
           <div>
-            <input type="submit" value="Search" />
+            <input 
+              className="btn btn-outline-dark mt-3"
+              type="submit" 
+              value="Search" />
           </div>
         </form>
 

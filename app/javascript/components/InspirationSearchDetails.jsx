@@ -63,7 +63,12 @@ class InspirationDetails extends Component {
 
 
     return(
-            <div className={this.state.highlighted ? "highlight card" : "card"}> 
+            <div 
+              className={this.state.highlighted ? (
+                "highlight card mb-4"
+              ) : (
+                "card mb-4"
+              )}> 
               {thing.title ? (
                 <a href= {thing.url}>
                   {thing.title}

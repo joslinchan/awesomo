@@ -41,18 +41,39 @@ class SignInPage extends Component {
       <main>
         <h2>Sign In</h2>
         <form onSubmit={this.createSession}>
-          {errorMessage ? <p>{errorMessage}</p> : null}
           <div>
-            <label htmlFor="email">Email</label><br />
-            <input type="text"name="email" id="email"/>
+            {/* <label htmlFor="email">Email</label><br /> */}
+            <input 
+              type="text"
+              name="email" 
+              id="email" 
+              placeholder= "Email" 
+              className="form-control underline"
+            />
+            <small>
+              {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
+            </small>
           </div>
 
           <div>
-            <label htmlFor="password">Password</label><br />
-            <input type="password" name="password" id="password" />
+            {/* <label htmlFor="password">Password</label><br /> */}
+            <input 
+              type="password" 
+              name="password" 
+              id="password" 
+              placeholder="Password" 
+              className="form-control mt-3 underline"
+            />
+            <small>
+              {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
+            </small>
           </div>
 
-          <input type="submit" value="Sign In"/>
+          <input 
+            type="submit" 
+            value="Sign In"
+            className="btn btn-outline-dark"
+          />
         </form>
       </main>
     );

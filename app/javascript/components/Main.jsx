@@ -60,7 +60,7 @@ class Main extends Component {
 
     return(
       <Router>
-        <div className="container-fluid">
+        <div>
           <NavBar 
             onSignOut={this.destroySession} 
             currentUser={currentUser} 
@@ -92,7 +92,6 @@ class Main extends Component {
             />
             {/* <Route component={NotFoundPage} /> */}
           </Switch>
-          <h1>Fruits are great!</h1>
         </div>
       </Router>
     )

@@ -7,7 +7,8 @@ class InspirationIndexPage extends Component {
 
     this.state = {
       loading: true,
-      inspirations: []
+      inspirations: [],
+      boxShowing: false,
     };
 
     this.deleteInspiration = this.deleteInspiration.bind(this);
@@ -16,7 +17,11 @@ class InspirationIndexPage extends Component {
   componentDidMount() {
     InspirationApi.all()
     .then(inspirations => {
-      this.setState({loading: false, inspirations: inspirations})
+      this.setState({
+        loading: false, 
+        inspirations: inspirations, 
+        boxShowing: true,
+      })
     })
     .catch(() => {
       this.setState({loading: false});
@@ -29,7 +34,8 @@ class InspirationIndexPage extends Component {
     const {inspirations} = this.state;
 
     this.setState({
-      inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId)
+      inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId),
+      boxShowing: false,
     })
 
     InspirationApi.destroy(inspirationId);
@@ -47,11 +53,11 @@ class InspirationIndexPage extends Component {
     }
 
     return(
-      <div className="InspirationIndexPage">
-        <h1>Collection</h1>
+      <div className="container">
+      
         <ul>
           {inspirations.map((inspire, index) => (
-            <div key={index} className="card">
+            <div key={index} className="card mb-4">
               <li key={inspire.id}>
                 <a href={inspire.url}><p>{inspire.title}</p></a>
                 <a href={inspire.url}><img src={inspire.image_url} /></a>
