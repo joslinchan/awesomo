@@ -62,7 +62,7 @@ class InspirationIndexPage extends Component {
               <div className="card mt-4">
     
                 <a href={inspire.url}>
-                  <h5 className="text-center">
+                  <h5 className="text-center leftright mb-2">
                     {inspire.title}
                   </h5>
                 </a>
@@ -71,12 +71,12 @@ class InspirationIndexPage extends Component {
                   className="d-flex justify-content-center"
                 >
                   <a href={inspire.url}>
-                    <img src={inspire.image_url} />
+                    <img src={inspire.image_url} className="leftright" />
                   </a>
                 </div>
 
                 <div 
-                  className="d-flex justify-content-center hex"
+                  className="d-flex justify-content-center hex mt-2 mb-2"
                 >
                   <ul>
                     {inspire.hexes.map((hex, i) => (
@@ -97,7 +97,7 @@ class InspirationIndexPage extends Component {
                 
               </div>
             </li>  
-                      
+
           ))}
         </ul>
       </div>

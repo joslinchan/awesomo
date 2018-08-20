@@ -75,11 +75,11 @@ class InspirationDetails extends Component {
         <div className="d-flex justify-content-center">
           {thing.title ? (
             <a href= {thing.url}>
-              {thing.title}
+              <h5 className="leftright mb-2">{thing.title}</h5>
             </a>
           ) : (
             <a href= {thing.attributes.table.links.html}>
-              Untitled
+              <h5 className="leftright mb-2">Untitled</h5>
             </a>
           )}
         </div>
@@ -87,16 +87,16 @@ class InspirationDetails extends Component {
         <div className="d-flex justify-content-center">
           {thing.imageUrl ? (
             <a href= {thing.url}>
-              <img src={thing.imageUrl} />
+              <img src={thing.imageUrl} className="leftright mb-2" />
             </a> 
           ) : ( 
             <a href= {thing.attributes.table.links.html}>
-              <img src={thing.attributes.table.urls.thumb} />
+              <img src={thing.attributes.table.urls.thumb} className="leftright mb-2" />
             </a>
           )}
         </div>
 
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center mb-2">
           <ul>
             {thing.colors && thing.colors.hex.map((hex, i) => (
               <li key={hex+i}>
@@ -104,7 +104,11 @@ class InspirationDetails extends Component {
               </li>
             ))}
             {thing.hex && <li>#{thing.hex}</li>}
-            {thing.attributes && <li>{thing.attributes.table.color}</li>}
+            {thing.attributes && 
+              <li>
+                {thing.attributes.table.color}
+              </li>
+            }
           </ul>
         </div>
         

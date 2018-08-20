@@ -31,8 +31,9 @@ div.logo {
 .card {
   transition: all 0.5s ease-out;
   background-color: white;
-  box-shadow: 0 1px 3px rgba(black, 0.2);
+  box-shadow: 0 1px 3px rgba(black, 0.1);
   border-radius: 1rem;
+  padding-top: 1rem;
 }
 
 .card:hover {
@@ -41,6 +42,11 @@ div.logo {
 
 .card.highlight {
   border: 1px solid #f4d522;
+}
+
+.leftright {
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 p.error {
@@ -128,6 +134,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   border-top-right-radius: 0rem;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  font-weight: bold;
+  opacity: 0.8;
 }
 
 .delete {
