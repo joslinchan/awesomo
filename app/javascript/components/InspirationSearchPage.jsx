@@ -68,6 +68,7 @@ class InspirationSearchPage extends Component {
       <main className="container">
         <div className="logo">
         </div>
+
         <form onSubmit={this.enterSubmit}>
           <div>
             <input 
@@ -96,11 +97,11 @@ class InspirationSearchPage extends Component {
 
         <section className="bigList">
           <ul className="list">
-          {everything.map((thing, index) => (
-            <li key={index} className="items">
-            <InspirationSearchDetails {...thing} />
-            </li>
-          ))}
+            {everything.map((thing, index) => (
+              <li key={index} className="items">
+                <InspirationSearchDetails {...thing} />
+              </li>
+            ))}
           </ul> 
         </section>
       </main>
