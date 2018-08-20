@@ -61,8 +61,9 @@ class InspirationIndexPage extends Component {
             <ul className="list">
               {inspirations.map((inspire, index) => (
 
-                  <div key={index} className="card mt-4 items">
-                    <li key={inspire.id}>
+          
+                    <li key={inspire.id} className="items">
+                      <div className="card mt-4">
             
                       <a href={inspire.url}>
                         <h5 className="text-center">
@@ -94,9 +95,10 @@ class InspirationIndexPage extends Component {
                           Delete
                         </button>
                       
+                      </div>
                     </li>
 
-                  </div>
+                
     
               ))}
             </ul>
