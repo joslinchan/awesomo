@@ -54,14 +54,14 @@ class InspirationIndexPage extends Component {
 
     return(
       <div className="container">
-        <div className="BigList">
+        {/* <div className="list"> */}
         {/* <div className="d-flex flex-row flex-nowrap"> */}
    
       
-            <ul>
+            <ul className="list">
               {inspirations.map((inspire, index) => (
 
-                  <div key={index} className="card mt-4">
+                  <div key={index} className="card mt-4 items">
                     <li key={inspire.id}>
             
                       <a href={inspire.url}>
@@ -85,15 +85,15 @@ class InspirationIndexPage extends Component {
                         </ul>
                       </div>
 
-                      <div className="d-flex justify-content-center">
+                      
                         <button 
-                          className="btn btn-outline-dark btn-block"
+                          className="btn btn-outline-dark btn-block delete"
                           data-id={inspire.id} 
                           onClick={this.deleteInspiration}
                         >
                           Delete
                         </button>
-                      </div>
+                      
                     </li>
 
                   </div>
@@ -103,7 +103,7 @@ class InspirationIndexPage extends Component {
 
           
         </div>
-      </div>
+      /* </div> */
     );
   }
 }

@@ -12,9 +12,10 @@ span.icon {
   background-size: 3rem;
   width: 3rem;
   background-repeat: no-repeat;
-  margin-top: 0.25rem;
+  margin-top: 0.50rem;
   margin-left: 1rem;
   float: left;
+  filter:invert(100%);
 }
 
 div.logo {
@@ -129,6 +130,10 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   border-bottom-right-radius: 1rem;
 }
 
+.delete {
+  align-items: flex-end;
+}
+
 .search, .signIn {
   box-shadow: 0 1px 3px rgba(black, 0.2);
   font-family: 'Share Tech Mono', monospace;
@@ -153,8 +158,13 @@ li {
   list-style-type: none;
 }
 
-.BigList {
+.list {
   display: flex;
-  flex-wrap: nowrap !important;
+  flex-wrap: wrap;
   flex-direction: row;
+}
+
+.list.items {
+	flex: 1 0 25%;
+  box-sizing: border-box;
 }
