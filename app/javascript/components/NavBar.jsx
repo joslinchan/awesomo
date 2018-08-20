@@ -40,7 +40,7 @@ const NavBar = props => {
             className="btn btn-dark"
             onClick={handleClick} href="#"
           >
-            Sign Out
+            Sign Out <i className="fas fa-sign-out-alt"></i>
           </a>
         </React.Fragment>
       ) : (
@@ -55,7 +55,7 @@ const NavBar = props => {
           className="btn btn-dark"
           exact 
           to="/sign_in">
-          Sign In
+          Sign In <i className="fas fa-sign-in-alt"></i>
         </NavLink>
         </span>
       )}

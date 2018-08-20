@@ -83,9 +83,9 @@ class InspirationSearchPage extends Component {
 
           <div className="d-flex justify-content-end">
             <input 
-              className="btn btn-outline-dark mt-3 search"
+              className="btn btn-outline-dark mt-3 search icon"
               type="submit" 
-              value="Search" 
+              value="&#xf002;" 
             />
             <input 
               className="btn btn-outline-dark mt-3 ml-2 search"

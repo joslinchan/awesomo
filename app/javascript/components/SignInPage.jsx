@@ -39,8 +39,9 @@ class SignInPage extends Component {
   render() {
     const {errorMessage} = this.state;
     return(
-      <main className="container">
-        <h2>Sign In</h2>
+      <main className="container mt-4">
+        <div className="logo">
+        </div>
         <form onSubmit={this.createSession}>
           <div>
             {/* <label htmlFor="email">Email</label><br /> */}
@@ -73,8 +74,8 @@ class SignInPage extends Component {
           <div className="d-flex justify-content-end">
             <input 
               type="submit" 
-              value="Sign In"
-              className="btn btn-outline-dark signIn"
+              value="&#xf2f6;"
+              className="btn btn-outline-dark signIn icon"
             />
           </div>
         </form>
