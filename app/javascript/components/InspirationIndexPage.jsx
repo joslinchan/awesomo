@@ -92,7 +92,7 @@ class InspirationIndexPage extends Component {
                   data-id={inspire.id} 
                   onClick={this.deleteInspiration}
                 >
-                  Delete
+                  <i class="fas fa-trash"></i>
                 </button>
                 
               </div>

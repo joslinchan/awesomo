@@ -117,7 +117,7 @@ class InspirationDetails extends Component {
             <button 
               className="btn btn-outline-dark btn-block"
               onClick={this.delete}>
-              Unsave
+              <i class="fas fa-heart"></i>
             </button>           
           ) : (
             <button 
@@ -127,7 +127,7 @@ class InspirationDetails extends Component {
               ) : (
                 thing.save_link
             ))}>
-              Save
+              <i class="far fa-heart"></i>
             </button>
           )}
         </div>
