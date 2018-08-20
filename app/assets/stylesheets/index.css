@@ -40,7 +40,7 @@ div.logo {
 }
 
 .card.highlight {
-  border: 1px solid palevioletred;
+  border: 1px solid #f4d522;
 }
 
 p.error {
@@ -167,4 +167,8 @@ li {
 .list.items {
 	flex: 1 0 25%;
   box-sizing: border-box;
+}
+
+.card.items {
+  margin-right: auto;
 }

@@ -67,13 +67,10 @@ class Main extends Component {
             currentUser={currentUser} 
           />
           <Switch>
-            <AuthRoute
-              isAuth={currentUser}
-              path="/inspiration/search"
-              exact
-              render={
-                props => <InspirationSearchPage {...props} />
-              }
+            <Route 
+              path="/" 
+              exact 
+              component={WelcomePage} 
             />
             <AuthRoute
               isAuth={currentUser}
@@ -83,6 +80,14 @@ class Main extends Component {
                 props => <InspirationIndexPage {...props} />
               }
             />
+            <AuthRoute
+              isAuth={currentUser}
+              path="/inspiration/search"
+              exact
+              render={
+                props => <InspirationSearchPage {...props} />
+              }
+            />
             <Route 
               path="/sign_in"
               render={
@@ -90,11 +95,6 @@ class Main extends Component {
                 <SignInPage {...props} onSignIn={this.getUser} />
                 )
               }
-            />
-            <Route 
-              path="/" 
-              exact 
-              component={WelcomePage} 
             />
             <Route component={NotFoundPage} />
           </Switch>

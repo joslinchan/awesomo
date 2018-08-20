@@ -30,6 +30,7 @@ class SignInPage extends Component {
       } else {
         const {onSignIn = () => {}} = this.props;
         onSignIn();
+        /* console.log(this.props.history); */
         this.props.history.push("/");
       }
     });

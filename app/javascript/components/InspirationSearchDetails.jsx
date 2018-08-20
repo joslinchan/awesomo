@@ -63,11 +63,12 @@ class InspirationDetails extends Component {
 
 
     return(
+    
       <div 
         className={this.state.highlighted ? (
-          "highlight card mb-4"
+          "highlight card mt-4"
         ) : (
-          "card mb-4"
+          "card mt-4"
         )}
       > 
 
@@ -128,7 +129,7 @@ class InspirationDetails extends Component {
         </div>
 
       </div>
-
+   
     )
   }
 }

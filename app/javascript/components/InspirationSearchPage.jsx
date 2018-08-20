@@ -82,12 +82,12 @@ class InspirationSearchPage extends Component {
 
           <div className="d-flex justify-content-end">
             <input 
-              className="btn btn-outline-dark mt-3 mb-4 search"
+              className="btn btn-outline-dark mt-3 search"
               type="submit" 
               value="Search" 
             />
             <input 
-              className="btn btn-outline-dark mt-3 mb-4 ml-2 search"
+              className="btn btn-outline-dark mt-3 ml-2 search"
               type="submit" 
               value="I'm Feeling Lucky" 
             />
@@ -95,9 +95,9 @@ class InspirationSearchPage extends Component {
         </form>
 
         <section className="bigList">
-          <ul>
+          <ul className="list">
           {everything.map((thing, index) => (
-            <li key={index}>
+            <li key={index} className="items">
             <InspirationSearchDetails {...thing} />
             </li>
           ))}
