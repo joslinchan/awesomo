@@ -8,6 +8,7 @@ import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import Session from "../requests/session";
 import InspirationSearchPage from "./InspirationSearchPage";
+import WelcomePage from "./WelcomePage";
 
 import "../index.css";
 
@@ -90,7 +91,12 @@ class Main extends Component {
                 )
               }
             />
-            {/* <Route component={NotFoundPage} /> */}
+            <Route 
+              path="/" 
+              exact 
+              component={WelcomePage} 
+            />
+            <Route component={NotFoundPage} />
           </Switch>
         </div>
       </Router>

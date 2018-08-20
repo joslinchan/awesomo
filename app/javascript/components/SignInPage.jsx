@@ -48,7 +48,7 @@ class SignInPage extends Component {
               name="email" 
               id="email" 
               placeholder= "Email" 
-              className="form-control underline shadow-sm"
+              className="form-control underline search"
             />
             <small>
               {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
@@ -62,7 +62,7 @@ class SignInPage extends Component {
               name="password" 
               id="password" 
               placeholder="Password" 
-              className="form-control mt-3 underline shadow-sm"
+              className="form-control mt-3 underline search"
             />
             <small>
               {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}

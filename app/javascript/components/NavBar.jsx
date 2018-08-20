@@ -11,10 +11,12 @@ const NavBar = props => {
 
   return(
     <nav className="NavBar nav justify-content-end bg-dark mb-2">
+      <span className="icon flex-fill">
+      </span>
 
       {currentUser ? (
         <React.Fragment>
-          <span className="text-light">Hello {currentUser.first_name}!</span>
+          <span className="text-light lead">Hello {currentUser.first_name}!</span>
           <NavLink 
             className="btn btn-dark" 
             exact 

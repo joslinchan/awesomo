@@ -79,7 +79,7 @@ class InspirationIndexPage extends Component {
                         <ul>
                         {inspire.hexes.map((hex, i) => (
                             <li key={index+i}>
-                              {hex.code}
+                              #{hex.code}
                             </li>
                         ))}
                         </ul>

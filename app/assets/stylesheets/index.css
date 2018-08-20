@@ -3,8 +3,18 @@ body {
   background-repeat: repeat;
 }
 
-span.sign {
+span.sign, span.icon {
   padding: 0px;
+}
+
+span.icon {
+  background-image: url("AwesomoIcon");
+  background-size: 3rem;
+  width: 3rem;
+  background-repeat: no-repeat;
+  margin-top: 0.25rem;
+  margin-left: 1rem;
+  float: left;
 }
 
 div.logo {
@@ -13,6 +23,8 @@ div.logo {
   background-repeat: no-repeat;
   background-position: center; 
   height: 15em;
+  margin-top: 1.5rem;
+  opacity: 0.8;
 }
 
 .card {
@@ -32,6 +44,7 @@ div.logo {
 
 p.error {
   margin-bottom: 0px;
+  color: #eac520;
 }
 
 p.noerror {
@@ -85,11 +98,17 @@ h5:hover {
 /*   display: flex;
   justify-content: flex-end; */
   padding-bottom: 0.16rem;
+  padding-right: 1rem;
+  font-family: 'Share Tech Mono', monospace;
 }
-/* 
+
 .bg-dark {
-  background-color: #4a5663 !important;
-} */
+  opacity: 0.8;
+} 
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: #f2e29d !important;
+}
 
 .btn.btn-block {
 /*   border-top-left-radius: 0rem;
@@ -100,6 +119,7 @@ h5:hover {
   border-bottom-color: white;
   border-left-color: white;
   border-right-color: white;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 .btn.btn-outline-dark, .btn.btn-block, .btn.btn-dark {
@@ -111,6 +131,11 @@ h5:hover {
 
 .search, .signIn {
   box-shadow: 0 1px 3px rgba(black, 0.2);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.btn.search, .btn.signIn {
+    font-weight: bold;
 }
 
 input#query.form-control.underline.mt-4.search {
