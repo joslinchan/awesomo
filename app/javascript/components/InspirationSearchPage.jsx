@@ -13,6 +13,7 @@ class InspirationSearchPage extends Component {
       everything: [],
       term: "",
       boxShowing: false,
+      errorMessage: "",
     }
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -35,12 +36,18 @@ class InspirationSearchPage extends Component {
 
     InspirationApi.search(term)
     .then(everything => {
-      const collected = shuffle(Array.from(everything))
-      this.setState({ 
-        everything: collected,
-        ...this.state.boxShowing,
-       });
- 
+      /* console.log(everything) */
+ if(everything.status === 404) {
+        this.setState({
+          errorMessage: "No results found"
+        });
+      } else {
+        const collected = shuffle(Array.from(everything));
+        this.setState({ 
+          everything: collected,
+          ...this.state.boxShowing,
+        });
+      }
     })
 /*     .catch(() => {
       this.setState({loading: false});
@@ -53,7 +60,7 @@ class InspirationSearchPage extends Component {
 
 
   render() {
-    const {loading, everything} = this.state;
+    const {errorMessage, loading, everything} = this.state;
 
     if (loading) {
       return (
@@ -95,13 +102,15 @@ class InspirationSearchPage extends Component {
         </form>
 
         <section className="bigList mt-4">
-          <div id="box">
-            {everything.map((thing, index) => (
-              <div key={index}>
-                <InspirationSearchDetails {...thing} />
-              </div>
-            ))}
-          </div> 
+          {errorMessage ? <h3>{errorMessage}</h3> : null }
+
+            <div id="box">
+              {everything.map((thing, index) => (
+                <div key={index}>
+                  <InspirationSearchDetails {...thing} />
+                </div>
+              ))}
+            </div> 
         </section>
       </main>
     )
