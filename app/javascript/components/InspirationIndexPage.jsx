@@ -55,11 +55,12 @@ class InspirationIndexPage extends Component {
     return(
       <div className="container">
       
-        <ul className="list">
+      <div id="box">
+        {/* <ul /* className="list" > */}
           {inspirations.map((inspire, index) => (
       
-            <li key={inspire.id} className="items">
-              <div className="card mt-4">
+            <div key={inspire.id} /* className="items" */ >
+              <div className="card">
     
                 <a href={inspire.url}>
                   <h5 className="text-center leftright mb-2">
@@ -71,7 +72,7 @@ class InspirationIndexPage extends Component {
                   className="d-flex justify-content-center"
                 >
                   <a href={inspire.url}>
-                    <img src={inspire.image_url} className="leftright" />
+                    <img src={inspire.image_url} className="leftright image" />
                   </a>
                 </div>
 
@@ -92,14 +93,16 @@ class InspirationIndexPage extends Component {
                   data-id={inspire.id} 
                   onClick={this.deleteInspiration}
                 >
-                  <i class="fas fa-trash"></i>
+                  <i className="fas fa-trash"></i>
                 </button>
                 
               </div>
-            </li>  
+            </div>  
 
           ))}
-        </ul>
+        {/* </ul> */}
+        
+        </div>
       </div>
     );
   }
