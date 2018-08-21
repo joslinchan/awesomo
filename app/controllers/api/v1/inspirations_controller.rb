@@ -58,9 +58,9 @@ class Api::V1::InspirationsController < Api::ApplicationController
     patternCollection = ColourApiParser.parse_patterns params[:query]
 
     if params[:query]
-      photos = UnsplashRetriever.new.get_photos params[:query]
+      photos = UnsplashApiRetriever.get_photos params[:query]
     else
-      photos = UnsplashRetriever.new.get_random
+      photos = UnsplashApiRetriever.get_random
     end
 
     paletteCollection ||= 0

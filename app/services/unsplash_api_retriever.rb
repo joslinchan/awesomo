@@ -1,4 +1,4 @@
-class UnsplashRetriever
+class UnsplashApiRetriever
 
   def initialize
     Unsplash.configure do |config|
@@ -8,11 +8,11 @@ class UnsplashRetriever
     end
   end
 
-  def get_photos(search_term)
+  def self.get_photos(search_term)
     Unsplash::Photo.search(search_term)
   end
     
-  def get_random
+  def self.get_random
     Unsplash::Photo.curated
   end
 end
