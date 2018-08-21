@@ -57,22 +57,45 @@ class Api::V1::InspirationsController < Api::ApplicationController
     colourCollection = SearchApi.new.search_colours params[:query]
     patternCollection = SearchApi.new.search_patterns params[:query]
 
+    paletteCollection ||= 0
+    colourCollection ||= 0
+    patternCollection ||= 0
+
     if params[:query]
       photos = UnsplashRetriever.new.get_photos params[:query]
     else
       photos = UnsplashRetriever.new.get_random
     end
     
-    everything = paletteCollection + colourCollection + patternCollection + photos
+    if (paletteCollection==0)
+      everything = paletteCollection + colourCollection + patternCollection
+    else
+      everything = paletteCollection + colourCollection + patternCollection + photos
+    end
 
-    everything.each do |thing|
-      if (thing["hex"])
-        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"])
-      elsif (thing["colors"])
-        thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"])
-      else
-        thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"])
+    if (everything==0)
+
+      return render(
+          status: 404,
+          json: {
+            status: 404,
+            errors: [{
+              type: "NotFound"
+            }]
+          })
+
+    else
+
+      everything.each do |thing|
+        if (thing["hex"])
+          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"])
+        elsif (thing["colors"])
+          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"])
+        else
+          thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"])
+        end
       end
+      
     end
 
     respond_to do |format|
