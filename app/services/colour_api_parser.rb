@@ -1,4 +1,4 @@
-class SearchApi
+class ColourApiParser
 
   def self.parse_palettes(search_params)
     palettes = ColourRetriever.new.get_palettes(search_params)
