@@ -53,9 +53,9 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
   def search
-    paletteCollection = SearchApi.new.search_palettes params[:query]
-    colourCollection = SearchApi.new.search_colours params[:query]
-    patternCollection = SearchApi.new.search_patterns params[:query]
+    paletteCollection = SearchApi.parse_palettes params[:query]
+    colourCollection = SearchApi.parse_colours params[:query]
+    patternCollection = SearchApi.parse_patterns params[:query]
 
     paletteCollection ||= 0
     colourCollection ||= 0

@@ -1,11 +1,8 @@
 class SearchApi
 
-  def search_palettes(search_params)
+  def self.parse_palettes(search_params)
     palettes = ColourRetriever.new.get_palettes(search_params)
-  
-    # palettes = {wee: "woo"}
     paletteCollection = palettes.try(:[],"palettes").try(:[], "palette")
-   
   end
  
 =begin   
@@ -15,7 +12,7 @@ class SearchApi
   end  
 =end
 
-  def search_colours(search_params)
+  def self.parse_colours(search_params)
     colours = ColourRetriever.new.get_colours(search_params)
     colourCollection = colours.try(:[], "colors").try(:[], "color")
   end
@@ -27,7 +24,7 @@ class SearchApi
   end
 =end
 
-  def search_patterns(search_params)
+  def self.parse_patterns(search_params)
     patterns = ColourRetriever.new.get_patterns(search_params)
     patternCollection = patterns.try(:[],"patterns").try(:[], "pattern")
   end 
