@@ -51,6 +51,9 @@ const NavBar = props => {
           to="/">
           Intro
         </NavLink>
+        <a href="#" className="btn btn-dark">
+          Sign Up
+        </a>
         <NavLink 
           className="btn btn-dark"
           exact 

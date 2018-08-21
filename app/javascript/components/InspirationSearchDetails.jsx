@@ -10,7 +10,6 @@ class InspirationDetails extends Component {
       thing: props,
       highlighted: false,
     };
-    //console.log(this.state);
 
     this.save = this.save.bind(this);
     this.delete = this.delete.bind(this);
@@ -39,7 +38,6 @@ class InspirationDetails extends Component {
 
   delete(event) {
     const {currentTarget} = event;
-    //console.log(this.state.id_for_deletion)
     InspirationApi.destroy(this.state.id_for_deletion)
     .then(data => {
       if (data.status === 200) {
@@ -66,9 +64,9 @@ class InspirationDetails extends Component {
     
       <div 
         className={this.state.highlighted ? (
-          "highlight card mt-4"
+          "highlight"
         ) : (
-          "card mt-4"
+          null
         )}
       > 
 

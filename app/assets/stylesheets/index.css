@@ -250,21 +250,6 @@ li {
   list-style-type: none;
 }
 
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.list.items {
-	flex: 1 0 25%;
-  box-sizing: border-box;
-}
-
-.items {
-  margin-right: auto;
-}
-
 
 span.sign, span.icon {
   padding: 0px;

@@ -56,10 +56,10 @@ class InspirationIndexPage extends Component {
       <div className="container">
       
       <div id="box">
-        {/* <ul /* className="list" > */}
+     
           {inspirations.map((inspire, index) => (
       
-            <div key={inspire.id} /* className="items" */ >
+            <div key={inspire.id}  >
               <div className="card">
     
                 <a href={inspire.url}>
@@ -100,7 +100,7 @@ class InspirationIndexPage extends Component {
             </div>  
 
           ))}
-        {/* </ul> */}
+       
         
         </div>
       </div>

@@ -30,9 +30,8 @@ class InspirationSearchPage extends Component {
 
   enterSubmit(event) {
     event.preventDefault();
-    const {currentTarget} = event; //const currentTarget = event.currentTarget
-    //console.log(currentTarget);
-    const { term } = this.state;   // const term = this.state.term;
+    const {currentTarget} = event;
+    const { term } = this.state;  
 
     InspirationApi.search(term)
     .then(everything => {
@@ -41,7 +40,7 @@ class InspirationSearchPage extends Component {
         everything: collected,
         ...this.state.boxShowing,
        });
-      // console.log(collected);
+ 
     })
 /*     .catch(() => {
       this.setState({loading: false});
@@ -96,13 +95,13 @@ class InspirationSearchPage extends Component {
         </form>
 
         <section className="bigList">
-          <ul className="list">
+          <div className="box">
             {everything.map((thing, index) => (
-              <li key={index} className="items">
+              <li key={index} className="card">
                 <InspirationSearchDetails {...thing} />
               </li>
             ))}
-          </ul> 
+          </div> 
         </section>
       </main>
     )
