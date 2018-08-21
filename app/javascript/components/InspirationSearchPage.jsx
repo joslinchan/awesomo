@@ -94,12 +94,12 @@ class InspirationSearchPage extends Component {
           </div>
         </form>
 
-        <section className="bigList">
-          <div className="box">
+        <section className="bigList mt-4">
+          <div id="box">
             {everything.map((thing, index) => (
-              <li key={index} className="card">
+              <div key={index}>
                 <InspirationSearchDetails {...thing} />
-              </li>
+              </div>
             ))}
           </div> 
         </section>

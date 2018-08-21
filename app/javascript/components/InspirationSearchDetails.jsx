@@ -64,16 +64,16 @@ class InspirationDetails extends Component {
     
       <div 
         className={this.state.highlighted ? (
-          "highlight"
+          "highlight card"
         ) : (
-          null
+          "card"
         )}
       > 
 
         <div className="d-flex justify-content-center">
           {thing.title ? (
             <a href= {thing.url}>
-              <h5 className="leftright mb-2">{thing.title}</h5>
+              <h5 className="text-center leftright mb-2">{thing.title}</h5>
             </a>
           ) : (
             <a href= {thing.attributes.table.links.html}>
