@@ -1,4 +1,4 @@
-class ColourRetriever
+class ColourApiRetriever
   include HTTParty
   base_uri "colourlovers.com/api"
 
