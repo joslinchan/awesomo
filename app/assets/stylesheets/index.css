@@ -47,16 +47,12 @@
   width: 100% !important;
 }
 
-/* div.card {
-  min-height: 100% !important;
-}
-
-div#box {
-
-} */
-
 a {
   text-decoration: none !important;
+}
+
+a.btn.btn-dark {
+  opacity: 1;
 }
 
 .bg-dark {
@@ -83,10 +79,17 @@ body {
   border-bottom-right-radius: 1rem;
   font-weight: bold;
   opacity: 0.7;
+  outline: none;
 }
 
 .btn.search, .btn.signIn {
   border-color: #ced4da;
+}
+
+button:focus { outline: none; }
+
+button:active {
+  border-style: outset;
 }
 
 /* .btn.btn-outline-dark.noborder {
@@ -140,6 +143,7 @@ div.logo {
 
 h3 {
   font-family: 'Share Tech Mono', monospace;
+  text-align: center;
 }
 
 h5 {
@@ -161,19 +165,20 @@ h5:hover {
   color: #343a40;
 }
 
-/* .image {
-  transition: all 0.75s ease-out;
-  opacity: 0.8;
 
-} */
+a     {
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+}
+a img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 
 a img {
   transition: all 0.75s ease-out;
   opacity: 0.8;
 }
-
-a     {-webkit-transform: rotate(0);}
-a img {-webkit-backface-visibility: hidden;}
 
 a img:hover {
   opacity: 1;
@@ -233,8 +238,6 @@ p.noerror {
 }
 
 .NavBar {
-/*   display: flex;
-  justify-content: flex-end; */
   padding-bottom: 0.16rem;
   padding-right: 1rem;
   font-family: 'Share Tech Mono', monospace;

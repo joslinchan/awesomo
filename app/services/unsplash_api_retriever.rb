@@ -8,11 +8,11 @@ class UnsplashApiRetriever
     end
   end
 
-  def self.get_photos(search_term)
+  def get_photos(search_term)
     Unsplash::Photo.search(search_term)
   end
     
-  def self.get_random
+  def get_random
     Unsplash::Photo.curated
   end
 end

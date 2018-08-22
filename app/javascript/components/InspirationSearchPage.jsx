@@ -34,7 +34,8 @@ class InspirationSearchPage extends Component {
     .then(everything => {
       if (everything.status === 404) {
         return this.setState({
-          errorMessage: "No results found"
+          errorMessage: "No results found",
+          loading: false,
         });
       } 
 
