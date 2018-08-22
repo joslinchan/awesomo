@@ -3,25 +3,19 @@ import InspirationApi from "../requests/inspiration";
 import shuffle from "lodash/shuffle";
 import InspirationSearchDetails from "./InspirationSearchDetails";
 
-
 class InspirationSearchPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loading: true,
+      loading: false,
       everything: [],
       term: "",
-      boxShowing: false,
       errorMessage: "",
     }
 
     this.onInputChange = this.onInputChange.bind(this);
     this.enterSubmit = this.enterSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({ loading: false, everything: [] });
   }
 
   onInputChange(term) {
@@ -34,41 +28,27 @@ class InspirationSearchPage extends Component {
     const {currentTarget} = event;
     const { term } = this.state;  
 
+    this.setState({ everything: [], loading:true })
+
     InspirationApi.search(term)
     .then(everything => {
-      /* console.log(everything) */
- if(everything.status === 404) {
-        this.setState({
+      if (everything.status === 404) {
+        return this.setState({
           errorMessage: "No results found"
         });
-      } else {
-        const collected = shuffle(Array.from(everything));
-        this.setState({ 
-          everything: collected,
-          ...this.state.boxShowing,
-        });
-      }
+      } 
+
+      const collected = shuffle(Array.from(everything));
+      console.log(collected)
+      return this.setState({ 
+        everything: collected,
+        loading: false,
+      });
     })
-/*     .catch(() => {
-      this.setState({loading: false});
-    }); */
   }
-
-  handleBox = (event) => {
-    this.setState({boxShowing: !this.state.boxShowing})
-  }
-
 
   render() {
     const {errorMessage, loading, everything} = this.state;
-
-    if (loading) {
-      return (
-        <main>
-          <h2>Loading searches...</h2>
-        </main>
-      );
-    }
 
     return(
       <main className="container">
@@ -102,8 +82,8 @@ class InspirationSearchPage extends Component {
         </form>
 
         <section className="bigList mt-4">
-          {errorMessage ? <h3>{errorMessage}</h3> : null }
-
+          {errorMessage ? <h3>{errorMessage}</h3> : <div /> }
+          {loading ? <h3>Loading...</h3> : (
             <div id="box">
               {everything.map((thing, index) => (
                 <div key={index}>
@@ -111,6 +91,8 @@ class InspirationSearchPage extends Component {
                 </div>
               ))}
             </div> 
+          )}
+
         </section>
       </main>
     )

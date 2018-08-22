@@ -6,7 +6,6 @@ class InspirationDetails extends Component {
     super(props);
 
      this.state = {
-      //loading: true,
       thing: props,
       highlighted: false,
     };
@@ -49,16 +48,7 @@ class InspirationDetails extends Component {
   }
 
   render() {
-    const {loading, thing} = this.state;
-
-/*      if (loading) {
-      return (
-        <main>
-          <h2>Loading searches...</h2>
-        </main>
-      );
-    }  */
-
+    const { thing } = this.state;
 
     return(
     

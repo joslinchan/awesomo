@@ -138,6 +138,10 @@ div.logo {
   border-right-color: white;
 }
 
+h3 {
+  font-family: 'Share Tech Mono', monospace;
+}
+
 h5 {
   /* color: #4a5663; */
   color: #6c757d;

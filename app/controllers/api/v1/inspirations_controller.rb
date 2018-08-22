@@ -53,31 +53,15 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
   def search
-    paletteCollection = ColourApiParser.parse_palettes params[:query]
     colourCollection = ColourApiParser.parse_colours params[:query]
+    paletteCollection = ColourApiParser.parse_palettes params[:query]
     patternCollection = ColourApiParser.parse_patterns params[:query]
-
-=begin     
-    if params[:query]
-      photos = UnsplashApiRetriever.get_photos params[:query]
-    else
-      photos = UnsplashApiRetriever.get_random
-    end 
-=end
 
     paletteCollection ||= 0
     colourCollection ||= 0
     patternCollection ||= 0
 
     everything = paletteCollection + colourCollection + patternCollection
-    
-=begin     
-    if (paletteCollection==0)
-      everything = paletteCollection + colourCollection + patternCollection
-    else
-      everything = paletteCollection + colourCollection + patternCollection + photos
-    end
-=end
 
     if (everything==0)
 
@@ -119,3 +103,19 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end 
 
 end
+
+=begin     
+    if params[:query]
+      photos = UnsplashApiRetriever.get_photos params[:query]
+    else
+      photos = UnsplashApiRetriever.get_random
+    end 
+=end
+
+=begin     
+    if (paletteCollection==0)
+      everything = paletteCollection + colourCollection + patternCollection
+    else
+      everything = paletteCollection + colourCollection + patternCollection + photos
+    end
+=end
