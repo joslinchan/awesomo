@@ -47,13 +47,13 @@ class InspirationIndexPage extends Component {
     if (loading) {
       return(
         <main>
-          <h2>Loading Inspirations...</h2>
+          <h2 className="load">Loading Inspirations...</h2>
         </main>
       );
     }
 
     return(
-      <div className="container">
+      <div className="container mt-4">
       
       <div id="box">
      

@@ -20,7 +20,6 @@ class InspirationSearchPage extends Component {
 
   onInputChange(term) {
     this.setState({term});
-    console.log(term);
   }
 
   enterSubmit(event) {
@@ -40,7 +39,6 @@ class InspirationSearchPage extends Component {
       } 
 
       const collected = shuffle(Array.from(everything));
-      console.log(collected)
       return this.setState({ 
         everything: collected,
         loading: false,
@@ -84,7 +82,7 @@ class InspirationSearchPage extends Component {
 
         <section className="bigList mt-4">
           {errorMessage ? <h3>{errorMessage}</h3> : <div /> }
-          {loading ? <h3>Loading...</h3> : (
+          {loading ? <h3 className="load">Loading...</h3> : (
             <div id="box">
               {everything.map((thing, index) => (
                 <div key={index}>

@@ -141,7 +141,7 @@ div.logo {
   border-right-color: white;
 }
 
-h3 {
+h2, h3 {
   font-family: 'Share Tech Mono', monospace;
   text-align: center;
 }
@@ -275,4 +275,25 @@ span.icon {
 
 ul {
   padding: 0px;
+}
+
+
+.load {
+  position: relative;
+  -webkit-animation: mymove 2s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 2s infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  0%    {opacity: 0;}
+  50%   {opacity: 1;}
+  100%  {opacity: 0;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+  0%    {opacity: 0;}
+  50%   {opacity: 1;}
+  100%  {opacity: 0;}
 }

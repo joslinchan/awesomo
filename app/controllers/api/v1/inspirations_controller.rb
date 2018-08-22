@@ -60,11 +60,6 @@ class Api::V1::InspirationsController < Api::ApplicationController
     paletteCollection ||= 0
     colourCollection ||= 0
     patternCollection ||= 0
-
-=begin     
-everything = paletteCollection + colourCollection + patternCollection 
-=end
-
     
     if params[:query]
       photos = UnsplashApiRetriever.new.get_photos params[:query]
@@ -121,3 +116,6 @@ everything = paletteCollection + colourCollection + patternCollection
 
 end
 
+=begin     
+everything = paletteCollection + colourCollection + patternCollection 
+=end
