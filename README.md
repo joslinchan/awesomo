@@ -21,6 +21,10 @@ This project uses the following:
 
 * Bootstrap 4
 
+* ColourLovers API
+
+* Unsplash API
+
 Once you have cloned the project, run `bundle` and `db:create`.
 
 Don't forget to seed so that you have access as the admin user since the search function and collection of saved items are only availabe after authentication.
