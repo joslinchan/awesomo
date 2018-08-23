@@ -86,12 +86,6 @@ body {
   border-color: #ced4da;
 }
 
-button:focus { outline: none; }
-
-button:active {
-  border-style: outset;
-}
-
 /* .btn.btn-outline-dark.noborder {
   border-bottom-color: white;
   border-top-color: white;
@@ -116,7 +110,7 @@ button:active {
 }
 
 .card.highlight {
-  border: 1px solid #f4d522;
+  border: 1px solid #ffd900;
 }
 
 .delete {
