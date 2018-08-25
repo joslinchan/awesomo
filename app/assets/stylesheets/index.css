@@ -1,3 +1,20 @@
+/* Animation for loading */
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  0%    {opacity: 0;}
+  50%   {opacity: 1;}
+  100%  {opacity: 0;}
+}
+/* Standard syntax */
+@keyframes mymove {
+  0%    {opacity: 0;}
+  50%   {opacity: 1;}
+  100%  {opacity: 0;}
+}
+
+
+/* masonary style grid layout */
 @media (max-width: 1200px) {
   #box {
   -moz-column-count:    4;
@@ -55,6 +72,26 @@ a.btn.btn-dark {
   opacity: 1;
 }
 
+/* support to prevent css jitters */
+a     {
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+}
+a img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+a img {
+  transition: all 0.75s ease-out;
+  opacity: 0.8;
+}
+
+a img:hover {
+  opacity: 1;
+}
+
 .bg-dark {
   opacity: 0.8;
 } 
@@ -86,13 +123,6 @@ body {
   border-color: #ced4da;
 }
 
-/* .btn.btn-outline-dark.noborder {
-  border-bottom-color: white;
-  border-top-color: white;
-  border-left-color: white;
-  border-right-color: white;
-} */
-
 .card {
   transition: all 0.5s ease-out;
   background-color: white;
@@ -113,16 +143,16 @@ body {
   border: 1px solid #ffd900;
 }
 
+.delete {
+  align-items: flex-end;
+}
+
 div#colourBox {
   width: 20px;
   height: 20px;
   display: inline-block;
   margin-left: 1rem; 
   justify-content: flex-end;
-}
-
-.delete {
-  align-items: flex-end;
 }
 
 div.logo {
@@ -173,24 +203,7 @@ h5:hover {
   justify-content: space-between;
 }
 
-a     {
-  -webkit-transform: rotate(0);
-  transform: rotate(0);
-}
-a img {
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-}
-
-a img {
-  transition: all 0.75s ease-out;
-  opacity: 0.8;
-}
-
-a img:hover {
-  opacity: 1;
-}
-
+/* I don't think the colour below is overwriting */
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-color: #f2e29d !important;
 }
@@ -230,6 +243,16 @@ input#query.form-control.underline.mt-4.search:hover {
   padding-right: 6px;
 }
 
+li {
+  list-style-type: none;
+}
+
+.load {
+  position: relative;
+  -webkit-animation: mymove 2s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 2s infinite;
+}
+
 .monoFont {
   font-family: 'Share Tech Mono', monospace;
 }
@@ -259,12 +282,6 @@ p.noerror {
   color: #f4d522 !important;
 }
 
-
-li {
-  list-style-type: none;
-}
-
-
 span, span.sign, span.icon {
   padding: 0px;
 }
@@ -283,29 +300,9 @@ span.icon {
 
 span.text-light.lead {
   padding-top: 1rem;
+  padding-right: 1rem;
 }
 
 ul {
   padding: 0px;
-}
-
-
-.load {
-  position: relative;
-  -webkit-animation: mymove 2s infinite; /* Safari 4.0 - 8.0 */
-  animation: mymove 2s infinite;
-}
-
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes mymove {
-  0%    {opacity: 0;}
-  50%   {opacity: 1;}
-  100%  {opacity: 0;}
-}
-
-/* Standard syntax */
-@keyframes mymove {
-  0%    {opacity: 0;}
-  50%   {opacity: 1;}
-  100%  {opacity: 0;}
 }
