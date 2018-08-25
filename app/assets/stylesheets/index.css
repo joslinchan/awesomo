@@ -117,8 +117,8 @@ div#colourBox {
   width: 20px;
   height: 20px;
   display: inline-block;
-  margin-left: 1rem;
-  transform: translate(0%, 20%);
+  margin-left: 1rem; 
+  justify-content: flex-end;
 }
 
 .delete {
@@ -167,6 +167,11 @@ h5:hover {
   color: #343a40;
 }
 
+#hexLine {
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
+}
 
 a     {
   -webkit-transform: rotate(0);
@@ -260,7 +265,7 @@ li {
 }
 
 
-span.sign, span.icon {
+span, span.sign, span.icon {
   padding: 0px;
 }
 
@@ -273,6 +278,7 @@ span.icon {
   margin-left: 1rem;
   float: left;
   filter:invert(100%);
+  padding: 1rem;
 }
 
 ul {

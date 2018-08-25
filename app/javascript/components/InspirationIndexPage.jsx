@@ -83,7 +83,7 @@ class InspirationIndexPage extends Component {
                     {inspire.hexes.map((hex, i) => (
                       <li key={index+i}>
                         {hex.code.includes("#") ? (
-                          <span>
+                          <span id="hexLine">
                             {hex.code} 
                             <div 
                               id="colourBox" 
@@ -92,7 +92,7 @@ class InspirationIndexPage extends Component {
                             </div>
                           </span>
                         ) : (
-                        <span>
+                        <span id="hexLine">
                           #{hex.code}
                           <div 
                             id="colourBox" 
