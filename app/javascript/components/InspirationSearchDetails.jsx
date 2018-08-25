@@ -88,13 +88,38 @@ class InspirationDetails extends Component {
           <ul>
             {thing.colors && thing.colors.hex.map((hex, i) => (
               <li key={hex+i}>
-                #{hex}
+                <span id="hexLine">
+                  #{hex}
+                  <div 
+                    id="colourBox" 
+                    style={{backgroundColor: '#'+hex}}
+                  >
+                  </div>
+                </span>
               </li>
             ))}
-            {thing.hex && <li>#{thing.hex}</li>}
+            {thing.hex && 
+              <li>
+                <span id="hexLine">
+                  #{thing.hex}
+                  <div 
+                    id="colourBox" 
+                    style={{backgroundColor: '#'+thing.hex}}
+                  >
+                  </div>
+                </span>
+              </li>
+            }
             {thing.attributes && 
               <li>
-                {thing.attributes.table.color}
+                <span id="hexLine">
+                  {thing.attributes.table.color}
+                  <div 
+                    id="colourBox" 
+                    style={{backgroundColor: thing.attributes.table.color}}
+                  >
+                  </div>
+                </span>
               </li>
             }
           </ul>

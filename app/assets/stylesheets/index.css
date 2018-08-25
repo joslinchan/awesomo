@@ -281,6 +281,10 @@ span.icon {
   padding: 1rem;
 }
 
+span.text-light.lead {
+  padding-top: 1rem;
+}
+
 ul {
   padding: 0px;
 }
