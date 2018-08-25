@@ -82,7 +82,26 @@ class InspirationIndexPage extends Component {
                   <ul>
                     {inspire.hexes.map((hex, i) => (
                       <li key={index+i}>
-                        #{hex.code}
+                        {hex.code.includes("#") ? (
+                          <span>
+                            {hex.code} 
+                            <div 
+                              id="colourBox" 
+                              style={{backgroundColor: hex.code}}
+                            >
+                            </div>
+                          </span>
+                        ) : (
+                        <span>
+                          #{hex.code}
+                          <div 
+                            id="colourBox" 
+                            style={{backgroundColor: "#"+hex.code}}
+                          >
+                          </div>
+                        </span>
+                        ) }
+                        
                       </li>
                     ))}
                   </ul>
