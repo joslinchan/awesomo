@@ -29,4 +29,11 @@ Once you have cloned the project, run `bundle` and `db:create`.
 
 Don't forget to seed so that you have access as the admin user since the search function and collection of saved items are only availabe after authentication.
 
+###Credit
+Background pattern by Welsley Woo from Subtle Patterns at Toptal 
+https://www.toptal.com/designers/subtlepatterns/inspiration-geometry/
+
+CC BY-SA 3.0, Common Creative Licence 
+
+
 🌈 Have fun!
