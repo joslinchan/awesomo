@@ -1,24 +1,39 @@
-# README
+# Awesomo
+ 
+![alt text](https://github.com/joslinchan/final_project/blob/awesomo_transition/app/assets/images/AwesomoLogoDarkGrey.png "Awesomo Logo")
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Awesomo is a mini search engine to help you find colours and other inspirational items for your next amazing project. Picking colours and images can be a real struggle, but Awesomo can help!
 
-Things you may want to cover:
+Awesomo runs on a Rails backend with a Postgres database, and React on the frontend with Bootstrap and a large of of custom css. The frontend and backend are combined with Webpacker and React Rails so that this app runs on a single server along with a compiler.
 
-* Ruby version
+## Getting Started
+If you are interested in cloning this project, read on!
 
-* System dependencies
+This project uses the following:
 
-* Configuration
+* Ruby 2.5.1
 
-* Database creation
+* Rails 5.2.0
 
-* Database initialization
+* Webpacker 3.5.5
 
-* How to run the test suite
+* React Rails
 
-* Services (job queues, cache servers, search engines, etc.)
+* Bootstrap 4
 
-* Deployment instructions
+* ColourLovers API
 
-* ...
+* Unsplash API
+
+Once you have cloned the project, run `bundle` and `db:create`.
+
+Don't forget to seed so that you have access as the admin user since the search function and collection of saved items are only availabe after authentication.
+
+###Credit
+Background pattern by Welsley Woo from Subtle Patterns at Toptal 
+https://www.toptal.com/designers/subtlepatterns/inspiration-geometry/
+
+CC BY-SA 3.0, Common Creative Licence 
+
+
+🌈 Have fun!

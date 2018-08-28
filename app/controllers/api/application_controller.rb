@@ -3,6 +3,7 @@ class Api::ApplicationController < ApplicationController
   rescue_from StandardError, with: :standard_error
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+  rescue_from ActiveModel::Serializer::Null, with: :null_result
 
   skip_before_action :verify_authenticity_token
   
@@ -73,5 +74,15 @@ class Api::ApplicationController < ApplicationController
       }
     )
   end
+
+  def null_result
+    render(
+      status: 404,
+      json: {
+        status: 404,
+        message: "No results found"
+      }
+    )
+    end
   
 end

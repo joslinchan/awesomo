@@ -7,7 +7,8 @@ class InspirationIndexPage extends Component {
 
     this.state = {
       loading: true,
-      inspirations: []
+      inspirations: [],
+      boxShowing: false,
     };
 
     this.deleteInspiration = this.deleteInspiration.bind(this);
@@ -16,7 +17,11 @@ class InspirationIndexPage extends Component {
   componentDidMount() {
     InspirationApi.all()
     .then(inspirations => {
-      this.setState({loading: false, inspirations: inspirations})
+      this.setState({
+        loading: false, 
+        inspirations: inspirations, 
+        boxShowing: true,
+      })
     })
     .catch(() => {
       this.setState({loading: false});
@@ -29,7 +34,8 @@ class InspirationIndexPage extends Component {
     const {inspirations} = this.state;
 
     this.setState({
-      inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId)
+      inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId),
+      boxShowing: false,
     })
 
     InspirationApi.destroy(inspirationId);
@@ -41,28 +47,81 @@ class InspirationIndexPage extends Component {
     if (loading) {
       return(
         <main>
-          <h2>Loading Inspirations...</h2>
+          <h2 className="load">Loading Inspirations...</h2>
         </main>
       );
     }
 
     return(
-      <div className="InspirationIndexPage">
-        <h1>Collection</h1>
-        <ul>
+      <div className="container mt-4">
+      
+      <div id="box">
+     
           {inspirations.map((inspire, index) => (
-            <li key = {inspire.id}>
-              <a href={inspire.url}><p>{inspire.title}</p></a>
-              <a href={inspire.url}><img src={inspire.image_url} /></a>
-              <ul>
-              {inspire.hexes.map((hex, i) => (
-                  <li key= {index+i}>{hex.code}</li>
-              ))}
-              </ul>
-              <button data-id={inspire.id} onClick={this.deleteInspiration}>Delete</button>
-            </li>
+      
+            <div key={inspire.id}  >
+              <div className="card">
+    
+                <a href={inspire.url}>
+                  <h5 className="text-center leftright mb-2">
+                    {inspire.title}
+                  </h5>
+                </a>
+
+                <div 
+                  className="d-flex justify-content-center"
+                >
+                  <a href={inspire.url}>
+                    <img src={inspire.image_url} className="leftright image" />
+                  </a>
+                </div>
+
+                <div 
+                  className="d-flex justify-content-center hex mt-2 mb-2"
+                >
+                  <ul>
+                    {inspire.hexes.map((hex, i) => (
+                      <li key={index+i}>
+                        {hex.code.includes("#") ? (
+                          <span id="hexLine">
+                            {hex.code} 
+                            <div 
+                              id="colourBox" 
+                              style={{backgroundColor: hex.code}}
+                            >
+                            </div>
+                          </span>
+                        ) : (
+                        <span id="hexLine">
+                          #{hex.code}
+                          <div 
+                            id="colourBox" 
+                            style={{backgroundColor: "#"+hex.code}}
+                          >
+                          </div>
+                        </span>
+                        ) }
+                        
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <button 
+                  className="btn btn-outline-dark btn-block delete"
+                  data-id={inspire.id} 
+                  onClick={this.deleteInspiration}
+                >
+                  <i className="fas fa-trash"></i>
+                </button>
+                
+              </div>
+            </div>  
+
           ))}
-        </ul>
+       
+        
+        </div>
       </div>
     );
   }

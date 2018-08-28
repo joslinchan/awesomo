@@ -10,28 +10,57 @@ const NavBar = props => {
   };
 
   return(
-    <nav className = "NavBar">
-      <NavLink exact to="/">
-        Awesomo
-      </NavLink>
+    <nav className="NavBar nav justify-content-end bg-dark mb-2">
+      <span className="icon flex-fill">
+      </span>
 
       {currentUser ? (
         <React.Fragment>
-          <NavLink exact to="/inspiration/search">
+          <span className="text-light lead">Hello {currentUser.first_name}!</span>
+          <NavLink 
+            className="btn btn-dark" 
+            exact 
+            to="/">
+            Intro
+          </NavLink>
+          <NavLink 
+            className="btn btn-dark"
+            exact to="/inspiration/search"
+          >
             Search
           </NavLink>
-          <NavLink exact to="/inspirations">
+          <NavLink 
+            className="btn btn-dark"
+            exact 
+            to="/inspirations"
+          >
             Collection
           </NavLink>
-          <span>{currentUser.full_name}</span>
-          <a onClick={handleClick} href="#">
-            Sign Out
+          <a 
+            className="btn btn-dark"
+            onClick={handleClick} href="#"
+          >
+            Sign Out <i className="fas fa-sign-out-alt"></i>
           </a>
         </React.Fragment>
       ) : (
-        <NavLink exact to="/sign_in">
-          Sign In
+        <span className="sign">
+        <NavLink 
+          className="btn btn-dark" 
+          exact 
+          to="/">
+          Intro
         </NavLink>
+        <a href="#" className="btn btn-dark">
+          Sign Up
+        </a>
+        <NavLink 
+          className="btn btn-dark"
+          exact 
+          to="/sign_in">
+          Sign In <i className="fas fa-sign-in-alt"></i>
+        </NavLink>
+        </span>
       )}
     </nav>
   )

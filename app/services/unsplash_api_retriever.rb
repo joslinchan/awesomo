@@ -1,4 +1,4 @@
-class UnsplashRetriever
+class UnsplashApiRetriever
 
   def initialize
     Unsplash.configure do |config|

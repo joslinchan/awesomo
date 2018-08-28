@@ -8,6 +8,7 @@ import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import Session from "../requests/session";
 import InspirationSearchPage from "./InspirationSearchPage";
+import WelcomePage from "./WelcomePage";
 
 import "../index.css";
 
@@ -60,19 +61,16 @@ class Main extends Component {
 
     return(
       <Router>
-        <div className="container-fluid">
+        <div>
           <NavBar 
             onSignOut={this.destroySession} 
             currentUser={currentUser} 
           />
           <Switch>
-            <AuthRoute
-              isAuth={currentUser}
-              path="/inspiration/search"
-              exact
-              render={
-                props => <InspirationSearchPage {...props} />
-              }
+            <Route 
+              path="/" 
+              exact 
+              component={WelcomePage} 
             />
             <AuthRoute
               isAuth={currentUser}
@@ -80,6 +78,14 @@ class Main extends Component {
               exact
               render={
                 props => <InspirationIndexPage {...props} />
+              }
+            />
+            <AuthRoute
+              isAuth={currentUser}
+              path="/inspiration/search"
+              exact
+              render={
+                props => <InspirationSearchPage {...props} />
               }
             />
             <Route 
@@ -90,9 +96,8 @@ class Main extends Component {
                 )
               }
             />
-            {/* <Route component={NotFoundPage} /> */}
+            <Route component={NotFoundPage} />
           </Switch>
-          <h1>Fruits are great!</h1>
         </div>
       </Router>
     )
