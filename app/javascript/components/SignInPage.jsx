@@ -30,6 +30,7 @@ class SignInPage extends Component {
       } else {
         const {onSignIn = () => {}} = this.props;
         onSignIn();
+        /* console.log(this.props.history); */
         this.props.history.push("/");
       }
     });
@@ -38,8 +39,9 @@ class SignInPage extends Component {
   render() {
     const {errorMessage} = this.state;
     return(
-      <main>
-        <h2>Sign In</h2>
+      <main className="container mt-4">
+        <div className="logo">
+        </div>
         <form onSubmit={this.createSession}>
           <div>
             {/* <label htmlFor="email">Email</label><br /> */}
@@ -48,7 +50,7 @@ class SignInPage extends Component {
               name="email" 
               id="email" 
               placeholder= "Email" 
-              className="form-control underline"
+              className="form-control underline search"
             />
             <small>
               {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
@@ -62,18 +64,20 @@ class SignInPage extends Component {
               name="password" 
               id="password" 
               placeholder="Password" 
-              className="form-control mt-3 underline"
+              className="form-control mt-3 underline search"
             />
             <small>
               {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
             </small>
           </div>
 
-          <input 
-            type="submit" 
-            value="Sign In"
-            className="btn btn-outline-dark"
-          />
+          <div className="d-flex justify-content-end">
+            <input 
+              type="submit" 
+              value="&#xf2f6;"
+              className="btn btn-outline-dark signIn icon"
+            />
+          </div>
         </form>
       </main>
     );

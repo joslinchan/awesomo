@@ -47,53 +47,81 @@ class InspirationIndexPage extends Component {
     if (loading) {
       return(
         <main>
-          <h2>Loading Inspirations...</h2>
+          <h2 className="load">Loading Inspirations...</h2>
         </main>
       );
     }
 
     return(
-      <div className="container">
+      <div className="container mt-4">
       
-        <ul>
+      <div id="box">
+     
           {inspirations.map((inspire, index) => (
-            <div key={index} className="card mb-4">
-              <li key={inspire.id}>
-       
+      
+            <div key={inspire.id}  >
+              <div className="card">
+    
                 <a href={inspire.url}>
-                  <p className="text-center">
+                  <h5 className="text-center leftright mb-2">
                     {inspire.title}
-                  </p>
+                  </h5>
                 </a>
-                <div className="d-flex justify-content-center">
-                <a href={inspire.url}>
-                  <img src={inspire.image_url} />
-                </a>
+
+                <div 
+                  className="d-flex justify-content-center"
+                >
+                  <a href={inspire.url}>
+                    <img src={inspire.image_url} className="leftright image" />
+                  </a>
                 </div>
 
-                <div className="d-flex justify-content-center">
+                <div 
+                  className="d-flex justify-content-center hex mt-2 mb-2"
+                >
                   <ul>
-                  {inspire.hexes.map((hex, i) => (
+                    {inspire.hexes.map((hex, i) => (
                       <li key={index+i}>
-                        {hex.code}
+                        {hex.code.includes("#") ? (
+                          <span id="hexLine">
+                            {hex.code} 
+                            <div 
+                              id="colourBox" 
+                              style={{backgroundColor: hex.code}}
+                            >
+                            </div>
+                          </span>
+                        ) : (
+                        <span id="hexLine">
+                          #{hex.code}
+                          <div 
+                            id="colourBox" 
+                            style={{backgroundColor: "#"+hex.code}}
+                          >
+                          </div>
+                        </span>
+                        ) }
+                        
                       </li>
-                  ))}
+                    ))}
                   </ul>
                 </div>
 
-                <div className="d-flex justify-content-center">
-                  <button 
-                    className="btn btn-outline-dark btn-block"
-                    data-id={inspire.id} 
-                    onClick={this.deleteInspiration}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </li>
-            </div>
+                <button 
+                  className="btn btn-outline-dark btn-block delete"
+                  data-id={inspire.id} 
+                  onClick={this.deleteInspiration}
+                >
+                  <i className="fas fa-trash"></i>
+                </button>
+                
+              </div>
+            </div>  
+
           ))}
-        </ul>
+       
+        
+        </div>
       </div>
     );
   }

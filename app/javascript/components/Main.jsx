@@ -8,6 +8,7 @@ import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import Session from "../requests/session";
 import InspirationSearchPage from "./InspirationSearchPage";
+import WelcomePage from "./WelcomePage";
 
 import "../index.css";
 
@@ -66,13 +67,10 @@ class Main extends Component {
             currentUser={currentUser} 
           />
           <Switch>
-            <AuthRoute
-              isAuth={currentUser}
-              path="/inspiration/search"
-              exact
-              render={
-                props => <InspirationSearchPage {...props} />
-              }
+            <Route 
+              path="/" 
+              exact 
+              component={WelcomePage} 
             />
             <AuthRoute
               isAuth={currentUser}
@@ -80,6 +78,14 @@ class Main extends Component {
               exact
               render={
                 props => <InspirationIndexPage {...props} />
+              }
+            />
+            <AuthRoute
+              isAuth={currentUser}
+              path="/inspiration/search"
+              exact
+              render={
+                props => <InspirationSearchPage {...props} />
               }
             />
             <Route 
@@ -90,7 +96,7 @@ class Main extends Component {
                 )
               }
             />
-            {/* <Route component={NotFoundPage} /> */}
+            <Route component={NotFoundPage} />
           </Switch>
         </div>
       </Router>
