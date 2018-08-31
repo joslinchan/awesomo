@@ -5,11 +5,23 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Share+Tech+Mono"%>
+    <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.2.0/css/all.css" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= favicon_link_tag asset_path('favicon.ico'), :rel => 'icon', :type => "image/x-icon" %>
   </head>
 
   <body>
-    <%= yield %>
+    <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %>">
+            <%= message %>
+        </div>
+    <% end %>
+    <main>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
