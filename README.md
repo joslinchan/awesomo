@@ -1,6 +1,6 @@
 # Awesomo
  
-![alt text](https://github.com/joslinchan/final_project/blob/awesomo_transition/app/assets/images/AwesomoLogoDarkGrey.png "Awesomo Logo")
+![alt text](https://github.com/joslinchan/awesomo/blob/awesomo_webpacker_react/app/assets/images/AwesomoLogoDarkGrey.png "Awesomo Logo")
 
 Awesomo is a mini search engine to help you find colours and other inspirational items for your next amazing project. Picking colours and images can be a real struggle, but Awesomo can help!
 
