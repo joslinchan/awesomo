@@ -39,7 +39,7 @@ class SignUpPage extends Component {
         .then(() => {
             const {onSignIn = () => {}} = this.props;
             onSignIn();
-            window.location.replace('/inspiration/search');
+            window.location.replace('/inspirations/search');
           }
         ); 
       }

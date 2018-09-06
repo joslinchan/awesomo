@@ -83,7 +83,7 @@ class Main extends Component {
             />
             <AuthRoute
               isAuth={currentUser}
-              path="/inspiration/search"
+              path="/inspirations/search"
               exact
               render={
                 props => <InspirationSearchPage {...props} />

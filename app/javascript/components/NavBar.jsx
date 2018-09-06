@@ -25,7 +25,7 @@ const NavBar = props => {
           </NavLink>
           <NavLink 
             className="btn btn-dark"
-            exact to="/inspiration/search"
+            exact to="/inspirations/search"
           >
             Search
           </NavLink>
