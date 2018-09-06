@@ -51,9 +51,15 @@ const NavBar = props => {
           to="/">
           Intro
         </NavLink>
-        <a href="#" className="btn btn-dark">
+{/*         <a href="#" className="btn btn-dark">
           Sign Up
-        </a>
+        </a> */}
+        <NavLink 
+          className="btn btn-dark"
+          exact 
+          to="/sign_up">
+          Sign Up
+        </NavLink>
         <NavLink 
           className="btn btn-dark"
           exact 
