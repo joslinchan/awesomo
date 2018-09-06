@@ -31,7 +31,7 @@ class SignInPage extends Component {
         const {onSignIn = () => {}} = this.props;
         onSignIn();
         /* console.log(this.props.history); */
-        this.props.history.push("/");
+        window.location.replace('/inspiration/search');
       }
     });
   }
