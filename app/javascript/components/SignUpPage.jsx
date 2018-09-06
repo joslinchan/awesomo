@@ -20,11 +20,13 @@ class SignUpPage extends Component {
     const formData = new FormData(currentTarget);
 
     User.create({
-      first_name: formData.get("firstName"),
-      last_name: formData.get("lastName"),
-      email: formData.get("email"),
-      password: formData.get("password"),
-      password_confirmation: formData.get("confirmPassword"),
+      user: {
+        first_name: formData.get("firstName"),
+        last_name: formData.get("lastName"),
+        email: formData.get("email"),
+        password: formData.get("password"),
+        password_confirmation: formData.get("confirmPassword"),
+      }
     })
     .then(data => {
       if (data.status === 422) {
