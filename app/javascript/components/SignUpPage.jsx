@@ -124,7 +124,7 @@ class SignUpPage extends Component {
           <div className="d-flex justify-content-end">
             <input 
               type="submit" 
-              value="&#xf2f6;"
+              value="Sign Up"
               className="btn btn-outline-dark signIn icon"
             />
           </div>
