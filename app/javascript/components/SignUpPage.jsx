@@ -7,6 +7,9 @@ class SignUpPage extends Component {
     super(props);
 
     this.state = {
+      emailErrorMessage: undefined,
+      fNameErrorMessage: undefined,
+      lNameErrorMessage: undefined,
       errorMessage: undefined,
     }
 
@@ -30,8 +33,12 @@ class SignUpPage extends Component {
     })
     .then(data => {
       if (data.status === 422) {
+        console.log(data)
         this.setState({
-          validationErrors: data.errors
+          fNameErrorMessage: data.errors.first_name,
+          lNameErrorMessage: data.errors.last_name,
+          emailErrorMessage: data.errors.email.join(", "),
+
         });
       } else {
         Session.create({
@@ -49,7 +56,12 @@ class SignUpPage extends Component {
   }
   
   render() {
-    const {errorMessage} = this.state;
+    const {
+      emailErrorMessage, 
+      fNameErrorMessage, 
+      lNameErrorMessage,
+      errorMessage,
+    } = this.state;
 
     return (
       <main className="container mt-4">
@@ -65,7 +77,7 @@ class SignUpPage extends Component {
               className="form-control mt-3 underline search"
             />
             <small>
-              {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
+              {fNameErrorMessage ? <p className="error ml-3">{fNameErrorMessage}</p> : <p className="noerror">howdy</p>}
             </small>
           </div>
 
@@ -78,7 +90,7 @@ class SignUpPage extends Component {
               className="form-control mt-3 underline search"
             />
             <small>
-              {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
+              {lNameErrorMessage ? <p className="error ml-3">{lNameErrorMessage}</p> : <p className="noerror">howdy</p>}
             </small>
           </div>
 
@@ -91,7 +103,7 @@ class SignUpPage extends Component {
               className="form-control mt-3 underline search"
             />
             <small>
-              {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
+              {emailErrorMessage ? <p className="error ml-3">{emailErrorMessage}</p> : <p className="noerror">howdy</p>}
             </small>
           </div>
 
