@@ -62,7 +62,7 @@ class SignUpPage extends Component {
               name="firstName" 
               id="firstName" 
               placeholder= "First Name" 
-              className="form-control underline search"
+              className="form-control mt-3 underline search"
             />
             <small>
               {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}

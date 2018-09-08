@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::ApplicationController
-  before_action :authenticate_user!, except: [:create]
+  before_action :authenticate_user!
 
   def current
     render json: current_user
@@ -16,7 +16,13 @@ class Api::V1::UsersController < Api::ApplicationController
         }
       )
     else
-      record_invalid(error)
+      render(
+        status: 422,
+        json: {
+          status: 422,
+          errors: user.errors
+        }
+      )
     end
   end
 
