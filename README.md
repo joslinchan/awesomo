@@ -1,6 +1,6 @@
 # Awesomo
  
-![alt text](https://github.com/joslinchan/final_project/blob/awesomo_transition/app/assets/images/AwesomoLogoDarkGrey.png "Awesomo Logo")
+![alt text](https://github.com/joslinchan/awesomo/blob/awesomo_webpacker_react/app/assets/images/AwesomoLogoDarkGrey.png "Awesomo Logo")
 
 Awesomo is a mini search engine to help you find colours and other inspirational items for your next amazing project. Picking colours and images can be a real struggle, but Awesomo can help!
 
@@ -29,7 +29,7 @@ Once you have cloned the project, run `bundle` and `db:create`.
 
 Don't forget to seed so that you have access as the admin user since the search function and collection of saved items are only availabe after authentication.
 
-###Credit
+### Credit
 Background pattern by Welsley Woo from Subtle Patterns at Toptal 
 https://www.toptal.com/designers/subtlepatterns/inspiration-geometry/
 

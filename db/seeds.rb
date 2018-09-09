@@ -10,6 +10,7 @@ super_user = User.create(
     admin: true
 )
 
+=begin 
 10.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -20,8 +21,9 @@ super_user = User.create(
     email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
     password: PASSWORD
   )
-end
+end 
 
 puts "👩👨 Created #{User.count} users"
+=end
 
 puts "Login with #{super_user.email} and password of #{PASSWORD}"
