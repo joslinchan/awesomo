@@ -1,13 +1,15 @@
 import React, {Component} from "react";
 import Session from "../requests/session";
 import Tippy from './ReactTippy'
+import {Redirect} from "react-router-dom";
 
 class SignInPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      errorMessage: undefined
+      errorMessage: undefined,
+      toSearch: false,
     };
 
     this.createSession = this.createSession.bind(this);
@@ -16,6 +18,7 @@ class SignInPage extends Component {
   createSession(event) {
     event.preventDefault();
     const {currentTarget} = event;
+
 
     const formData = new FormData(currentTarget);
 
@@ -30,17 +33,23 @@ class SignInPage extends Component {
         });
       } else {
         const {onSignIn = () => {}} = this.props;
-        onSignIn();
+        onSignIn()
+        .then(() => this.setState(() => ({
+          toSearch: true
+        })))
         /* console.log(this.props.history); */
         /* this.props.history.push("/"); */
-        window.location.replace('/inspirations/search');
+        /* window.location.replace('/inspirations/search'); */
 
       }
     });
   }
 
   render() {
-    const {errorMessage} = this.state;
+    const {errorMessage, toSearch} = this.state;
+    if(this.state.toSearch === true) {
+      return <Redirect to='/inspirations/search' />
+    }
     return(
       <main className="container mt-4">
         <div className="logo">
