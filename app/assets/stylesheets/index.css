@@ -169,6 +169,16 @@ div.logo {
   opacity: 0.8;
 }
 
+div.demo {
+  background-image: url("Awesomo_Demo");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; 
+  height: 400px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .form-control.underline {
   /* border-bottom-color: #ced4da; */
   border-bottom-color: white;

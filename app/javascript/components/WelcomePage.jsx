@@ -8,6 +8,8 @@ class WelcomePage extends Component {
           <div className="logo">
           </div>
         </a>
+        <div className="demo">
+        </div>
       </main>
     )
   }
