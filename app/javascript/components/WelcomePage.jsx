@@ -4,8 +4,10 @@ class WelcomePage extends Component {
   render() {
     return(
       <main>
-        <div className="logo">
-        </div>
+        <a href="/inspirations/search">
+          <div className="logo">
+          </div>
+        </a>
       </main>
     )
   }

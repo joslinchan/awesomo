@@ -94,7 +94,6 @@ a img:hover {
 
 a.brand {
   padding: 0px;
-  justify-content: flex-start;
 }
 
 .bg-dark {
@@ -218,7 +217,7 @@ input.icon {
 }
 
 input.form-control.underline.search {
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.2s ease-out;
   background-color:rgb(255, 255, 255);opacity:0.6;
   height: 40px;
   padding-top: 12px;
@@ -277,7 +276,7 @@ p.noerror {
   padding-right: 1rem;
   font-family: 'Share Tech Mono', monospace;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .search, .signIn {
@@ -303,7 +302,7 @@ span.icon {
   margin-left: 1rem;
   margin-right: 1rem;
   float: left;
-  filter:invert(100%);
+  filter: invert(100%);
 }
 
 span.text-light.lead {
