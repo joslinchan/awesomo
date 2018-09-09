@@ -142,7 +142,7 @@ class SignUpPage extends Component {
               <input 
                 type="submit" 
                 value="Sign Up"
-                className="btn btn-outline-dark signIn awesome-tooltip"
+                className="btn btn-outline-dark signIn"
                 title="✨Let's go!"
               />
             </Tippy>

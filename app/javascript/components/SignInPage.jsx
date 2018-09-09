@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Session from "../requests/session";
+import Tippy from './ReactTippy'
 
 class SignInPage extends Component {
   constructor(props) {
@@ -74,12 +75,16 @@ class SignInPage extends Component {
           </div>
 
           <div className="d-flex justify-content-end">
+          <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
             <input 
               type="submit" 
               value="&#xf2f6;"
               className="btn btn-outline-dark signIn icon"
+              title="✨Sign me in!"
             />
+            </Tippy>
           </div>
+          
         </form>
       </main>
     );
