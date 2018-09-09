@@ -10,6 +10,8 @@ class SignUpPage extends Component {
       emailErrorMessage: undefined,
       fNameErrorMessage: undefined,
       lNameErrorMessage: undefined,
+      passwordErrorMessage: undefined,
+      passwordConfirmErrorMessage: undefined,
       errorMessage: undefined,
     }
 
@@ -28,7 +30,7 @@ class SignUpPage extends Component {
         last_name: formData.get("lastName"),
         email: formData.get("email"),
         password: formData.get("password"),
-        password_confirmation: formData.get("confirmPassword"),
+        password_confirmation: formData.get("password_confirmation"),
       }
     })
     .then(data => {
@@ -38,7 +40,8 @@ class SignUpPage extends Component {
           fNameErrorMessage: data.errors.first_name,
           lNameErrorMessage: data.errors.last_name,
           emailErrorMessage: data.errors.email.join(", "),
-
+          passwordErrorMessage: data.errors.password,
+          passwordConfirmErrorMessage: data.errors.password_confirmation
         });
       } else {
         Session.create({
@@ -60,6 +63,8 @@ class SignUpPage extends Component {
       emailErrorMessage, 
       fNameErrorMessage, 
       lNameErrorMessage,
+      passwordErrorMessage,
+      passwordConfirmErrorMessage,
       errorMessage,
     } = this.state;
 
@@ -116,20 +121,20 @@ class SignUpPage extends Component {
               className="form-control mt-3 underline search"
             />
             <small>
-              {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
+              {passwordErrorMessage ? <p className="error ml-3">{passwordErrorMessage}</p> : <p className="noerror">howdy</p>}
             </small>
           </div>
 
           <div>
             <input 
               type="password" 
-              name="confirmPassword" 
-              id="confirmPassword" 
+              name="password_confirmation" 
+              id="password_confirmation" 
               placeholder="Confirm Password" 
               className="form-control mt-3 underline search"
             />
             <small>
-              {errorMessage ? <p className="error ml-3">{errorMessage}</p> : <p className="noerror">howdy</p>}
+              {passwordConfirmErrorMessage ? <p className="error ml-3">{passwordConfirmErrorMessage}</p> : <p className="noerror">howdy</p>}
             </small>
           </div>
 
