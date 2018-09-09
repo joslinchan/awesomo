@@ -1,6 +1,6 @@
 class ColourApiRetriever
   include HTTParty
-  base_uri "colourlovers.com/api"
+  base_uri "https://www.colourlovers.com/api"
 
   def self.get_palettes(search_term)
     self.get("/palettes/?keywords=#{search_term}")
