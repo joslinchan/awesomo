@@ -32,7 +32,8 @@ class SignInPage extends Component {
         onSignIn();
         /* console.log(this.props.history); */
         /* this.props.history.push("/"); */
-        window.location.replace('/inspiration/search');
+        window.location.replace('/inspirations/search');
+
       }
     });
   }

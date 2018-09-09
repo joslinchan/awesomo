@@ -75,10 +75,6 @@ class InspirationDetails extends Component {
         <div className="d-flex justify-content-center">
           {thing.imageUrl ? (
             <a href= {thing.url}>
-<<<<<<< HEAD
-=======
-              {/* <img src={thing.imageUrl.includes("amazonaws") ? thing.imageUrl : thing.imageUrl.replace("http", "https")} className="leftright mb-2" /> */}
->>>>>>> master
               <img src={thing.imageUrl.replace("http", "https")} className="leftright mb-2" />
             </a> 
           ) : ( 
