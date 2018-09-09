@@ -10,9 +10,11 @@ const NavBar = props => {
   };
 
   return(
-    <nav className="NavBar nav justify-content-end bg-dark mb-2">
-      <span className="icon flex-fill">
-      </span>
+    <nav className="NavBar bg-dark mb-2">
+      <a href="/inspirations/search" className="brand">
+        <span className="icon">
+        </span>
+      </a>
 
       {currentUser ? (
         <React.Fragment>
