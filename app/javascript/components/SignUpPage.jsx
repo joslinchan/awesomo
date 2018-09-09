@@ -12,7 +12,6 @@ class SignUpPage extends Component {
       lNameErrorMessage: undefined,
       passwordErrorMessage: undefined,
       passwordConfirmErrorMessage: undefined,
-      errorMessage: undefined,
     }
 
     this.createSession = this.createSession.bind(this);
@@ -41,7 +40,7 @@ class SignUpPage extends Component {
           lNameErrorMessage: data.errors.last_name,
           emailErrorMessage: data.errors.email.join(", "),
           passwordErrorMessage: data.errors.password,
-          passwordConfirmErrorMessage: data.errors.password_confirmation
+          passwordConfirmErrorMessage: data.errors.password_confirmation,
         });
       } else {
         Session.create({
@@ -65,7 +64,6 @@ class SignUpPage extends Component {
       lNameErrorMessage,
       passwordErrorMessage,
       passwordConfirmErrorMessage,
-      errorMessage,
     } = this.state;
 
     return (
