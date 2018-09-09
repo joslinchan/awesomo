@@ -140,7 +140,7 @@ class SignUpPage extends Component {
             <input 
               type="submit" 
               value="Sign Up"
-              className="btn btn-outline-dark signIn icon"
+              className="btn btn-outline-dark signIn"
             />
           </div>
         </form>
