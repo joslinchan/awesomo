@@ -38,7 +38,7 @@ class SignUpPage extends Component {
         this.setState({
           fNameErrorMessage: data.errors.first_name,
           lNameErrorMessage: data.errors.last_name,
-          emailErrorMessage: data.errors.email.join(", "),
+          emailErrorMessage: data.errors.email.isArray ? data.errors.email.join(", ") : data.errors.email,
           passwordErrorMessage: data.errors.password,
           passwordConfirmErrorMessage: data.errors.password_confirmation,
         });
