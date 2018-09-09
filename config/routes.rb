@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :inspirations, only: [:index, :create, :destroy] do
         get :search, on: :collection
       end
-      resources :users, only: [] do
+      resources :users, only: [:create] do
         get :current, on: :collection
         #resources :inspirations, shallow: true, only: [:index, :create, :destroy]
       end

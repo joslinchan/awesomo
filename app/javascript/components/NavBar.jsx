@@ -25,7 +25,7 @@ const NavBar = props => {
           </NavLink>
           <NavLink 
             className="btn btn-dark"
-            exact to="/inspiration/search"
+            exact to="/inspirations/search"
           >
             Search
           </NavLink>
@@ -51,9 +51,12 @@ const NavBar = props => {
           to="/">
           Intro
         </NavLink>
-        <a href="#" className="btn btn-dark">
+        <NavLink 
+          className="btn btn-dark"
+          exact 
+          to="/sign_up">
           Sign Up
-        </a>
+        </NavLink>
         <NavLink 
           className="btn btn-dark"
           exact 

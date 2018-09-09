@@ -6,6 +6,7 @@ import User from "../requests/user";
 import InspirationIndexPage from "./InspirationIndexPage";
 import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
+import SignUpPage from "./SignUpPage";
 import Session from "../requests/session";
 import InspirationSearchPage from "./InspirationSearchPage";
 import WelcomePage from "./WelcomePage";
@@ -82,10 +83,18 @@ class Main extends Component {
             />
             <AuthRoute
               isAuth={currentUser}
-              path="/inspiration/search"
+              path="/inspirations/search"
               exact
               render={
                 props => <InspirationSearchPage {...props} />
+              }
+            />
+            <Route 
+              path="/sign_up"
+              render={
+                props => (
+                <SignUpPage {...props} onSignIn={this.getUser} />
+                )
               }
             />
             <Route 
