@@ -55,8 +55,9 @@ class InspirationIndexPage extends Component {
     return(
       <div className="container mt-4">
       
+      {inspirations.length === 0 ? (<h5 className="text">There are no items in your collection right now. To add items, search for items by keyword in the search bar and click save<br />=)</h5> 
+        ) : (
       <div id="box">
-     
           {inspirations.map((inspire, index) => (
       
             <div key={inspire.id}  >
@@ -119,9 +120,9 @@ class InspirationIndexPage extends Component {
             </div>  
 
           ))}
-       
-        
+          
         </div>
+        )}
       </div>
     );
   }

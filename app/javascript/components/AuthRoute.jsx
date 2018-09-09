@@ -22,9 +22,9 @@ const AuthRoute = props => {
         } else {
           swal({
             title: "Please sign in",
-            text: "Or sign up.\n This way you can save items! =)",
+            text: "Or sign up.\n This way you can save items for later review =)",
             icon: "warning",
-            button: "Thanks!",
+            button: "Okay!",
           });
           return <Redirect to="/sign_in" />;
         }

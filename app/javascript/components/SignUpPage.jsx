@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Session from "../requests/session";
 import User from "../requests/user";
-import Tippy from './ReactTippy'
+import Tippy from './ReactTippy';
 
 class SignUpPage extends Component {
   constructor(props) {

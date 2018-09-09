@@ -192,6 +192,12 @@ h5:hover {
   color: #343a40;
 }
 
+h5.text {
+  color: #343a40;
+  text-align: center;
+  margin-top: 10rem;
+}
+
 .hex {
   color: #6c757d;
   transition: all 0.75s ease-out;
