@@ -311,6 +311,14 @@ span.text-light.lead {
   padding-right: 1rem;
 }
 
+.swal-button {
+  background-color: #F7BB8A;
+}
+
+.swal-text {
+  text-align: center;
+}
+
 ul {
   padding: 0px;
 }

@@ -20,7 +20,12 @@ const AuthRoute = props => {
             return <Component {...routeProps} />;
           }
         } else {
-          swal("Please sign in", "Or sign up.\n This way you can save items! =)");
+          swal({
+            title: "Please sign in",
+            text: "Or sign up.\n This way you can save items! =)",
+            icon: "warning",
+            button: "Thanks!",
+          });
           return <Redirect to="/sign_in" />;
         }
       }}
