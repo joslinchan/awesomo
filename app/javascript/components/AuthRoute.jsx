@@ -1,5 +1,6 @@
 import React from "react";
 import {Redirect, Route} from "react-router-dom";
+import swal from "sweetalert";
 
 const AuthRoute = props => {
   const {
@@ -19,6 +20,7 @@ const AuthRoute = props => {
             return <Component {...routeProps} />;
           }
         } else {
+          swal("Please sign in", "Or sign up.\n This way you can save items! =)");
           return <Redirect to="/sign_in" />;
         }
       }}
