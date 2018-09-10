@@ -92,6 +92,10 @@ a img:hover {
   opacity: 1;
 }
 
+a.brand {
+  padding: 0px;
+}
+
 .bg-dark {
   opacity: 0.8;
 } 
@@ -165,6 +169,24 @@ div.logo {
   opacity: 0.8;
 }
 
+div.demo {
+  background-image: url("Awesomo_Demo2");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; 
+  height: 400px;
+  margin-top: 1rem;
+}
+
+.circle {
+  border: solid #6c757d 1px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
 .form-control.underline {
   /* border-bottom-color: #ced4da; */
   border-bottom-color: white;
@@ -173,7 +195,13 @@ div.logo {
   border-right-color: white;
 }
 
-h2, h3 {
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+h2, h3, h4 {
   font-family: 'Share Tech Mono', monospace;
   text-align: center;
 }
@@ -186,6 +214,33 @@ h5 {
 
 h5:hover {
   color: #343a40;
+}
+
+h5.text {
+  color: #343a40;
+  text-align: center;
+  margin-top: 10rem;
+}
+div.p {
+  color: #6c757d;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+}
+
+div.welcome {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  border-radius: 1rem;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+hr {
+  width: 90%;
 }
 
 .hex {
@@ -203,6 +258,11 @@ h5:hover {
   justify-content: space-between;
 }
 
+i.welcome {
+  margin-top: 2rem;
+  color: #494C4F;
+}
+
 /* I don't think the colour below is overwriting */
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background-color: #f2e29d !important;
@@ -213,7 +273,7 @@ input.icon {
 }
 
 input.form-control.underline.search {
-  transition: opacity 0.5s ease-out;
+  transition: opacity 0.2s ease-out;
   background-color:rgb(255, 255, 255);opacity:0.6;
   height: 40px;
   padding-top: 12px;
@@ -257,6 +317,13 @@ li {
   font-family: 'Share Tech Mono', monospace;
 }
 
+p.welcome {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 3rem;
+}
+
 p.error {
   margin-bottom: 0px;
   color: #eac520;
@@ -271,6 +338,8 @@ p.noerror {
   padding-bottom: 0.16rem;
   padding-right: 1rem;
   font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .search, .signIn {
@@ -290,17 +359,27 @@ span.icon {
   background-image: url("AwesomoIcon");
   background-size: 3rem;
   width: 3rem;
+  height: 3rem;
   background-repeat: no-repeat;
   margin-top: 0.50rem;
   margin-left: 1rem;
+  margin-right: 1rem;
   float: left;
-  filter:invert(100%);
-  padding: 1rem;
+  filter: invert(100%);
 }
 
 span.text-light.lead {
   padding-top: 1rem;
   padding-right: 1rem;
+}
+
+.swal-button {
+  background-color: #F7BB8A !important;
+}
+
+
+.swal-text {
+  text-align: center;
 }
 
 ul {

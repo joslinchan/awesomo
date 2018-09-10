@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
+import Tippy from './ReactTippy';
 
 class InspirationIndexPage extends Component {
   constructor(props) {
@@ -55,8 +56,9 @@ class InspirationIndexPage extends Component {
     return(
       <div className="container mt-4">
       
+      {inspirations.length === 0 ? (<h5 className="text">There are no items in your collection right now.<br />To add items, search for items by keyword in the search bar and click save.<br />=)</h5> 
+        ) : (
       <div id="box">
-     
           {inspirations.map((inspire, index) => (
       
             <div key={inspire.id}  >
@@ -107,21 +109,24 @@ class InspirationIndexPage extends Component {
                   </ul>
                 </div>
 
-                <button 
-                  className="btn btn-outline-dark btn-block delete"
-                  data-id={inspire.id} 
-                  onClick={this.deleteInspiration}
-                >
-                  <i className="fas fa-trash"></i>
-                </button>
-                
+                <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
+                  <button 
+                    className="btn btn-outline-dark btn-block delete"
+                    title="Delete"
+                    data-id={inspire.id} 
+                    onClick={this.deleteInspiration}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </button>
+                </Tippy>
+
               </div>
             </div>  
 
           ))}
-       
-        
+          
         </div>
+        )}
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
 import shuffle from "lodash/shuffle";
 import InspirationSearchDetails from "./InspirationSearchDetails";
+import Tippy from './ReactTippy'
 
 class InspirationSearchPage extends Component {
   constructor(props) {
@@ -56,27 +57,36 @@ class InspirationSearchPage extends Component {
 
         <form onSubmit={this.enterSubmit}>
           <div>
+          <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
             <input 
               className="form-control underline mt-4 search"
               placeholder="Search for..." 
               name="query" 
               id="query" 
               type="text"
+              title="Enter a search term!"
               onChange={event => this.onInputChange(event.target.value)}
             />
+            </Tippy>
           </div>
 
           <div className="d-flex justify-content-end">
+          <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
             <input 
               className="btn btn-outline-dark mt-3 search icon"
               type="submit" 
               value="&#xf002;" 
+              title="✨Search!"
             />
+            </Tippy>
+            <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
             <input 
               className="btn btn-outline-dark mt-3 ml-2 search"
               type="submit" 
               value="I'm Feeling Lucky" 
+              title="Find me something random!"
             />
+            </Tippy>
           </div>
         </form>
 

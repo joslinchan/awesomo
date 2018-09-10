@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
+import Tippy from './ReactTippy';
 
 class InspirationDetails extends Component {
   constructor(props) {
@@ -127,21 +128,27 @@ class InspirationDetails extends Component {
         
         <div className="d-flex justify-content-center">
           {this.state.highlighted ? (
-            <button 
-              className="btn btn-outline-dark btn-block"
-              onClick={this.delete}>
-              <i className="fas fa-heart"></i>
-            </button>           
+            <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
+              <button 
+                className="btn btn-outline-dark btn-block"
+                title="Unsave item"
+                onClick={this.delete}>
+                <i className="fas fa-heart"></i>
+              </button>          
+            </Tippy> 
           ) : (
-            <button 
-              className="btn btn-outline-dark btn-block"
-              onClick={() => this.save(thing.attributes ? (
-              thing.attributes.table.save_link
-              ) : (
-                thing.save_link
-            ))}>
-              <i className="far fa-heart"></i>
-            </button>
+            <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
+              <button 
+                className="btn btn-outline-dark btn-block"
+                title="Save item"
+                onClick={() => this.save(thing.attributes ? (
+                thing.attributes.table.save_link
+                ) : (
+                  thing.save_link
+              ))}>
+                <i className="far fa-heart"></i>
+              </button>
+            </Tippy>
           )}
         </div>
 

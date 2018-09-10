@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Session from "../requests/session";
 import User from "../requests/user";
+import Tippy from './ReactTippy';
+import {Redirect} from "react-router-dom";
 
 class SignUpPage extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class SignUpPage extends Component {
       lNameErrorMessage: undefined,
       passwordErrorMessage: undefined,
       passwordConfirmErrorMessage: undefined,
+      toSearch: false,
     }
 
     this.createSession = this.createSession.bind(this);
@@ -49,8 +52,10 @@ class SignUpPage extends Component {
         })
         .then(() => {
             const {onSignIn = () => {}} = this.props;
-            onSignIn();
-            window.location.replace('/inspirations/search');
+            onSignIn()
+            .then(() => this.setState(() => ({
+              toSearch: true
+            })))
           }
         ); 
       }
@@ -65,6 +70,10 @@ class SignUpPage extends Component {
       passwordErrorMessage,
       passwordConfirmErrorMessage,
     } = this.state;
+
+    if(this.state.toSearch === true) {
+      return <Redirect to='/inspirations/search' />
+    }
 
     return (
       <main className="container mt-4">
@@ -137,12 +146,16 @@ class SignUpPage extends Component {
           </div>
 
           <div className="d-flex justify-content-end">
-            <input 
-              type="submit" 
-              value="Sign Up"
-              className="btn btn-outline-dark signIn"
-            />
+            <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
+              <input 
+                type="submit" 
+                value="Sign Up"
+                className="btn btn-outline-dark signIn"
+                title="✨Let's go!"
+              />
+            </Tippy>
           </div>
+          
         </form>
       </main>
     )

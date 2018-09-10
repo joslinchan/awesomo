@@ -10,9 +10,12 @@ const NavBar = props => {
   };
 
   return(
-    <nav className="NavBar nav justify-content-end bg-dark mb-2">
-      <span className="icon flex-fill">
-      </span>
+    <nav className="bg-dark">
+      <a href="/inspirations/search" className="brand">
+        <span className="icon">
+        </span>
+      </a>
+    <section className="NavBar mb-2">
 
       {currentUser ? (
         <React.Fragment>
@@ -65,6 +68,7 @@ const NavBar = props => {
         </NavLink>
         </span>
       )}
+    </section>
     </nav>
   )
 }
