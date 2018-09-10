@@ -46,7 +46,7 @@ class SignInPage extends Component {
   }
 
   render() {
-    const {errorMessage, toSearch} = this.state;
+    const {errorMessage} = this.state;
     if(this.state.toSearch === true) {
       return <Redirect to='/inspirations/search' />
     }
