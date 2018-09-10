@@ -374,8 +374,9 @@ span.text-light.lead {
 }
 
 .swal-button {
-  background-color: #F7BB8A;
+  background-color: #F7BB8A !important;
 }
+
 
 .swal-text {
   text-align: center;

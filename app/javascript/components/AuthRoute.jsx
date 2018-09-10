@@ -22,7 +22,7 @@ const AuthRoute = props => {
         } else {
           swal({
             title: "Please sign in",
-            text: "Or sign up.\n This way you can save items for later review =)",
+            text: "Or sign up.\n This way you can save items for later review.\n =)",
             icon: "warning",
             button: "Okay!",
           });
