@@ -53,6 +53,39 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
   def search
+    fetch_design_assets
+
+    if (@everything==0)
+      return null_result
+    else
+
+      @everything.each do |thing|
+        if (thing["hex"])
+          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"])
+        elsif (thing["colors"])
+          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"])
+        else
+          thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"])
+        end
+      end
+      
+    end
+
+    respond_to do |format|
+      format.json { render json: @everything }
+    end
+  end
+
+  private
+  def inspiration
+    inspiration ||= Inspiration.find params[:id]
+  end
+
+  def inspiration_params
+    params.permit(:title, :image_url, :url, :hex)
+  end 
+
+  def fetch_design_assets
     colourCollection = ColourApiParser.parse_colours params[:query]
     paletteCollection = ColourApiParser.parse_palettes params[:query]
     patternCollection = ColourApiParser.parse_patterns params[:query]
@@ -67,52 +100,24 @@ class Api::V1::InspirationsController < Api::ApplicationController
       photos = UnsplashApiRetriever.new.get_random
     end 
 
-     
     if (paletteCollection==0)
-      everything = paletteCollection + colourCollection + patternCollection
+      @everything = paletteCollection + colourCollection + patternCollection
     else
-      everything = paletteCollection + colourCollection + patternCollection + photos
-    end
-
-
-    if (everything==0)
-
-      return render(
-          status: 404,
-          json: {
-            status: 404,
-            errors: [{
-              type: "NotFound"
-            }]
-          })
-
-    else
-
-      everything.each do |thing|
-        if (thing["hex"])
-          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"])
-        elsif (thing["colors"])
-          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"])
-        else
-          thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"])
-        end
-      end
-      
-    end
-
-    respond_to do |format|
-      format.json { render json: everything }
+      @everything = paletteCollection + colourCollection + patternCollection + photos
     end
   end
 
-  private
-  def inspiration
-    inspiration ||= Inspiration.find params[:id]
+  def null_result
+    render(
+      status: 404,
+      json: {
+        status: 404,
+        errors: [{
+          type: "NotFound"
+        }]
+      }
+    )
   end
-
-  def inspiration_params
-    params.permit(:title, :image_url, :url, :hex)
-  end 
 
 end
 
