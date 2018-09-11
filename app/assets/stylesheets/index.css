@@ -105,6 +105,11 @@ body {
   background-repeat: repeat;
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 .btn.btn-block {
   border-top-color: #ced4da;
   border-bottom-color: white;
@@ -340,6 +345,10 @@ p.noerror {
   font-family: 'Share Tech Mono', monospace;
   display: flex;
   justify-content: flex-end;
+}
+
+.NavBar a, span {
+  padding: 1rem;
 }
 
 .search, .signIn {
