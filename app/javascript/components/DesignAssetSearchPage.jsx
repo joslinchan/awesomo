@@ -4,7 +4,7 @@ import InspirationSearchDetails from "./InspirationSearchDetails";
 import Tippy from "./ReactTippy";
 import shuffle from "lodash/shuffle";
 
-class InspirationSearchPage extends Component {
+class DesignAssetSearchPage extends Component {
   constructor(props) {
     super(props);
 
@@ -128,4 +128,4 @@ class InspirationSearchPage extends Component {
   };
 };
 
-export default InspirationSearchPage;
+export default DesignAssetSearchPage;

@@ -8,7 +8,7 @@ import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
 import Session from "../requests/session";
-import InspirationSearchPage from "./InspirationSearchPage";
+import DesignAssetSearchPage from "./DesignAssetSearchPage";
 import WelcomePage from "./WelcomePage";
 
 import "../index.css";
@@ -86,7 +86,7 @@ class Main extends Component {
               path="/inspirations/search"
               exact
               render={
-                props => <InspirationSearchPage {...props} />
+                props => <DesignAssetSearchPage {...props} />
               }
             />
             <Route 
