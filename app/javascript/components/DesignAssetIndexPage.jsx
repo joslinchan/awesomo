@@ -9,7 +9,6 @@ class DesignAssetIndexPage extends Component {
     this.state = {
       loading: true,
       designAssets: [],
-      boxShowing: false,
     };
 
     this.deleteDesignAsset = this.deleteDesignAsset.bind(this);
@@ -21,7 +20,6 @@ class DesignAssetIndexPage extends Component {
       this.setState({
         loading: false, 
         designAssets: designAssets, 
-        boxShowing: true,
       })
     })
     .catch(() => {
@@ -31,12 +29,11 @@ class DesignAssetIndexPage extends Component {
 
   deleteDesignAsset(event) {
     const { currentTarget } = event;
-    const inspirationId = parseInt(currentTarget.dataset.id, 10);
+    const designAssetId = parseInt(currentTarget.dataset.id, 10);
     const { designAssets } = this.state;
 
     this.setState({
-      designAssets: designAssets.filter(dessignAsset => designAsset.id !== designAssetId),
-      boxShowing: false,
+      designAssets: designAssets.filter(designAsset => designAsset.id !== designAssetId),
     })
 
     InspirationRailsApi.destroy(designAssetId);
@@ -88,19 +85,19 @@ class DesignAssetIndexPage extends Component {
                       {designAsset.hexes.map((hex, i) => (
                         <li key={index+i}>
                           {hex.code.includes("#") ? (
-                            <span id="hexLine">
+                            <span id="hex-line">
                               {hex.code} 
                               <div 
-                                id="colourBox" 
+                                id="colour-box" 
                                 style={{backgroundColor: hex.code}}
                               >
                               </div>
                             </span>
                           ) : (
-                            <span id="hexLine">
+                            <span id="hex-line">
                               #{hex.code}
                               <div 
-                                id="colourBox" 
+                                id="colour-box" 
                                 style={{backgroundColor: "#" + hex.code}}
                               >
                               </div>

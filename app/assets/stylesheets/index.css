@@ -167,7 +167,7 @@ body, html {
   align-items: flex-end;
 }
 
-div#colourBox {
+div#colour-box {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -269,7 +269,7 @@ hr {
   color: #343a40;
 }
 
-#hexLine {
+#hex-line {
   padding: 0px;
   display: flex;
   justify-content: space-between;
