@@ -103,7 +103,7 @@ class InspirationSearchPage extends Component {
                 className="btn btn-outline-dark mt-3 ml-2 search"
                 type="submit" 
                 value="I'm Feeling Lucky" 
-                title="Find me somedesign_asset random!"
+                title="Find me something random!"
               />
             </Tippy>
           </div>

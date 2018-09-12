@@ -193,11 +193,7 @@ div.demo {
 }
 
 .form-control.underline {
-  /* border-bottom-color: #ced4da; */
-  border-bottom-color: white;
-  border-top-color: white;
-  border-left-color: white;
-  border-right-color: white;
+  border-color: white;
 }
 
 h1 {
