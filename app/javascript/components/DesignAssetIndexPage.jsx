@@ -9,7 +9,6 @@ class DesignAssetIndexPage extends Component {
     this.state = {
       loading: true,
       designAssets: [],
-      boxShowing: false,
     };
 
     this.deleteDesignAsset = this.deleteDesignAsset.bind(this);
@@ -21,7 +20,6 @@ class DesignAssetIndexPage extends Component {
       this.setState({
         loading: false, 
         designAssets: designAssets, 
-        boxShowing: true,
       })
     })
     .catch(() => {
@@ -36,7 +34,6 @@ class DesignAssetIndexPage extends Component {
 
     this.setState({
       designAssets: designAssets.filter(designAsset => designAsset.id !== designAssetId),
-      boxShowing: false,
     })
 
     InspirationRailsApi.destroy(designAssetId);
