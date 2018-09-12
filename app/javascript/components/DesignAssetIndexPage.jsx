@@ -31,11 +31,11 @@ class DesignAssetIndexPage extends Component {
 
   deleteDesignAsset(event) {
     const { currentTarget } = event;
-    const inspirationId = parseInt(currentTarget.dataset.id, 10);
+    const designAssetId = parseInt(currentTarget.dataset.id, 10);
     const { designAssets } = this.state;
 
     this.setState({
-      designAssets: designAssets.filter(dessignAsset => designAsset.id !== designAssetId),
+      designAssets: designAssets.filter(designAsset => designAsset.id !== designAssetId),
       boxShowing: false,
     })
 
