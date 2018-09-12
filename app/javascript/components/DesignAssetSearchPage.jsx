@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import InspirationRailsApi from "../requests/inspiration";
-import InspirationSearchDetails from "./InspirationSearchDetails";
+import DesignAssetSearchDetails from "./DesignAssetSearchDetails";
 import Tippy from "./ReactTippy";
 import shuffle from "lodash/shuffle";
 
@@ -116,7 +116,7 @@ class DesignAssetSearchPage extends Component {
             <div id="box">
               {fetched_design_assets.map((design_asset, index) => (
                 <div key={index}>
-                  <InspirationSearchDetails {...design_asset} />
+                  <DesignAssetSearchDetails {...design_asset} />
                 </div>
               ))}
             </div> 

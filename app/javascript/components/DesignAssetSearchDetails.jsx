@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import InspirationApi from "../requests/inspiration";
+import InspirationRailsApi from "../requests/inspiration";
 import Tippy from './ReactTippy';
 
-class InspirationDetails extends Component {
+class DesignAssetSearchDetails extends Component {
   constructor(props) {
     super(props);
 
@@ -38,7 +38,7 @@ class InspirationDetails extends Component {
 
   delete(event) {
     const {currentTarget} = event;
-    InspirationApi.destroy(this.state.id_for_deletion)
+    InspirationRailsApi.destroy(this.state.id_for_deletion)
     .then(data => {
       if (data.status === 200) {
         this.setState({
@@ -158,4 +158,4 @@ class InspirationDetails extends Component {
   }
 }
 
-export default InspirationDetails;
+export default DesignAssetSearchDetails;
