@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
@@ -8,26 +7,12 @@ Rails.application.routes.draw do
       end
       resources :users, only: [:create] do
         get :current, on: :collection
-        #resources :inspirations, shallow: true, only: [:index, :create, :destroy]
       end
       resource :session, only: [:create, :destroy]
     end
   end
 
-  resources :users, only: [:new, :create, :edit, :update] do
-    resources :inspirations, shallow: true, only: [:create, :destroy, :index]
-  end
-
-  get('/users/:id/edit_password', {to: 'users#edit_password', as: :edit_password})
-  patch('/users/:id/update_password', {to: 'users#update_password', as: :update_password})
-
-  resource :session, only: [:new, :create, :destroy]
-
-  #get('/', {to: 'welcome#index', as: 'home'}) 
-
   get('/', {to: 'home#index', as: 'home'}) 
   match "*unmatched_route", via: :all, to: "home#index"
-
-  
 
 end
