@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import InspirationApi from "../requests/inspiration";
 import Tippy from './ReactTippy';
 
-class InspirationIndexPage extends Component {
+class DesignAssetIndexPage extends Component {
   constructor(props) {
     super(props);
 
@@ -132,4 +132,4 @@ class InspirationIndexPage extends Component {
   }
 }
 
-export default InspirationIndexPage;
+export default DesignAssetIndexPage;

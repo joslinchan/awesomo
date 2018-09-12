@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
 import User from "../requests/user";
-import InspirationIndexPage from "./InspirationIndexPage";
+import DesignAssetIndexPage from "./DesignAssetIndexPage";
 import AuthRoute from "./AuthRoute";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
@@ -78,7 +78,7 @@ class Main extends Component {
               path="/inspirations"
               exact
               render={
-                props => <InspirationIndexPage {...props} />
+                props => <DesignAssetIndexPage {...props} />
               }
             />
             <AuthRoute
