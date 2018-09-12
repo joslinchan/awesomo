@@ -158,6 +158,11 @@ body, html {
   border: 1px solid #ffd900;
 }
 
+.center-content {
+  display: flex;
+  justify-content: center;
+}
+
 .delete {
   align-items: flex-end;
 }

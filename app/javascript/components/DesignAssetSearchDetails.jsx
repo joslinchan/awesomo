@@ -60,7 +60,7 @@ class DesignAssetSearchDetails extends Component {
         )}
       > 
 
-        <div className="d-flex justify-content-center">
+        <div className="center-content">
           {designAsset.title ? (
             <a href= {designAsset.url}>
               <h5 className="text-center leftright mb-2">
@@ -80,7 +80,7 @@ class DesignAssetSearchDetails extends Component {
           {designAsset.imageUrl ? (
             <a href= {designAsset.url}>
               <img 
-                src={designAsset.imageUrl.replace("http", "https")} 
+                src={designAsset.imageUrl.includes("amazonaws") ? designAsset.imageUrl : designAsset.imageUrl.replace("http", "https")} 
                 className="leftright mb-2" 
               />
             </a> 
