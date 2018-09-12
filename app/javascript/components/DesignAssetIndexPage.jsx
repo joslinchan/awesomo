@@ -85,19 +85,19 @@ class DesignAssetIndexPage extends Component {
                       {designAsset.hexes.map((hex, i) => (
                         <li key={index+i}>
                           {hex.code.includes("#") ? (
-                            <span id="hexLine">
+                            <span id="hex-line">
                               {hex.code} 
                               <div 
-                                id="colourBox" 
+                                id="colour-box" 
                                 style={{backgroundColor: hex.code}}
                               >
                               </div>
                             </span>
                           ) : (
-                            <span id="hexLine">
+                            <span id="hex-line">
                               #{hex.code}
                               <div 
-                                id="colourBox" 
+                                id="colour-box" 
                                 style={{backgroundColor: "#" + hex.code}}
                               >
                               </div>

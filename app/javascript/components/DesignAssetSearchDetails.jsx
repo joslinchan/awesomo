@@ -98,10 +98,10 @@ class DesignAssetSearchDetails extends Component {
           <ul>
             {designAsset.colors && designAsset.colors.hex.map((hex, i) => (
               <li key={hex+i}>
-                <span id="hexLine">
+                <span id="hex-line">
                   #{hex}
                   <div 
-                    id="colourBox" 
+                    id="colour-box" 
                     style={{backgroundColor: '#' + hex}}
                   >
                   </div>
@@ -110,10 +110,10 @@ class DesignAssetSearchDetails extends Component {
             ))}
             {designAsset.hex && 
               <li>
-                <span id="hexLine">
+                <span id="hex-line">
                   #{designAsset.hex}
                   <div 
-                    id="colourBox" 
+                    id="colour-box" 
                     style={{backgroundColor: '#' + designAsset.hex}}
                   >
                   </div>
@@ -122,10 +122,10 @@ class DesignAssetSearchDetails extends Component {
             }
             {designAsset.attributes && 
               <li>
-                <span id="hexLine">
+                <span id="hex-line">
                   {designAsset.attributes.table.color}
                   <div 
-                    id="colourBox" 
+                    id="colour-box" 
                     style={{backgroundColor: designAsset.attributes.table.color}}
                   >
                   </div>
