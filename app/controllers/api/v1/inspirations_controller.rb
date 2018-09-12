@@ -86,9 +86,9 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end 
 
   def fetch_design_assets
-    colourCollection = ColourApiParser.parse_colours params[:query]
-    paletteCollection = ColourApiParser.parse_palettes params[:query]
-    patternCollection = ColourApiParser.parse_patterns params[:query]
+    colourCollection = ColourLoversApiParser.parse_colours params[:query]
+    paletteCollection = ColourLoversApiParser.parse_palettes params[:query]
+    patternCollection = ColourLoversApiParser.parse_patterns params[:query]
 
     paletteCollection ||= 0
     colourCollection ||= 0

@@ -1,4 +1,4 @@
-class ColourApiParser
+class ColourLoversApiParser
 
   def self.parse_colours(search_params)
     colours = ColourLoversApiRetriever.get_colours(search_params)
