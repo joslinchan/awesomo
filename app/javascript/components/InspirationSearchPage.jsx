@@ -66,7 +66,7 @@ class InspirationSearchPage extends Component {
               animation="scale"
             >
               <input 
-                className="form-control underline mt-4 search"
+                className="form-control underline search"
                 placeholder="Search for..." 
                 name="query" 
                 id="query" 

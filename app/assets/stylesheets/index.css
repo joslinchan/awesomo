@@ -279,7 +279,8 @@ input.form-control.underline.search {
   height: 40px;
   padding-top: 12px;
   padding-bottom: 12px;
-  font-size: 1.25rem
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
 }
 
 input.form-control.underline.search:hover {
