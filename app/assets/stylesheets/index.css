@@ -228,6 +228,11 @@ h5.text {
   text-align: center;
   margin-top: 10rem;
 }
+
+.design-asset-list {
+  margin-top: 2rem;
+}
+
 div.p {
   color: #6c757d;
   text-align: center;
@@ -361,6 +366,11 @@ p.noerror {
 
 .text-light {
   color: #f4d522 !important;
+}
+
+.search-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 span, span.sign, span.icon {

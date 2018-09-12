@@ -77,7 +77,7 @@ class InspirationSearchPage extends Component {
             </Tippy>
           </div>
 
-          <div className="d-flex justify-content-end">
+          <div className="search-buttons">
             <Tippy 
               duration={200} 
               delay={50} 
@@ -109,7 +109,7 @@ class InspirationSearchPage extends Component {
           </div>
         </form>
 
-        <section className="bigList mt-4">
+        <section className="design-asset-list">
           {errorMessage ? <h3>{errorMessage}</h3> : null }
           {loading ? <h3 className="load">Loading...</h3> : (
             <div id="box">
