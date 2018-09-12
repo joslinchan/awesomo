@@ -48,7 +48,7 @@ class DesignAssetIndexPage extends Component {
     if (loading) {
       return(
         <main>
-          <h2 className="load">Loading designAssets...</h2>
+          <h2 className="load">Loading inspirations...</h2>
         </main>
       );
     }
