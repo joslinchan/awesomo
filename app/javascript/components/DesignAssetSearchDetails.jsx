@@ -7,7 +7,7 @@ class DesignAssetSearchDetails extends Component {
     super(props);
 
      this.state = {
-      design_asset: props,
+      designAsset: props,
       highlighted: false,
     };
 
@@ -30,7 +30,7 @@ class DesignAssetSearchDetails extends Component {
     })
     .then(data => {
       this.setState({
-        id_for_deletion: data.id,
+        idForDeletion: data.id,
         highlighted: true,
        })
     })
@@ -38,7 +38,7 @@ class DesignAssetSearchDetails extends Component {
 
   delete(event) {
     const { currentTarget } = event;
-    InspirationRailsApi.destroy(this.state.id_for_deletion)
+    InspirationRailsApi.destroy(this.state.idForDeletion)
     .then(data => {
       if (data.status === 200) {
         this.setState({
@@ -49,7 +49,7 @@ class DesignAssetSearchDetails extends Component {
   }
 
   render() {
-    const { design_asset } = this.state;
+    const { designAsset } = this.state;
 
     return(   
       <div 
@@ -61,14 +61,14 @@ class DesignAssetSearchDetails extends Component {
       > 
 
         <div className="d-flex justify-content-center">
-          {design_asset.title ? (
-            <a href= {design_asset.url}>
+          {designAsset.title ? (
+            <a href= {designAsset.url}>
               <h5 className="text-center leftright mb-2">
-                {design_asset.title}
+                {designAsset.title}
               </h5>
             </a>
           ) : (
-            <a href= {design_asset.attributes.table.links.html}>
+            <a href= {designAsset.attributes.table.links.html}>
               <h5 className="leftright mb-2">
                 Untitled
               </h5>
@@ -77,17 +77,17 @@ class DesignAssetSearchDetails extends Component {
         </div>
         
         <div className="d-flex justify-content-center">
-          {design_asset.imageUrl ? (
-            <a href= {design_asset.url}>
+          {designAsset.imageUrl ? (
+            <a href= {designAsset.url}>
               <img 
-                src={design_asset.imageUrl.replace("http", "https")} 
+                src={designAsset.imageUrl.replace("http", "https")} 
                 className="leftright mb-2" 
               />
             </a> 
           ) : ( 
-            <a href= {design_asset.attributes.table.links.html}>
+            <a href= {designAsset.attributes.table.links.html}>
               <img 
-                src={design_asset.attributes.table.urls.thumb} 
+                src={designAsset.attributes.table.urls.thumb} 
                 className="leftright mb-2" 
               />
             </a>
@@ -96,7 +96,7 @@ class DesignAssetSearchDetails extends Component {
 
         <div className="d-flex justify-content-center mb-2">
           <ul>
-            {design_asset.colors && design_asset.colors.hex.map((hex, i) => (
+            {designAsset.colors && designAsset.colors.hex.map((hex, i) => (
               <li key={hex+i}>
                 <span id="hexLine">
                   #{hex}
@@ -108,25 +108,25 @@ class DesignAssetSearchDetails extends Component {
                 </span>
               </li>
             ))}
-            {design_asset.hex && 
+            {designAsset.hex && 
               <li>
                 <span id="hexLine">
-                  #{design_asset.hex}
+                  #{designAsset.hex}
                   <div 
                     id="colourBox" 
-                    style={{backgroundColor: '#' + design_asset.hex}}
+                    style={{backgroundColor: '#' + designAsset.hex}}
                   >
                   </div>
                 </span>
               </li>
             }
-            {design_asset.attributes && 
+            {designAsset.attributes && 
               <li>
                 <span id="hexLine">
-                  {design_asset.attributes.table.color}
+                  {designAsset.attributes.table.color}
                   <div 
                     id="colourBox" 
-                    style={{backgroundColor: design_asset.attributes.table.color}}
+                    style={{backgroundColor: designAsset.attributes.table.color}}
                   >
                   </div>
                 </span>
@@ -162,10 +162,10 @@ class DesignAssetSearchDetails extends Component {
               <button 
                 className="btn btn-outline-dark btn-block"
                 title="Save item"
-                onClick={() => this.save(design_asset.attributes ? (
-                  design_asset.attributes.table.save_link
+                onClick={() => this.save(designAsset.attributes ? (
+                  designAsset.attributes.table.save_link
                 ) : (
-                  design_asset.save_link
+                  designAsset.save_link
               ))}>
                 <i className="far fa-heart"></i>
               </button>
