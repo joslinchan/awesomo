@@ -53,55 +53,26 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
   def search
-    colourCollection = ColourApiParser.parse_colours params[:query]
-    paletteCollection = ColourApiParser.parse_palettes params[:query]
-    patternCollection = ColourApiParser.parse_patterns params[:query]
+    fetch_design_assets
 
-    paletteCollection ||= 0
-    colourCollection ||= 0
-    patternCollection ||= 0
-    
-    if params[:query]
-      photos = UnsplashApiRetriever.new.get_photos params[:query]
-    else
-      photos = UnsplashApiRetriever.new.get_random
-    end 
-
-     
-    if (paletteCollection==0)
-      everything = paletteCollection + colourCollection + patternCollection
-    else
-      everything = paletteCollection + colourCollection + patternCollection + photos
-    end
-
-
-    if (everything==0)
-
-      return render(
-          status: 404,
-          json: {
-            status: 404,
-            errors: [{
-              type: "NotFound"
-            }]
-          })
-
+    if (@fetched_design_assets==0)
+      return null_result
     else
 
-      everything.each do |thing|
-        if (thing["hex"])
-          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["hex"])
-        elsif (thing["colors"])
-          thing['save_link'] = api_v1_inspirations_path(title: thing["title"], image_url: URI.encode(thing["imageUrl"]), url: URI.encode(thing["url"]), hex: thing["colors"]["hex"])
+      @fetched_design_assets.each do |design_asset|
+        if (design_asset["hex"])
+          design_asset['save_link'] = api_v1_inspirations_path(title: design_asset["title"], image_url: URI.encode(design_asset["imageUrl"]), url: URI.encode(design_asset["url"]), hex: design_asset["hex"])
+        elsif (design_asset["colors"])
+          design_asset['save_link'] = api_v1_inspirations_path(title: design_asset["title"], image_url: URI.encode(design_asset["imageUrl"]), url: URI.encode(design_asset["url"]), hex: design_asset["colors"]["hex"])
         else
-          thing['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(thing["urls"]["thumb"]), url: URI.encode(thing["links"]["html"]), hex: thing["color"])
+          design_asset['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(design_asset["urls"]["thumb"]), url: URI.encode(design_asset["links"]["html"]), hex: design_asset["color"])
         end
       end
       
     end
 
     respond_to do |format|
-      format.json { render json: everything }
+      format.json { render json: @fetched_design_assets }
     end
   end
 
@@ -114,8 +85,30 @@ class Api::V1::InspirationsController < Api::ApplicationController
     params.permit(:title, :image_url, :url, :hex)
   end 
 
-end
+  def fetch_design_assets
+    colourCollection = ColourLoversApiParser.parse_colours params[:query]
+    paletteCollection = ColourLoversApiParser.parse_palettes params[:query]
+    patternCollection = ColourLoversApiParser.parse_patterns params[:query]
 
-=begin     
-everything = paletteCollection + colourCollection + patternCollection 
-=end
+    paletteCollection ||= 0
+    colourCollection ||= 0
+    patternCollection ||= 0
+    
+    if params[:query]
+      photos = UnsplashApiRetriever.new.get_photos params[:query]
+    else
+      photos = UnsplashApiRetriever.new.get_random
+    end 
+
+    if (paletteCollection==0)
+      @fetched_design_assets = paletteCollection + colourCollection + patternCollection
+    else
+      @fetched_design_assets = paletteCollection + colourCollection + patternCollection + photos
+    end
+  end
+
+  def null_result
+    not_found
+  end
+
+end

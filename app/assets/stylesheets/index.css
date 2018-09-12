@@ -105,6 +105,11 @@ body {
   background-repeat: repeat;
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 .btn.btn-block {
   border-top-color: #ced4da;
   border-bottom-color: white;
@@ -125,6 +130,12 @@ body {
 
 .btn.search, .btn.signIn {
   border-color: #ced4da;
+  margin-top: 1rem;
+}
+
+.btn.lucky {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
 }
 
 .card {
@@ -145,6 +156,11 @@ body {
 
 .card.highlight {
   border: 1px solid #ffd900;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
 }
 
 .delete {
@@ -188,11 +204,7 @@ div.demo {
 }
 
 .form-control.underline {
-  /* border-bottom-color: #ced4da; */
-  border-bottom-color: white;
-  border-top-color: white;
-  border-left-color: white;
-  border-right-color: white;
+  border-color: white;
 }
 
 h1 {
@@ -221,6 +233,11 @@ h5.text {
   text-align: center;
   margin-top: 10rem;
 }
+
+.design-asset-list {
+  margin-top: 2rem;
+}
+
 div.p {
   color: #6c757d;
   text-align: center;
@@ -278,7 +295,8 @@ input.form-control.underline.search {
   height: 40px;
   padding-top: 12px;
   padding-bottom: 12px;
-  font-size: 1.25rem
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
 }
 
 input.form-control.underline.search:hover {
@@ -342,6 +360,10 @@ p.noerror {
   justify-content: flex-end;
 }
 
+.NavBar a, span {
+  padding: 1rem;
+}
+
 .search, .signIn {
   box-shadow: 0 1px 3px rgba(black, 0.2);
   font-family: 'Share Tech Mono', monospace;
@@ -349,6 +371,11 @@ p.noerror {
 
 .text-light {
   color: #f4d522 !important;
+}
+
+.search-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 span, span.sign, span.icon {
