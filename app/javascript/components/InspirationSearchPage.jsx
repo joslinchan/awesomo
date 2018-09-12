@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import InspirationApi from "../requests/inspiration";
+import InspirationRailsApi from "../requests/inspiration";
 import InspirationSearchDetails from "./InspirationSearchDetails";
-import Tippy from './ReactTippy';
+import Tippy from "./ReactTippy";
 import shuffle from "lodash/shuffle";
 
 class InspirationSearchPage extends Component {
@@ -30,18 +30,18 @@ class InspirationSearchPage extends Component {
 
     this.setState({ fetched_design_assets: [], errorMessage: "", loading: true })
 
-    InspirationApi.search(term)
+    InspirationRailsApi.search(term)
     .then(fetched_design_assets => {
       if (fetched_design_assets.status === 404) {
         return this.setState({
           errorMessage: "No results found",
           loading: false,
         });
-      } 
+      };
 
-      const collected = shuffle(Array.from(fetched_design_assets));
+      const shuffledDesignAssets = shuffle(Array.from(fetched_design_assets));
       return this.setState({ 
-        fetched_design_assets: collected,
+        fetched_design_assets: shuffledDesignAssets,
         loading: false,
       });
     });
@@ -92,6 +92,7 @@ class InspirationSearchPage extends Component {
                 title="✨Search!"
               />
             </Tippy>
+            
             <Tippy 
               duration={200} 
               delay={50} 
