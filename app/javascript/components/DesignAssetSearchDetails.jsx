@@ -13,7 +13,7 @@ class DesignAssetSearchDetails extends Component {
 
     this.save = this.save.bind(this);
     this.delete = this.delete.bind(this);
-  }
+  };
 
   save(url) {
     return fetch(url, {
@@ -26,15 +26,15 @@ class DesignAssetSearchDetails extends Component {
     .then(response => {
       if (response.status === 200) {
         return response.json()
-      }
+      };
     })
     .then(data => {
       this.setState({
         idForDeletion: data.id,
         highlighted: true,
-       })
-    })
-  }
+       });
+    });
+  };
 
   delete(event) {
     const { currentTarget } = event;
@@ -43,10 +43,10 @@ class DesignAssetSearchDetails extends Component {
       if (data.status === 200) {
         this.setState({
          highlighted: false,
-        })
-      }
-    })
-  }
+        });
+      };
+    });
+  };
 
   render() {
     const { designAsset } = this.state;
