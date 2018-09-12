@@ -28,7 +28,7 @@ class InspirationSearchPage extends Component {
     const {currentTarget} = event;
     const { term } = this.state;  
 
-    this.setState({ everything: [], loading:true })
+    this.setState({ everything: [], errorMessage: "", loading: true })
 
     InspirationApi.search(term)
     .then(everything => {
