@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def default_url_options
+    { host: ENV["HOST"] || "localhost:4000" }
+  end
+
 end

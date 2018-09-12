@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Awesomo</title>
-    <meta property='og:title' content="Awesomo" />
-    <meta property='og:image' content="https://github.com/joslinchan/awesomo/blob/master/app/assets/images/Awesomo_Screenshot.png" />
-    <meta property='og:description' content="A mini design asset search engine for when you just want to code." />
-    <meta property='og:url' content="https://awesomo-search.herokuapp.com/" />
+    <title><%= meta_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
 
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Share+Tech+Mono"%>
     <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.2.0/css/all.css" %>
