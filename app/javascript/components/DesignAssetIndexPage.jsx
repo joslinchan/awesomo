@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import InspirationApi from "../requests/inspiration";
-import Tippy from './ReactTippy';
+import React, { Component } from "react";
+import InspirationRailsApi from "../requests/inspiration";
+import Tippy from "./ReactTippy";
 
 class DesignAssetIndexPage extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class DesignAssetIndexPage extends Component {
   }
 
   componentDidMount() {
-    InspirationApi.all()
+    InspirationRailsApi.all()
     .then(inspirations => {
       this.setState({
         loading: false, 
@@ -25,25 +25,25 @@ class DesignAssetIndexPage extends Component {
       })
     })
     .catch(() => {
-      this.setState({loading: false});
+      this.setState({ loading: false });
     });
   }
 
   deleteInspiration(event) {
-    const {currentTarget} = event;
+    const { currentTarget } = event;
     const inspirationId = parseInt(currentTarget.dataset.id, 10);
-    const {inspirations} = this.state;
+    const { inspirations } = this.state;
 
     this.setState({
       inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId),
       boxShowing: false,
     })
 
-    InspirationApi.destroy(inspirationId);
+    InspirationRailsApi.destroy(inspirationId);
   }
   
   render() {
-    const {loading, inspirations} = this.state;
+    const { loading, inspirations } = this.state;
 
     if (loading) {
       return(
@@ -56,7 +56,14 @@ class DesignAssetIndexPage extends Component {
     return(
       <div className="container mt-4">
       
-      {inspirations.length === 0 ? (<h5 className="text">There are no items in your collection right now.<br />To add items, search for items by keyword in the search bar and click save.<br />=)</h5> 
+      {inspirations.length === 0 ? (
+        <h5 className="text">
+          There are no items in your collection right now.
+          <br />
+          To add items, search for items by keyword in the search bar and click save.
+          <br />
+          =)
+        </h5> 
         ) : (
       <div id="box">
           {inspirations.map((inspire, index) => (
@@ -98,7 +105,7 @@ class DesignAssetIndexPage extends Component {
                           #{hex.code}
                           <div 
                             id="colourBox" 
-                            style={{backgroundColor: "#"+hex.code}}
+                            style={{backgroundColor: "#" + hex.code}}
                           >
                           </div>
                         </span>
@@ -109,7 +116,13 @@ class DesignAssetIndexPage extends Component {
                   </ul>
                 </div>
 
-                <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
+                <Tippy 
+                  duration={200} 
+                  delay={50} 
+                  arrow={true} 
+                  arrowType="round" 
+                  animation="scale"
+                >
                   <button 
                     className="btn btn-outline-dark btn-block delete"
                     title="Delete"
@@ -129,7 +142,7 @@ class DesignAssetIndexPage extends Component {
         )}
       </div>
     );
-  }
-}
+  };
+};
 
 export default DesignAssetIndexPage;
