@@ -1,13 +1,13 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import InspirationRailsApi from "../requests/inspiration";
-import Tippy from './ReactTippy';
+import Tippy from "./ReactTippy";
 
 class DesignAssetSearchDetails extends Component {
   constructor(props) {
     super(props);
 
      this.state = {
-      thing: props,
+      design_asset: props,
       highlighted: false,
     };
 
@@ -31,25 +31,25 @@ class DesignAssetSearchDetails extends Component {
     .then(data => {
       this.setState({
         id_for_deletion: data.id,
-        highlighted: true
+        highlighted: true,
        })
     })
   }
 
   delete(event) {
-    const {currentTarget} = event;
+    const { currentTarget } = event;
     InspirationRailsApi.destroy(this.state.id_for_deletion)
     .then(data => {
       if (data.status === 200) {
         this.setState({
-         highlighted: false
+         highlighted: false,
         })
       }
     })
   }
 
   render() {
-    const { thing } = this.state;
+    const { design_asset } = this.state;
 
     return(
     
@@ -62,62 +62,72 @@ class DesignAssetSearchDetails extends Component {
       > 
 
         <div className="d-flex justify-content-center">
-          {thing.title ? (
-            <a href= {thing.url}>
-              <h5 className="text-center leftright mb-2">{thing.title}</h5>
+          {design_asset.title ? (
+            <a href= {design_asset.url}>
+              <h5 className="text-center leftright mb-2">
+                {design_asset.title}
+              </h5>
             </a>
           ) : (
-            <a href= {thing.attributes.table.links.html}>
-              <h5 className="leftright mb-2">Untitled</h5>
+            <a href= {design_asset.attributes.table.links.html}>
+              <h5 className="leftright mb-2">
+                Untitled
+              </h5>
             </a>
           )}
         </div>
         
         <div className="d-flex justify-content-center">
-          {thing.imageUrl ? (
-            <a href= {thing.url}>
-              <img src={thing.imageUrl.replace("http", "https")} className="leftright mb-2" />
+          {design_asset.imageUrl ? (
+            <a href= {design_asset.url}>
+              <img 
+                src={design_asset.imageUrl.replace("http", "https")} 
+                className="leftright mb-2" 
+              />
             </a> 
           ) : ( 
-            <a href= {thing.attributes.table.links.html}>
-              <img src={thing.attributes.table.urls.thumb} className="leftright mb-2" />
+            <a href= {design_asset.attributes.table.links.html}>
+              <img 
+                src={design_asset.attributes.table.urls.thumb} 
+                className="leftright mb-2" 
+              />
             </a>
           )}
         </div>
 
         <div className="d-flex justify-content-center mb-2">
           <ul>
-            {thing.colors && thing.colors.hex.map((hex, i) => (
+            {design_asset.colors && design_asset.colors.hex.map((hex, i) => (
               <li key={hex+i}>
                 <span id="hexLine">
                   #{hex}
                   <div 
                     id="colourBox" 
-                    style={{backgroundColor: '#'+hex}}
+                    style={{backgroundColor: '#' + hex}}
                   >
                   </div>
                 </span>
               </li>
             ))}
-            {thing.hex && 
+            {design_asset.hex && 
               <li>
                 <span id="hexLine">
-                  #{thing.hex}
+                  #{design_asset.hex}
                   <div 
                     id="colourBox" 
-                    style={{backgroundColor: '#'+thing.hex}}
+                    style={{backgroundColor: '#' + design_asset.hex}}
                   >
                   </div>
                 </span>
               </li>
             }
-            {thing.attributes && 
+            {design_asset.attributes && 
               <li>
                 <span id="hexLine">
-                  {thing.attributes.table.color}
+                  {design_asset.attributes.table.color}
                   <div 
                     id="colourBox" 
-                    style={{backgroundColor: thing.attributes.table.color}}
+                    style={{backgroundColor: design_asset.attributes.table.color}}
                   >
                   </div>
                 </span>
@@ -128,7 +138,13 @@ class DesignAssetSearchDetails extends Component {
         
         <div className="d-flex justify-content-center">
           {this.state.highlighted ? (
-            <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
+            <Tippy 
+              duration={200} 
+              delay={50} 
+              arrow={true} 
+              arrowType="round" 
+              animation="scale"
+            >
               <button 
                 className="btn btn-outline-dark btn-block"
                 title="Unsave item"
@@ -137,14 +153,20 @@ class DesignAssetSearchDetails extends Component {
               </button>          
             </Tippy> 
           ) : (
-            <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
+            <Tippy 
+              duration={200} 
+              delay={50} 
+              arrow={true} 
+              arrowType="round" 
+              animation="scale"
+            >
               <button 
                 className="btn btn-outline-dark btn-block"
                 title="Save item"
-                onClick={() => this.save(thing.attributes ? (
-                thing.attributes.table.save_link
+                onClick={() => this.save(design_asset.attributes ? (
+                  design_asset.attributes.table.save_link
                 ) : (
-                  thing.save_link
+                  design_asset.save_link
               ))}>
                 <i className="far fa-heart"></i>
               </button>
@@ -154,8 +176,8 @@ class DesignAssetSearchDetails extends Component {
 
       </div>
    
-    )
-  }
-}
+    );
+  };
+};
 
 export default DesignAssetSearchDetails;
