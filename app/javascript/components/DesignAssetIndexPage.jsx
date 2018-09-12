@@ -12,7 +12,7 @@ class DesignAssetIndexPage extends Component {
       boxShowing: false,
     };
 
-    this.deleteInspiration = this.deleteInspiration.bind(this);
+    this.deleteDesignAsset = this.deleteDesignAsset.bind(this);
   }
 
   componentDidMount() {
@@ -29,17 +29,17 @@ class DesignAssetIndexPage extends Component {
     });
   }
 
-  deleteInspiration(event) {
+  deleteDesignAsset(event) {
     const { currentTarget } = event;
     const inspirationId = parseInt(currentTarget.dataset.id, 10);
     const { designAssets } = this.state;
 
     this.setState({
-      designAssets: designAssets.filter(inspiration => inspiration.id !== inspirationId),
+      designAssets: designAssets.filter(dessignAsset => designAsset.id !== designAssetId),
       boxShowing: false,
     })
 
-    InspirationRailsApi.destroy(inspirationId);
+    InspirationRailsApi.destroy(designAssetId);
   }
   
   render() {
@@ -66,26 +66,26 @@ class DesignAssetIndexPage extends Component {
         </h5> 
         ) : (
           <div id="box">
-            {designAssets.map((inspire, index) => (
+            {designAssets.map((designAsset, index) => (
       
-              <div key={inspire.id}>
+              <div key={designAsset.id}>
                 <div className="card">
       
-                  <a href={inspire.url}>
+                  <a href={designAsset.url}>
                     <h5 className="text-center leftright mb-2">
-                      {inspire.title}
+                      {designAsset.title}
                     </h5>
                   </a>
 
                   <div className="d-flex justify-content-center">
-                    <a href={inspire.url}>
-                      <img src={inspire.image_url} className="leftright image" />
+                    <a href={designAsset.url}>
+                      <img src={designAsset.image_url} className="leftright image" />
                     </a>
                   </div>
 
                   <div className="d-flex justify-content-center hex mt-2 mb-2">
                     <ul>
-                      {inspire.hexes.map((hex, i) => (
+                      {designAsset.hexes.map((hex, i) => (
                         <li key={index+i}>
                           {hex.code.includes("#") ? (
                             <span id="hexLine">
@@ -121,8 +121,8 @@ class DesignAssetIndexPage extends Component {
                     <button 
                       className="btn btn-outline-dark btn-block delete"
                       title="Delete"
-                      data-id={inspire.id} 
-                      onClick={this.deleteInspiration}
+                      data-id={designAsset.id} 
+                      onClick={this.deleteDesignAsset}
                     >
                       <i className="fas fa-trash"></i>
                     </button>
