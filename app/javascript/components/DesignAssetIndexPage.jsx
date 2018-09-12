@@ -8,7 +8,7 @@ class DesignAssetIndexPage extends Component {
 
     this.state = {
       loading: true,
-      inspirations: [],
+      designAssets: [],
       boxShowing: false,
     };
 
@@ -17,10 +17,10 @@ class DesignAssetIndexPage extends Component {
 
   componentDidMount() {
     InspirationRailsApi.all()
-    .then(inspirations => {
+    .then(designAssets => {
       this.setState({
         loading: false, 
-        inspirations: inspirations, 
+        designAssets: designAssets, 
         boxShowing: true,
       })
     })
@@ -32,10 +32,10 @@ class DesignAssetIndexPage extends Component {
   deleteInspiration(event) {
     const { currentTarget } = event;
     const inspirationId = parseInt(currentTarget.dataset.id, 10);
-    const { inspirations } = this.state;
+    const { designAssets } = this.state;
 
     this.setState({
-      inspirations: inspirations.filter(inspiration => inspiration.id !== inspirationId),
+      designAssets: designAssets.filter(inspiration => inspiration.id !== inspirationId),
       boxShowing: false,
     })
 
@@ -43,12 +43,12 @@ class DesignAssetIndexPage extends Component {
   }
   
   render() {
-    const { loading, inspirations } = this.state;
+    const { loading, designAssets } = this.state;
 
     if (loading) {
       return(
         <main>
-          <h2 className="load">Loading Inspirations...</h2>
+          <h2 className="load">Loading designAssets...</h2>
         </main>
       );
     }
@@ -56,7 +56,7 @@ class DesignAssetIndexPage extends Component {
     return(
       <div className="container mt-4">
       
-      {inspirations.length === 0 ? (
+      {designAssets.length === 0 ? (
         <h5 className="text">
           There are no items in your collection right now.
           <br />
@@ -66,7 +66,7 @@ class DesignAssetIndexPage extends Component {
         </h5> 
         ) : (
           <div id="box">
-            {inspirations.map((inspire, index) => (
+            {designAssets.map((inspire, index) => (
       
               <div key={inspire.id}>
                 <div className="card">

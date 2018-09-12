@@ -51,8 +51,7 @@ class DesignAssetSearchDetails extends Component {
   render() {
     const { design_asset } = this.state;
 
-    return(
-    
+    return(   
       <div 
         className={this.state.highlighted ? (
           "highlight card"
@@ -175,7 +174,6 @@ class DesignAssetSearchDetails extends Component {
         </div>
 
       </div>
-   
     );
   };
 };
