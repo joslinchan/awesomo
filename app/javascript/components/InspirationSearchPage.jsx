@@ -10,7 +10,7 @@ class InspirationSearchPage extends Component {
 
     this.state = {
       loading: false,
-      everything: [],
+      fetched_design_assets: [],
       term: "",
       errorMessage: "",
     }
@@ -28,27 +28,27 @@ class InspirationSearchPage extends Component {
     const { currentTarget } = event;
     const { term } = this.state;  
 
-    this.setState({ everything: [], errorMessage: "", loading: true })
+    this.setState({ fetched_design_assets: [], errorMessage: "", loading: true })
 
     InspirationApi.search(term)
-    .then(everything => {
-      if (everything.status === 404) {
+    .then(fetched_design_assets => {
+      if (fetched_design_assets.status === 404) {
         return this.setState({
           errorMessage: "No results found",
           loading: false,
         });
       } 
 
-      const collected = shuffle(Array.from(everything));
+      const collected = shuffle(Array.from(fetched_design_assets));
       return this.setState({ 
-        everything: collected,
+        fetched_design_assets: collected,
         loading: false,
       });
     });
   };
 
   render() {
-    const { errorMessage, loading, everything } = this.state;
+    const { errorMessage, loading, fetched_design_assets } = this.state;
 
     return(
       <main className="container">
@@ -103,7 +103,7 @@ class InspirationSearchPage extends Component {
                 className="btn btn-outline-dark mt-3 ml-2 search"
                 type="submit" 
                 value="I'm Feeling Lucky" 
-                title="Find me something random!"
+                title="Find me somedesign_asset random!"
               />
             </Tippy>
           </div>
@@ -113,9 +113,9 @@ class InspirationSearchPage extends Component {
           {errorMessage ? <h3>{errorMessage}</h3> : null }
           {loading ? <h3 className="load">Loading...</h3> : (
             <div id="box">
-              {everything.map((thing, index) => (
+              {fetched_design_assets.map((design_asset, index) => (
                 <div key={index}>
-                  <InspirationSearchDetails {...thing} />
+                  <InspirationSearchDetails {...design_asset} />
                 </div>
               ))}
             </div> 
