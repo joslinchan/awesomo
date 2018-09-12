@@ -130,6 +130,12 @@ body, html {
 
 .btn.search, .btn.signIn {
   border-color: #ced4da;
+  margin-top: 1rem;
+}
+
+.btn.lucky {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
 }
 
 .card {

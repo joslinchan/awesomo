@@ -86,7 +86,7 @@ class InspirationSearchPage extends Component {
               animation="scale"
             >
               <input 
-                className="btn btn-outline-dark mt-3 search icon"
+                className="btn btn-outline-dark search icon"
                 type="submit" 
                 value="&#xf002;" 
                 title="✨Search!"
@@ -100,7 +100,7 @@ class InspirationSearchPage extends Component {
               animation="scale"
             >
               <input 
-                className="btn btn-outline-dark mt-3 ml-2 search"
+                className="btn btn-outline-dark lucky search"
                 type="submit" 
                 value="I'm Feeling Lucky" 
                 title="Find me something random!"
