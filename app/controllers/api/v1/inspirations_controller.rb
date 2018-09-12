@@ -120,7 +120,3 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
 end
-
-=begin     
-everything = paletteCollection + colourCollection + patternCollection 
-=end
