@@ -65,81 +65,76 @@ class DesignAssetIndexPage extends Component {
           =)
         </h5> 
         ) : (
-      <div id="box">
-          {inspirations.map((inspire, index) => (
+          <div id="box">
+            {inspirations.map((inspire, index) => (
       
-            <div key={inspire.id}  >
-              <div className="card">
-    
-                <a href={inspire.url}>
-                  <h5 className="text-center leftright mb-2">
-                    {inspire.title}
-                  </h5>
-                </a>
-
-                <div 
-                  className="d-flex justify-content-center"
-                >
+              <div key={inspire.id}>
+                <div className="card">
+      
                   <a href={inspire.url}>
-                    <img src={inspire.image_url} className="leftright image" />
+                    <h5 className="text-center leftright mb-2">
+                      {inspire.title}
+                    </h5>
                   </a>
-                </div>
 
-                <div 
-                  className="d-flex justify-content-center hex mt-2 mb-2"
-                >
-                  <ul>
-                    {inspire.hexes.map((hex, i) => (
-                      <li key={index+i}>
-                        {hex.code.includes("#") ? (
-                          <span id="hexLine">
-                            {hex.code} 
-                            <div 
-                              id="colourBox" 
-                              style={{backgroundColor: hex.code}}
-                            >
-                            </div>
-                          </span>
-                        ) : (
-                        <span id="hexLine">
-                          #{hex.code}
-                          <div 
-                            id="colourBox" 
-                            style={{backgroundColor: "#" + hex.code}}
-                          >
-                          </div>
-                        </span>
-                        ) }
-                        
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <div className="d-flex justify-content-center">
+                    <a href={inspire.url}>
+                      <img src={inspire.image_url} className="leftright image" />
+                    </a>
+                  </div>
 
-                <Tippy 
-                  duration={200} 
-                  delay={50} 
-                  arrow={true} 
-                  arrowType="round" 
-                  animation="scale"
-                >
-                  <button 
-                    className="btn btn-outline-dark btn-block delete"
-                    title="Delete"
-                    data-id={inspire.id} 
-                    onClick={this.deleteInspiration}
+                  <div className="d-flex justify-content-center hex mt-2 mb-2">
+                    <ul>
+                      {inspire.hexes.map((hex, i) => (
+                        <li key={index+i}>
+                          {hex.code.includes("#") ? (
+                            <span id="hexLine">
+                              {hex.code} 
+                              <div 
+                                id="colourBox" 
+                                style={{backgroundColor: hex.code}}
+                              >
+                              </div>
+                            </span>
+                          ) : (
+                            <span id="hexLine">
+                              #{hex.code}
+                              <div 
+                                id="colourBox" 
+                                style={{backgroundColor: "#" + hex.code}}
+                              >
+                              </div>
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Tippy 
+                    duration={200} 
+                    delay={50} 
+                    arrow={true} 
+                    arrowType="round" 
+                    animation="scale"
                   >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                </Tippy>
+                    <button 
+                      className="btn btn-outline-dark btn-block delete"
+                      title="Delete"
+                      data-id={inspire.id} 
+                      onClick={this.deleteInspiration}
+                    >
+                      <i className="fas fa-trash"></i>
+                    </button>
+                  </Tippy>
 
-              </div>
-            </div>  
+                </div>
+              </div>  
 
-          ))}
-          
-        </div>
+            ))} 
+          </div>
         )}
+        
       </div>
     );
   };
