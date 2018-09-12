@@ -8,7 +8,7 @@ module MetaTagsHelper
   end
 
   def meta_image
-    content_for?(:meta_image) ? content_for(:meta_image) : DEFAULT_META["meta_image"]
+    meta_image = (content_for?(:meta_image) ? content_for(:meta_image) : DEFAULT_META["meta_image"])
     meta_image.starts_with?("http") ? :meta_image : image_url(:meta_image)
     # the above line is a nice touch to make it work equally with an asset or a url
   end
