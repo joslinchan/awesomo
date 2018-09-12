@@ -1,4 +1,4 @@
-class ColourApiRetriever
+class ColourLoversApiRetriever
   include HTTParty
   base_uri "https://www.colourlovers.com/api"
 
@@ -15,9 +15,3 @@ class ColourApiRetriever
   end
 
 end
-
-=begin   
-  def self.get_palettes
-    self.get("/palettes/?keywords=fish")
-  end 
-=end
