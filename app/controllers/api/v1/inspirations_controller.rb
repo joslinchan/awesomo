@@ -108,15 +108,7 @@ class Api::V1::InspirationsController < Api::ApplicationController
   end
 
   def null_result
-    render(
-      status: 404,
-      json: {
-        status: 404,
-        errors: [{
-          type: "NotFound"
-        }]
-      }
-    )
+    not_found
   end
 
 end
