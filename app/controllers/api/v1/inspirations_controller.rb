@@ -61,11 +61,23 @@ class Api::V1::InspirationsController < Api::ApplicationController
 
       @fetched_design_assets.each do |design_asset|
         if (design_asset["hex"])
-          design_asset['save_link'] = api_v1_inspirations_path(title: design_asset["title"], image_url: URI.encode(design_asset["imageUrl"]), url: URI.encode(design_asset["url"]), hex: design_asset["hex"])
+          design_asset['save_link'] = api_v1_inspirations_path(
+            title: design_asset["title"], 
+            image_url: URI.encode(design_asset["imageUrl"]), 
+            url: URI.encode(design_asset["url"]), 
+            hex: design_asset["hex"])
         elsif (design_asset["colors"])
-          design_asset['save_link'] = api_v1_inspirations_path(title: design_asset["title"], image_url: URI.encode(design_asset["imageUrl"]), url: URI.encode(design_asset["url"]), hex: design_asset["colors"]["hex"])
+          design_asset['save_link'] = api_v1_inspirations_path(
+            title: design_asset["title"], 
+            image_url: URI.encode(design_asset["imageUrl"]), 
+            url: URI.encode(design_asset["url"]), 
+            hex: design_asset["colors"]["hex"])
         else
-          design_asset['save_link'] = api_v1_inspirations_path(title: "Untitled", image_url: URI.encode(design_asset["urls"]["thumb"]), url: URI.encode(design_asset["links"]["html"]), hex: design_asset["color"])
+          design_asset['save_link'] = api_v1_inspirations_path(
+            title: "Untitled", 
+            image_url: URI.encode(design_asset["urls"]["thumb"]), 
+            url: URI.encode(design_asset["links"]["html"]), 
+            hex: design_asset["color"])
         end
       end
       

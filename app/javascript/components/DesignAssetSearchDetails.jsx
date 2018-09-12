@@ -1,94 +1,94 @@
-import React, { Component } from "react";
-import InspirationRailsApi from "../requests/inspiration";
-import Tippy from "./ReactTippy";
+import React, { Component } from 'react';
+import InspirationRailsApi from '../requests/inspiration';
+import Tippy from './ReactTippy';
 
 class DesignAssetSearchDetails extends Component {
   constructor(props) {
     super(props);
 
-     this.state = {
+    this.state = {
       designAsset: props,
       highlighted: false,
     };
 
     this.save = this.save.bind(this);
     this.delete = this.delete.bind(this);
-  };
+  }
 
   save(url) {
     return fetch(url, {
-      method: "POST",
-      credentials: "include",
+      method: 'POST',
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json"
-      }
+        'Content-Type': 'application/json',
+      },
     })
-    .then(response => {
-      if (response.status === 200) {
-        return response.json()
-      };
-    })
-    .then(data => {
-      this.setState({
-        idForDeletion: data.id,
-        highlighted: true,
-       });
-    });
-  };
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        this.setState({
+          idForDeletion: data.id,
+          highlighted: true,
+        });
+      });
+  }
 
   delete(event) {
     const { currentTarget } = event;
     InspirationRailsApi.destroy(this.state.idForDeletion)
-    .then(data => {
-      if (data.status === 200) {
-        this.setState({
-         highlighted: false,
-        });
-      };
-    });
-  };
+      .then((data) => {
+        if (data.status === 200) {
+          this.setState({
+            highlighted: false,
+          });
+        }
+      });
+  }
 
   render() {
     const { designAsset } = this.state;
 
-    return(   
-      <div 
+    return (
+      <div
         className={this.state.highlighted ? (
-          "highlight card"
+          'highlight card'
         ) : (
-          "card"
+          'card'
         )}
-      > 
+      >
 
         <div className="center-content">
           {designAsset.title ? (
-            <a href= {designAsset.url}>
+            <a href={designAsset.url}>
               <h5 className="text-center leftright mb-2">
                 {designAsset.title}
               </h5>
             </a>
           ) : (
-            <a href= {designAsset.attributes.table.links.html}>
+            <a href={designAsset.attributes.table.links.html}>
               <h5 className="leftright mb-2">
                 Untitled
               </h5>
             </a>
           )}
         </div>
-        
+
         <div className="center-content">
           {designAsset.imageUrl ? (
-            <a href= {designAsset.url}>
-              <img 
-                src={designAsset.imageUrl.includes("amazonaws") ? designAsset.imageUrl : designAsset.imageUrl.replace("http", "https")} 
-                className="leftright mb-2" 
+            <a href={designAsset.url}>
+              <img
+                src={designAsset.imageUrl.includes('amazonaws') ? designAsset.imageUrl : designAsset.imageUrl.replace('http', 'https')}
+                className="leftright mb-2"
               />
-            </a> 
-          ) : ( 
-            <a href= {designAsset.attributes.table.links.html}>
-              <img 
-                src={designAsset.attributes.table.urls.thumb} 
-                className="leftright mb-2" 
+            </a>
+          ) : (
+            <a href={designAsset.attributes.table.links.html}>
+              <img
+                src={designAsset.attributes.table.urls.thumb}
+                className="leftright mb-2"
               />
             </a>
           )}
@@ -97,77 +97,82 @@ class DesignAssetSearchDetails extends Component {
         <div className="center-content mb-2">
           <ul>
             {designAsset.colors && designAsset.colors.hex.map((hex, i) => (
-              <li key={hex+i}>
+              <li key={hex + i}>
                 <span id="hex-line">
-                  #{hex}
-                  <div 
-                    id="colour-box" 
-                    style={{backgroundColor: '#' + hex}}
-                  >
-                  </div>
+                  #
+                  {hex}
+                  <div
+                    id="colour-box"
+                    style={{ backgroundColor: `#${hex}` }}
+                  />
                 </span>
               </li>
             ))}
-            {designAsset.hex && 
-              <li>
+            {designAsset.hex
+              && (
+<li>
                 <span id="hex-line">
-                  #{designAsset.hex}
-                  <div 
-                    id="colour-box" 
-                    style={{backgroundColor: '#' + designAsset.hex}}
-                  >
-                  </div>
+                  #
+{designAsset.hex}
+                  <div
+                    id="colour-box"
+                    style={{ backgroundColor: `#${  designAsset.hex}` }}
+                   />
                 </span>
               </li>
+)
             }
-            {designAsset.attributes && 
-              <li>
+            {designAsset.attributes
+              && (
+<li>
                 <span id="hex-line">
                   {designAsset.attributes.table.color}
-                  <div 
-                    id="colour-box" 
-                    style={{backgroundColor: designAsset.attributes.table.color}}
-                  >
-                  </div>
+                  <div
+                    id="colour-box"
+                    style={{ backgroundColor: designAsset.attributes.table.color }}
+                   />
                 </span>
               </li>
+)
             }
           </ul>
         </div>
-        
+
         <div className="center-content">
           {this.state.highlighted ? (
-            <Tippy 
-              duration={200} 
-              delay={50} 
-              arrow={true} 
-              arrowType="round" 
+            <Tippy
+              duration={200}
+              delay={50}
+              arrow
+              arrowType="round"
               animation="scale"
             >
-              <button 
+              <button
                 className="btn btn-outline-dark btn-block"
                 title="Unsave item"
-                onClick={this.delete}>
-                <i className="fas fa-heart"></i>
-              </button>          
-            </Tippy> 
+                onClick={this.delete}
+              >
+                <i className="fas fa-heart" />
+              </button>
+            </Tippy>
           ) : (
-            <Tippy 
-              duration={200} 
-              delay={50} 
-              arrow={true} 
-              arrowType="round" 
+            <Tippy
+              duration={200}
+              delay={50}
+              arrow
+              arrowType="round"
               animation="scale"
             >
-              <button 
+              <button
                 className="btn btn-outline-dark btn-block"
                 title="Save item"
                 onClick={() => this.save(designAsset.attributes ? (
                   designAsset.attributes.table.save_link
                 ) : (
                   designAsset.save_link
-              ))}>
-                <i className="far fa-heart"></i>
+                ))}
+              >
+                <i className="far fa-heart" />
               </button>
             </Tippy>
           )}
@@ -175,7 +180,7 @@ class DesignAssetSearchDetails extends Component {
 
       </div>
     );
-  };
-};
+  }
+}
 
 export default DesignAssetSearchDetails;
