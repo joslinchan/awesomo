@@ -55,18 +55,18 @@ class Api::V1::InspirationsController < Api::ApplicationController
   def search
     fetch_design_assets
 
-    if (@fetched_design_assets==0)
+    if @fetched_design_assets==0
       return null_result
     else
 
       @fetched_design_assets.each do |design_asset|
-        if (design_asset["hex"])
+        if design_asset["hex"]
           design_asset['save_link'] = api_v1_inspirations_path(
             title: design_asset["title"], 
             image_url: URI.encode(design_asset["imageUrl"]), 
             url: URI.encode(design_asset["url"]), 
             hex: design_asset["hex"])
-        elsif (design_asset["colors"])
+        elsif design_asset["colors"]
           design_asset['save_link'] = api_v1_inspirations_path(
             title: design_asset["title"], 
             image_url: URI.encode(design_asset["imageUrl"]), 
@@ -112,7 +112,7 @@ class Api::V1::InspirationsController < Api::ApplicationController
       photos = UnsplashApiRetriever.new.get_random
     end 
 
-    if (paletteCollection==0)
+    if paletteCollection==0
       @fetched_design_assets = paletteCollection + colourCollection + patternCollection
     else
       @fetched_design_assets = paletteCollection + colourCollection + patternCollection + photos
