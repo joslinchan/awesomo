@@ -48,7 +48,8 @@ class Api::V1::InspirationsController < Api::ApplicationController
       status: 200,
       json: {
         status: 200,
-        message: "Inspiration destroyed"}
+        message: "Inspiration destroyed"
+      }
     )
   end
 
@@ -65,19 +66,22 @@ class Api::V1::InspirationsController < Api::ApplicationController
             title: design_asset["title"], 
             image_url: URI.encode(design_asset["imageUrl"]), 
             url: URI.encode(design_asset["url"]), 
-            hex: design_asset["hex"])
+            hex: design_asset["hex"]
+          )
         elsif design_asset["colors"]
           design_asset['save_link'] = api_v1_inspirations_path(
             title: design_asset["title"], 
             image_url: URI.encode(design_asset["imageUrl"]), 
             url: URI.encode(design_asset["url"]), 
-            hex: design_asset["colors"]["hex"])
+            hex: design_asset["colors"]["hex"]
+          )
         else
           design_asset['save_link'] = api_v1_inspirations_path(
             title: "Untitled", 
             image_url: URI.encode(design_asset["urls"]["thumb"]), 
             url: URI.encode(design_asset["links"]["html"]), 
-            hex: design_asset["color"])
+            hex: design_asset["color"]
+          )
         end
       end
       
@@ -112,7 +116,7 @@ class Api::V1::InspirationsController < Api::ApplicationController
       photos = UnsplashApiRetriever.new.get_random
     end 
 
-    if paletteCollection==0
+    if paletteCollection == 0
       @fetched_design_assets = paletteCollection + colourCollection + patternCollection
     else
       @fetched_design_assets = paletteCollection + colourCollection + patternCollection + photos
