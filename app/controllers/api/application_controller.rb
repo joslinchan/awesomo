@@ -1,25 +1,25 @@
 class Api::ApplicationController < ApplicationController
-
   rescue_from StandardError, with: :standard_error
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
   rescue_from ActiveModel::Serializer::Null, with: :null_result
 
   skip_before_action :verify_authenticity_token
-  
+
   def not_found
     render(
       status: 404,
       json: {
         status: 404,
         errors: [{
-          type: "NotFound"
+          type: 'NotFound'
         }]
       }
     )
   end
 
   private
+
   def authenticate_user!
     unless current_user.present?
       render(
@@ -28,7 +28,7 @@ class Api::ApplicationController < ApplicationController
       )
     end
   end
-  
+
   def record_not_found(error)
     render(
       status: 404,
@@ -60,10 +60,10 @@ class Api::ApplicationController < ApplicationController
     record = error.record
     errors = record.errors.map do |field, message|
       {
-      type: error.class.to_s,
-      record_type: record.class.to_s,
-      field: field,
-      message: message
+        type: error.class.to_s,
+        record_type: record.class.to_s,
+        field: field,
+        message: message
       }
     end
     render(
@@ -80,9 +80,8 @@ class Api::ApplicationController < ApplicationController
       status: 404,
       json: {
         status: 404,
-        message: "No results found"
+        message: 'No results found'
       }
     )
-    end
-  
+  end
 end
