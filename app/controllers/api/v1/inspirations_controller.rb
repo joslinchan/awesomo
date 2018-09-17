@@ -56,7 +56,7 @@ class Api::V1::InspirationsController < Api::ApplicationController
   def search
     fetch_design_assets
 
-    if @fetched_design_assets==0
+    if @fetched_design_assets == 0
       return null_result
     else
 
