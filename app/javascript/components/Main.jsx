@@ -1,14 +1,14 @@
-import React, {Component} from "react";
-import NavBar from "./NavBar";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import NotFoundPage from "./NotFoundPage";
-import User from "../requests/user";
-import DesignAssetIndexPage from "./DesignAssetIndexPage";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Component } from "react";
 import AuthRoute from "./AuthRoute";
+import DesignAssetIndexPage from "./DesignAssetIndexPage";
+import DesignAssetSearchPage from "./DesignAssetSearchPage";
+import NavBar from "./NavBar";
+import NotFoundPage from "./NotFoundPage";
+import Session from "../requests/session";
 import SignInPage from "./SignInPage";
 import SignUpPage from "./SignUpPage";
-import Session from "../requests/session";
-import DesignAssetSearchPage from "./DesignAssetSearchPage";
+import User from "../requests/user";
 import WelcomePage from "./WelcomePage";
 
 import "../index.css";
@@ -24,20 +24,19 @@ class Main extends Component {
 
     this.getUser = this.getUser.bind(this);
     this.destroySession = this.destroySession.bind(this);
-
   }
 
   destroySession() {
     Session.destroy()
     .then(() => {
-      this.setState({currentUser: undefined});
+      this.setState({ currentUser: undefined });
     });
   }
 
   getUser() {
     return User.current().then(data => {
       if (data.id) {
-        this.setState({currentUser: data})
+        this.setState({ currentUser: data })
       }
     });
   }
@@ -45,12 +44,12 @@ class Main extends Component {
   componentDidMount() {
     this.getUser()
     .then(() => {
-      this.setState({ loading: false});
+      this.setState({ loading: false });
     });
   }
 
   render() {
-    const {currentUser, loading} = this.state;
+    const { currentUser, loading } = this.state;
 
     if (loading) {
       return(
