@@ -1,8 +1,8 @@
 import React from "react";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavBar = props => {
-  const {currentUser, onSignOut = () => {}} = props;
+  const { currentUser, onSignOut = () => {} } = props;
 
   const handleClick = event => {
     event.preventDefault();
@@ -28,7 +28,8 @@ const NavBar = props => {
           </NavLink>
           <NavLink 
             className="btn btn-dark"
-            exact to="/inspirations/search"
+            exact 
+            to="/inspirations/search"
           >
             Search
           </NavLink>
@@ -41,9 +42,11 @@ const NavBar = props => {
           </NavLink>
           <a 
             className="btn btn-dark"
-            onClick={handleClick} href="#"
+            onClick={handleClick} 
+            href="#"
           >
-            Sign Out <i className="fas fa-sign-out-alt"></i>
+            Sign Out 
+            <i className="fas fa-sign-out-alt"></i>
           </a>
         </React.Fragment>
       ) : (
@@ -51,20 +54,24 @@ const NavBar = props => {
         <NavLink 
           className="btn btn-dark" 
           exact 
-          to="/">
+          to="/"
+        >
           Intro
         </NavLink>
         <NavLink 
           className="btn btn-dark"
           exact 
-          to="/sign_up">
+          to="/sign_up"
+        >
           Sign Up
         </NavLink>
         <NavLink 
           className="btn btn-dark"
           exact 
-          to="/sign_in">
-          Sign In <i className="fas fa-sign-in-alt"></i>
+          to="/sign_in"
+        >
+          Sign In 
+          <i className="fas fa-sign-in-alt"></i>
         </NavLink>
         </span>
       )}
