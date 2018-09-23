@@ -61,76 +61,76 @@ class DesignAssetIndexPage extends Component {
           <br />
           =)
         </h5> 
-        ) : (
-          <div id="box">
-            {designAssets.map((designAsset, index) => (
-      
-              <div key={designAsset.id}>
-                <div className="card">
-      
+      ) : (
+        <div id="box">
+          {designAssets.map((designAsset, index) => (
+    
+            <div key={designAsset.id}>
+              <div className="card">
+    
+                <a href={designAsset.url}>
+                  <h5 className="text-center leftright mb-2">
+                    {designAsset.title}
+                  </h5>
+                </a>
+
+                <div className="d-flex justify-content-center">
                   <a href={designAsset.url}>
-                    <h5 className="text-center leftright mb-2">
-                      {designAsset.title}
-                    </h5>
+                    <img src={designAsset.image_url} className="leftright image" />
                   </a>
-
-                  <div className="d-flex justify-content-center">
-                    <a href={designAsset.url}>
-                      <img src={designAsset.image_url} className="leftright image" />
-                    </a>
-                  </div>
-
-                  <div className="d-flex justify-content-center hex mt-2 mb-2">
-                    <ul>
-                      {designAsset.hexes.map((hex, i) => (
-                        <li key={index+i}>
-                          {hex.code.includes("#") ? (
-                            <span id="hex-line">
-                              {hex.code} 
-                              <div 
-                                id="colour-box" 
-                                style={{backgroundColor: hex.code}}
-                              >
-                              </div>
-                            </span>
-                          ) : (
-                            <span id="hex-line">
-                              #{hex.code}
-                              <div 
-                                id="colour-box" 
-                                style={{backgroundColor: "#" + hex.code}}
-                              >
-                              </div>
-                            </span>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <Tippy 
-                    duration={200} 
-                    delay={50} 
-                    arrow={true} 
-                    arrowType="round" 
-                    animation="scale"
-                  >
-                    <button 
-                      className="btn btn-outline-dark btn-block delete"
-                      title="Delete"
-                      data-id={designAsset.id} 
-                      onClick={this.deleteDesignAsset}
-                    >
-                      <i className="fas fa-trash"></i>
-                    </button>
-                  </Tippy>
-
                 </div>
-              </div>  
 
-            ))} 
-          </div>
-        )}
+                <div className="d-flex justify-content-center hex mt-2 mb-2">
+                  <ul>
+                    {designAsset.hexes.map((hex, i) => (
+                      <li key={index+i}>
+                        {hex.code.includes("#") ? (
+                          <span id="hex-line">
+                            {hex.code} 
+                            <div 
+                              id="colour-box" 
+                              style={{backgroundColor: hex.code}}
+                            >
+                            </div>
+                          </span>
+                        ) : (
+                          <span id="hex-line">
+                            #{hex.code}
+                            <div 
+                              id="colour-box" 
+                              style={{backgroundColor: "#" + hex.code}}
+                            >
+                            </div>
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <Tippy 
+                  duration={200} 
+                  delay={50} 
+                  arrow={true} 
+                  arrowType="round" 
+                  animation="scale"
+                >
+                  <button 
+                    className="btn btn-outline-dark btn-block delete"
+                    title="Delete"
+                    data-id={designAsset.id} 
+                    onClick={this.deleteDesignAsset}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </button>
+                </Tippy>
+
+              </div>
+            </div>  
+
+          ))} 
+        </div>
+      )}
         
       </div>
     );
