@@ -21,19 +21,16 @@ class Main extends Component {
       loading: true,
       currentUser: undefined
     };
-
-    this.getUser = this.getUser.bind(this);
-    this.destroySession = this.destroySession.bind(this);
   }
 
-  destroySession() {
+  destroySession = () => {
     Session.destroy()
     .then(() => {
       this.setState({ currentUser: undefined });
     });
   }
 
-  getUser() {
+  getUser = () => {
     return User.current().then(data => {
       if (data.id) {
         this.setState({ currentUser: data })
