@@ -10,8 +10,6 @@ class DesignAssetIndexPage extends Component {
       loading: true,
       designAssets: [],
     };
-
-    this.deleteDesignAsset = this.deleteDesignAsset.bind(this);
   }
 
   componentDidMount() {
@@ -27,7 +25,7 @@ class DesignAssetIndexPage extends Component {
     });
   }
 
-  deleteDesignAsset(event) {
+  deleteDesignAsset = (event) => {
     const { currentTarget } = event;
     const designAssetId = parseInt(currentTarget.dataset.id, 10);
     const { designAssets } = this.state;
