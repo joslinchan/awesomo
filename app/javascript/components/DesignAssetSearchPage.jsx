@@ -14,21 +14,22 @@ class DesignAssetSearchPage extends Component {
       term: "",
       errorMessage: "",
     }
-
-    this.onInputChange = this.onInputChange.bind(this);
-    this.enterSubmit = this.enterSubmit.bind(this);
   }
 
-  onInputChange(term) {
+  onInputChange = (term) => {
     this.setState({ term });
   }
 
-  enterSubmit(event) {
+  enterSubmit = (event) => {
     event.preventDefault();
     const { currentTarget } = event;
     const { term } = this.state;  
 
-    this.setState({ fetched_design_assets: [], errorMessage: "", loading: true })
+    this.setState({ 
+      fetched_design_assets: [], 
+      errorMessage: "", 
+      loading: true 
+    })
 
     InspirationRailsApi.search(term)
     .then(fetched_design_assets => {
@@ -112,7 +113,9 @@ class DesignAssetSearchPage extends Component {
 
         <section className="design-asset-list">
           {errorMessage ? <h3>{errorMessage}</h3> : null }
-          {loading ? <h3 className="load">Loading...</h3> : (
+          {loading ? (
+            <h3 className="load">Loading...</h3>
+          ) : (
             <div id="box">
               {fetched_design_assets.map((design_asset, index) => (
                 <div key={index}>
