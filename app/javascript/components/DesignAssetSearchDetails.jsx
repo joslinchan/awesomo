@@ -10,12 +10,9 @@ class DesignAssetSearchDetails extends Component {
       designAsset: props,
       highlighted: false,
     };
+  };
 
-    this.save = this.save.bind(this);
-    this.delete = this.delete.bind(this);
-  }
-
-  save(url) {
+  save = (url) => {
     return fetch(url, {
       method: 'POST',
       credentials: 'include',
@@ -36,11 +33,11 @@ class DesignAssetSearchDetails extends Component {
       });
   }
 
-  delete(event) {
+  delete = (event) => {
     const { currentTarget } = event;
     InspirationRailsApi.destroy(this.state.idForDeletion)
-      .then((data) => {
-        if (data.status === 200) {
+      .then((itemToDelete) => {
+        if (itemToDelete.status === 200) {
           this.setState({
             highlighted: false,
           });
@@ -80,7 +77,13 @@ class DesignAssetSearchDetails extends Component {
           {designAsset.imageUrl ? (
             <a href={designAsset.url}>
               <img
-                src={designAsset.imageUrl.includes('amazonaws') ? designAsset.imageUrl : designAsset.imageUrl.replace('http', 'https')}
+                src={
+                  designAsset.imageUrl.includes('amazonaws') ? (
+                    designAsset.imageUrl 
+                  ) : ( 
+                    designAsset.imageUrl.replace('http', 'https')
+                  )
+                }
                 className="leftright mb-2"
               />
             </a>
@@ -99,8 +102,7 @@ class DesignAssetSearchDetails extends Component {
             {designAsset.colors && designAsset.colors.hex.map((hex, i) => (
               <li key={hex + i}>
                 <span id="hex-line">
-                  #
-                  {hex}
+                  #{hex}
                   <div
                     id="colour-box"
                     style={{ backgroundColor: `#${hex}` }}
@@ -108,23 +110,19 @@ class DesignAssetSearchDetails extends Component {
                 </span>
               </li>
             ))}
-            {designAsset.hex
-              && (
-<li>
+            {designAsset.hex && (
+              <li>
                 <span id="hex-line">
-                  #
-{designAsset.hex}
+                  #{designAsset.hex}
                   <div
                     id="colour-box"
                     style={{ backgroundColor: `#${  designAsset.hex}` }}
                    />
                 </span>
               </li>
-)
-            }
-            {designAsset.attributes
-              && (
-<li>
+            )}
+            {designAsset.attributes && (
+              <li>
                 <span id="hex-line">
                   {designAsset.attributes.table.color}
                   <div
@@ -133,8 +131,7 @@ class DesignAssetSearchDetails extends Component {
                    />
                 </span>
               </li>
-)
-            }
+            )}
           </ul>
         </div>
 
