@@ -118,7 +118,10 @@ class Api::V1::InspirationsController < Api::ApplicationController
 
     if paletteCollection == 0
       @fetched_design_assets = paletteCollection + colourCollection + patternCollection
+    elsif patternCollection == 0
+      @fetched_design_assets = paletteCollection + colourCollection + photos
     else
+      puts(patternCollection)
       @fetched_design_assets = paletteCollection + colourCollection + patternCollection + photos
     end
   end
