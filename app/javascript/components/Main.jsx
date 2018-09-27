@@ -1,17 +1,17 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { Component } from "react";
-import AuthRoute from "./AuthRoute";
-import DesignAssetIndexPage from "./DesignAssetIndexPage";
-import DesignAssetSearchPage from "./DesignAssetSearchPage";
-import NavBar from "./NavBar";
-import NotFoundPage from "./NotFoundPage";
-import Session from "../requests/session";
-import SignInPage from "./SignInPage";
-import SignUpPage from "./SignUpPage";
-import User from "../requests/user";
-import WelcomePage from "./WelcomePage";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { Component } from 'react';
+import AuthRoute from './AuthRoute';
+import DesignAssetIndexPage from './DesignAssetIndexPage';
+import DesignAssetSearchPage from './DesignAssetSearchPage';
+import NavBar from './NavBar';
+import NotFoundPage from './NotFoundPage';
+import Session from '../requests/session';
+import SignInPage from './SignInPage';
+import SignUpPage from './SignUpPage';
+import User from '../requests/user';
+import WelcomePage from './WelcomePage';
 
-import "../index.css";
+import '../index.css';
 
 class Main extends Component {
   constructor(props) {
@@ -19,55 +19,53 @@ class Main extends Component {
 
     this.state = {
       loading: true,
-      currentUser: undefined
+      currentUser: undefined,
     };
-  }
-
-  destroySession = () => {
-    Session.destroy()
-    .then(() => {
-      this.setState({ currentUser: undefined });
-    });
-  }
-
-  getUser = () => {
-    return User.current().then(data => {
-      if (data.id) {
-        this.setState({ currentUser: data })
-      }
-    });
   }
 
   componentDidMount() {
     this.getUser()
-    .then(() => {
-      this.setState({ loading: false });
-    });
+      .then(() => {
+        this.setState({ loading: false });
+      });
+  }
+
+  getUser = () => User.current().then((data) => {
+    if (data.id) {
+      this.setState({ currentUser: data });
+    }
+  })
+
+  destroySession = () => {
+    Session.destroy()
+      .then(() => {
+        this.setState({ currentUser: undefined });
+      });
   }
 
   render() {
     const { currentUser, loading } = this.state;
 
     if (loading) {
-      return(
+      return (
         <div>
           <h2>Loading...</h2>
         </div>
       );
     }
 
-    return(
+    return (
       <Router>
         <div>
-          <NavBar 
-            onSignOut={this.destroySession} 
-            currentUser={currentUser} 
+          <NavBar
+            onSignOut={this.destroySession}
+            currentUser={currentUser}
           />
           <Switch>
-            <Route 
-              path="/" 
-              exact 
-              component={WelcomePage} 
+            <Route
+              path="/"
+              exact
+              component={WelcomePage}
             />
             <AuthRoute
               isAuth={currentUser}
@@ -85,19 +83,19 @@ class Main extends Component {
                 props => <DesignAssetSearchPage {...props} />
               }
             />
-            <Route 
+            <Route
               path="/sign_up"
               render={
                 props => (
-                <SignUpPage {...props} onSignIn={this.getUser} />
+                  <SignUpPage {...props} onSignIn={this.getUser} />
                 )
               }
             />
-            <Route 
+            <Route
               path="/sign_in"
               render={
                 props => (
-                <SignInPage {...props} onSignIn={this.getUser} />
+                  <SignInPage {...props} onSignIn={this.getUser} />
                 )
               }
             />
@@ -105,7 +103,7 @@ class Main extends Component {
           </Switch>
         </div>
       </Router>
-    )
+    );
   }
 }
 
