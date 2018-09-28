@@ -10,32 +10,33 @@ class DesignAssetSearchDetails extends Component {
       designAsset: props,
       highlighted: false,
     };
-  };
-
-  save = (url) => {
-    return fetch(url, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        this.setState({
-          idForDeletion: data.id,
-          highlighted: true,
-        });
-      });
   }
 
-  delete = (event) => {
-    const { currentTarget } = event;
-    InspirationRailsApi.destroy(this.state.idForDeletion)
+  /* global fetch */
+  save = url => fetch(url, {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      }
+      return null;
+    })
+    .then((data) => {
+      this.setState({
+        idForDeletion: data.id,
+        highlighted: true,
+      });
+    })
+
+  delete = () => {
+    const { idForDeletion } = this.state;
+
+    InspirationRailsApi.destroy(idForDeletion)
       .then((itemToDelete) => {
         if (itemToDelete.status === 200) {
           this.setState({
@@ -46,11 +47,11 @@ class DesignAssetSearchDetails extends Component {
   }
 
   render() {
-    const { designAsset } = this.state;
+    const { designAsset, highlighted } = this.state;
 
     return (
       <div
-        className={this.state.highlighted ? (
+        className={highlighted ? (
           'highlight card'
         ) : (
           'card'
@@ -77,10 +78,11 @@ class DesignAssetSearchDetails extends Component {
           {designAsset.imageUrl ? (
             <a href={designAsset.url}>
               <img
+                alt=""
                 src={
                   designAsset.imageUrl.includes('amazonaws') ? (
-                    designAsset.imageUrl 
-                  ) : ( 
+                    designAsset.imageUrl
+                  ) : (
                     designAsset.imageUrl.replace('http', 'https')
                   )
                 }
@@ -90,6 +92,7 @@ class DesignAssetSearchDetails extends Component {
           ) : (
             <a href={designAsset.attributes.table.links.html}>
               <img
+                alt=""
                 src={designAsset.attributes.table.urls.thumb}
                 className="leftright mb-2"
               />
@@ -99,10 +102,11 @@ class DesignAssetSearchDetails extends Component {
 
         <div className="center-content mb-2">
           <ul>
-            {designAsset.colors && designAsset.colors.hex.map((hex, i) => (
-              <li key={hex + i}>
+            {designAsset.colors && designAsset.colors.hex.map(hex => (
+              <li key={hex}>
                 <span id="hex-line">
-                  #{hex}
+                  #
+                  {hex}
                   <div
                     id="colour-box"
                     style={{ backgroundColor: `#${hex}` }}
@@ -113,11 +117,12 @@ class DesignAssetSearchDetails extends Component {
             {designAsset.hex && (
               <li>
                 <span id="hex-line">
-                  #{designAsset.hex}
+                  #
+                  {designAsset.hex}
                   <div
                     id="colour-box"
-                    style={{ backgroundColor: `#${  designAsset.hex}` }}
-                   />
+                    style={{ backgroundColor: `#${designAsset.hex}` }}
+                  />
                 </span>
               </li>
             )}
@@ -128,7 +133,7 @@ class DesignAssetSearchDetails extends Component {
                   <div
                     id="colour-box"
                     style={{ backgroundColor: designAsset.attributes.table.color }}
-                   />
+                  />
                 </span>
               </li>
             )}
@@ -136,7 +141,7 @@ class DesignAssetSearchDetails extends Component {
         </div>
 
         <div className="center-content">
-          {this.state.highlighted ? (
+          {highlighted ? (
             <Tippy
               duration={200}
               delay={50}
@@ -145,6 +150,7 @@ class DesignAssetSearchDetails extends Component {
               animation="scale"
             >
               <button
+                type="button"
                 className="btn btn-outline-dark btn-block"
                 title="Unsave item"
                 onClick={this.delete}
@@ -161,6 +167,7 @@ class DesignAssetSearchDetails extends Component {
               animation="scale"
             >
               <button
+                type="button"
                 className="btn btn-outline-dark btn-block"
                 title="Save item"
                 onClick={() => this.save(designAsset.attributes ? (
