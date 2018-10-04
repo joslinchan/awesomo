@@ -1,86 +1,92 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const NavBar = props => {
+const NavBar = (props) => {
   const { currentUser, onSignOut = () => {} } = props;
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     event.preventDefault();
     onSignOut();
   };
 
-  return(
+  return (
     <nav className="bg-dark">
       <a href="/inspirations/search" className="brand">
-        <span className="icon">
-        </span>
+        <span className="icon" />
       </a>
 
       <section className="NavBar mb-2">
         {currentUser ? (
           <React.Fragment>
             <span className="text-light lead">
-              Hello {currentUser.first_name}!
-            </span>
-            <NavLink 
-              className="btn btn-dark" 
-              exact 
+              Hello 
+{' '}
+{currentUser.first_name}
+!
+</span>
+            <NavLink
+              className="btn btn-dark"
+              exact
               to="/"
             >
               Intro
             </NavLink>
-            <NavLink 
+            <NavLink
               className="btn btn-dark"
-              exact 
+              exact
               to="/inspirations/search"
             >
               Search
             </NavLink>
-            <NavLink 
+            <NavLink
               className="btn btn-dark"
-              exact 
+              exact
               to="/inspirations"
             >
               Collection
             </NavLink>
-            <a 
+            <a
               className="btn btn-dark"
-              onClick={handleClick} 
+              onClick={handleClick}
               href="#"
             >
-              Sign Out {" "}
-              <i className="fas fa-sign-out-alt"></i>
+              Sign Out 
+{' '}
+{" "}
+              <i className="fas fa-sign-out-alt" />
             </a>
           </React.Fragment>
         ) : (
           <span className="sign">
-            <NavLink 
-              className="btn btn-dark" 
-              exact 
+            <NavLink
+              className="btn btn-dark"
+              exact
               to="/"
             >
               Intro
             </NavLink>
-            <NavLink 
+            <NavLink
               className="btn btn-dark"
-              exact 
+              exact
               to="/sign_up"
             >
               Sign Up
             </NavLink>
-            <NavLink 
+            <NavLink
               className="btn btn-dark"
-              exact 
+              exact
               to="/sign_in"
             >
-              Sign In {" "}
-              <i className="fas fa-sign-in-alt"></i>
+              Sign In 
+{' '}
+{" "}
+              <i className="fas fa-sign-in-alt" />
             </NavLink>
           </span>
         )}
       </section>
     </nav>
-  )
-}
+  );
+};
 
 export default NavBar;

@@ -1,33 +1,31 @@
-import React from "react";
-import {Redirect, Route} from "react-router-dom";
-import swal from "sweetalert";
+import React from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import swal from 'sweetalert';
 
-const AuthRoute = props => {
+const AuthRoute = (props) => {
   const {
-    isAuth = false, 
-    component: Component, 
-    render, 
+    isAuth = false,
+    component: Component,
+    render,
     ...restProps
   } = props;
 
-  return(
+  return (
     <Route
-      render={routeProps => {
+      render={(routeProps) => {
         if (isAuth) {
-          if (typeof render === "function") {
+          if (typeof render === 'function') {
             return render(routeProps);
-          } else {
-            return <Component {...routeProps} />;
           }
-        } else {
-          swal({
-            title: "Please sign in",
-            text: "Or sign up.\n This way you can save items for later review.\n =)",
-            icon: "warning",
-            button: "Okay!",
-          });
-          return <Redirect to="/sign_in" />;
+          return <Component {...routeProps} />;
         }
+        swal({
+          title: 'Please sign in',
+          text: 'Or sign up.\n This way you can save items for later review.\n =)',
+          icon: 'warning',
+          button: 'Okay!',
+        });
+        return <Redirect to="/sign_in" />;
       }}
       {...restProps}
     />
