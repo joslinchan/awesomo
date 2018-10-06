@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const NavBar = (props) => {
   const { currentUser, onSignOut = () => {} } = props;
@@ -19,11 +20,11 @@ const NavBar = (props) => {
         {currentUser ? (
           <React.Fragment>
             <span className="text-light lead">
-              Hello 
-{' '}
-{currentUser.first_name}
-!
-</span>
+              Hello
+              {' '}
+              {currentUser.first_name}
+              !
+            </span>
             <NavLink
               className="btn btn-dark"
               exact
@@ -45,16 +46,16 @@ const NavBar = (props) => {
             >
               Collection
             </NavLink>
-            <a
+            <NavLink
               className="btn btn-dark"
               onClick={handleClick}
-              href="#"
+              to="#"
             >
-              Sign Out 
-{' '}
-{" "}
+              Sign Out
+              {' '}
+              {' '}
               <i className="fas fa-sign-out-alt" />
-            </a>
+            </NavLink>
           </React.Fragment>
         ) : (
           <span className="sign">
@@ -77,9 +78,9 @@ const NavBar = (props) => {
               exact
               to="/sign_in"
             >
-              Sign In 
-{' '}
-{" "}
+              Sign In
+              {' '}
+              {' '}
               <i className="fas fa-sign-in-alt" />
             </NavLink>
           </span>
@@ -87,6 +88,11 @@ const NavBar = (props) => {
       </section>
     </nav>
   );
+};
+
+NavBar.propTypes = {
+  currentUser: PropTypes.number.isRequired,
+  onSignOut: PropTypes.func.isRequired,
 };
 
 export default NavBar;
