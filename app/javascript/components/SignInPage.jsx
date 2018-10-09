@@ -1,7 +1,8 @@
-import React, {Component} from "react";
-import Session from "../requests/session";
-import Tippy from './ReactTippy'
-import {Redirect} from "react-router-dom";
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Session from '../requests/session';
+import Tippy from './ReactTippy';
 
 class SignInPage extends Component {
   constructor(props) {
@@ -17,51 +18,49 @@ class SignInPage extends Component {
 
   createSession(event) {
     event.preventDefault();
-    const {currentTarget} = event;
+    const { currentTarget } = event;
 
 
     const formData = new FormData(currentTarget);
 
     Session.create({
-      email: formData.get("email"),
-      password: formData.get("password")
+      email: formData.get('email'),
+      password: formData.get('password'),
     })
-    .then(data => {
-      if(data.status === 404) {
-        this.setState({
-          errorMessage: "Invalid email or password"
-        });
-      } else {
-        const {onSignIn = () => {}} = this.props;
-        onSignIn()
-        .then(() => this.setState(() => ({
-          toSearch: true
-        })))
-        /* console.log(this.props.history); */
-        /* this.props.history.push("/"); */
-        /* window.location.replace('/inspirations/search'); */
-
-      }
-    });
+      .then((data) => {
+        if (data.status === 404) {
+          this.setState({
+            errorMessage: 'Invalid email or password',
+          });
+        } else {
+          const { onSignIn = () => {} } = this.props;
+          onSignIn()
+            .then(() => this.setState(() => ({
+              toSearch: true,
+            })));
+          /* console.log(this.props.history); */
+          /* this.props.history.push("/"); */
+          /* window.location.replace('/inspirations/search'); */
+        }
+      });
   }
 
   render() {
-    const {errorMessage} = this.state;
-    if(this.state.toSearch === true) {
-      return <Redirect to='/inspirations/search' />
+    const { errorMessage, toSearch } = this.state;
+    if (toSearch === true) {
+      return <Redirect to="/inspirations/search" />;
     }
-    return(
+    return (
       <main className="container mt-4">
-        <div className="logo">
-        </div>
+        <div className="logo" />
         <form onSubmit={this.createSession}>
           <div>
             {/* <label htmlFor="email">Email</label><br /> */}
-            <input 
+            <input
               type="text"
-              name="email" 
-              id="email" 
-              placeholder= "Email" 
+              name="email"
+              id="email"
+              placeholder="Email"
               className="form-control underline search"
             />
             <small>
@@ -71,11 +70,11 @@ class SignInPage extends Component {
 
           <div>
             {/* <label htmlFor="password">Password</label><br /> */}
-            <input 
-              type="password" 
-              name="password" 
-              id="password" 
-              placeholder="Password" 
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
               className="form-control mt-3 underline search"
             />
             <small>
@@ -84,20 +83,24 @@ class SignInPage extends Component {
           </div>
 
           <div className="d-flex justify-content-end">
-          <Tippy duration={200} delay={50} arrow={true} arrowType="round" animation="scale">
-            <input 
-              type="submit" 
-              value="&#xf2f6;"
-              className="btn btn-outline-dark signIn icon"
-              title="✨Sign me in!"
-            />
+            <Tippy duration={200} delay={50} arrow arrowType="round" animation="scale">
+              <input
+                type="submit"
+                value="&#xf2f6;"
+                className="btn btn-outline-dark signIn icon"
+                title="✨Sign me in!"
+              />
             </Tippy>
           </div>
-          
+
         </form>
       </main>
     );
   }
+}
+
+SignInPage.propTypes = {
+  onSignIn: PropTypes.func.isRequired,
 };
 
 export default SignInPage;
