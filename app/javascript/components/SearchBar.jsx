@@ -1,29 +1,23 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import InspirationApi from '../requests/inspiration';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    term: undefined,
+  };
 
-    this.state = {
-      term: undefined,
-    };
-
-    this.onInputChange = this.onInputChange.bind(this);
-    this.enterSubmit = this.enterSubmit.bind(this);
-  }
-
-  onInputChange(term) {
+  onInputChange = ({ term }) => {
     this.setState({ term });
-    this.props.onTermChange(term);
+    this.onTermChange(term);
   }
 
-  handleInputChange(term) {
+  handleInputChange = ({ term }) => {
     this.setState({ term });
-    this.props.onTermChange(term);
+    this.onTermChange(term);
   }
 
-  enterSubmit(event) {
+  enterSubmit = (event) => {
     event.preventDefault();
     const { currentTarget } = event; // const currentTarget = event.currentTarget
     // console.log(currentTarget);
@@ -58,5 +52,9 @@ class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onTermChange: PropTypes.func.isRequired,
+};
 
 export default SearchBar;
